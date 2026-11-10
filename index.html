@@ -524,6 +524,8 @@ footer{border-top:1px solid var(--border);padding:56px 22px 40px;background:var(
 
 /* ═══ CENTER QUICK MENU (middle button) ═══ */
 #dock{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:400;display:flex;align-items:flex-end;gap:10px}
+#dock.moving,#audioDock.moving{transition:none!important;user-select:none}
+#dock.moving .dock-btn,#dock.moving #dockMain,#audioDock.moving{transition:none!important}
 #dock .dock-btn{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:var(--bg-2);border:1px solid var(--border-2);color:var(--text-2);box-shadow:var(--shadow-sm);transition:all .4s var(--ease);opacity:0;pointer-events:none;transform:translateY(18px) scale(.6)}
 #dock.open .dock-btn{opacity:1;pointer-events:auto;transform:none}
 #dock .dock-btn:hover{color:var(--accent);border-color:var(--accent);transform:translateY(-5px)}
@@ -548,6 +550,9 @@ footer{border-top:1px solid var(--border);padding:56px 22px 40px;background:var(
 #audioDock.open{visibility:visible;opacity:1;transform:none}
 #audioDock .audio-dock-title{max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px;font-weight:600;color:var(--text-2)}
 #audioDock .icon-btn{width:36px;height:36px;background:var(--surface-2);border-color:var(--border)}
+.audio-dock-move{width:30px;height:36px;flex:0 0 30px;display:grid;place-items:center;color:var(--muted);border-radius:8px;cursor:grab;touch-action:none}
+.audio-dock-move:active{cursor:grabbing}
+.audio-dock-move svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.8}
 .reader-repeat-setting{display:flex;align-items:center;gap:6px;color:var(--muted);font-size:11px;font-weight:600}
 .reader-repeat-setting select,.audio-dock-repeat{max-width:135px;padding:8px 26px 8px 10px!important;font-size:12px!important}
 .reader-range-settings{position:relative}
@@ -830,7 +835,7 @@ footer{border-top:1px solid var(--border);padding:56px 22px 40px;background:var(
         <button class="btn btn-ghost btn-sm" onclick="readerPlaySurah()" title="Play or pause recitation"><svg aria-hidden="true"><use href="#i-play"/></svg> <span id="playSurahLbl">Recite</span></button>
         <label class="reader-repeat-setting">Repeat
           <select class="sel" id="readerRepeatMode" aria-label="Recitation repeat mode">
-            <option value="off">Off</option><option value="all">Repeat all</option><option value="one">Repeat one</option><option value="range">Repeat range</option>
+            <option value="off">Off</option><option value="all">Repeat all 114 surahs</option><option value="one">Repeat one</option><option value="range">Repeat range</option>
           </select>
         </label>
         <details class="reader-range-settings"><summary>Verse range settings</summary><div class="range-fields">
@@ -1098,16 +1103,17 @@ footer{border-top:1px solid var(--border);padding:56px 22px 40px;background:var(
   <button class="dock-btn" id="dockTheme" onclick="toggleDock();toggleTheme()"><span class="dock-lbl">Theme</span><svg><use href="#i-moon"/></svg></button>
   <button class="dock-btn" onclick="toggleDock();openShare()"><span class="dock-lbl">Share</span><svg><use href="#i-share"/></svg></button>
   <button class="dock-btn" onclick="toggleDock();window.scrollTo({top:0,behavior:'smooth'})"><span class="dock-lbl">Top</span><svg><use href="#i-arrow"/></svg></button>
-  <button id="dockMain" onclick="toggleDock()" title="Quick actions"><svg><use href="#i-plus"/></svg></button>
+  <button id="dockMain" onclick="toggleDock()" title="Drag to move · Quick actions" aria-label="Move or open Quick actions"><svg><use href="#i-plus"/></svg></button>
 </div>
 
 <aside id="audioDock" role="region" aria-label="Qur'an audio player" aria-live="polite" aria-hidden="true">
+  <button class="audio-dock-move" id="audioDockMove" type="button" aria-label="Move audio player" title="Drag to move"><svg aria-hidden="true"><use href="#i-grid"/></svg></button>
   <span class="audio-dock-title" id="audioDockTitle">Qur'an recitation</span>
   <button class="icon-btn" id="audioDockPlay" type="button" aria-label="Play recitation" title="Play or pause recitation"><svg aria-hidden="true"><use href="#i-play"/></svg></button>
   <button class="icon-btn" id="audioDockStop" type="button" aria-label="Stop recitation" title="Stop recitation"><svg aria-hidden="true"><use href="#i-close"/></svg></button>
   <div class="audio-dock-options">
     <select class="sel audio-dock-repeat" id="dockRepeatMode" aria-label="Recitation repeat mode">
-      <option value="off">Repeat off</option><option value="all">Repeat all</option><option value="one">Repeat one</option><option value="range">Repeat range</option>
+      <option value="off">Repeat off</option><option value="all">Repeat all 114 surahs</option><option value="one">Repeat one</option><option value="range">Repeat range</option>
     </select>
     <details>
       <summary>Range</summary>
@@ -1793,7 +1799,51 @@ function restoreViewFromUrl(){
   }
   showView(nextView,false);
 }
-addEventListener('popstate',restoreViewFromUrl);
+let rootBackTimestamp=0;
+function closeTopLayerForBack(){
+  const modal=[...document.querySelectorAll('.modal.open')].pop();
+  if(modal){window.closeModal?.(modal.id);return true;}
+  const search=document.getElementById('searchOverlay');
+  if(search?.classList.contains('open')){window.closeSearch?.();return true;}
+  if(document.getElementById('settingsDrawer')?.classList.contains('open')){window.closeDrawer?.('settingsDrawer');return true;}
+  if(document.getElementById('menuDrawer')?.classList.contains('open')){window.closeDrawer?.('menuDrawer');return true;}
+  if(document.getElementById('chatPanel')?.classList.contains('open')){window.closeChat?.();return true;}
+  if(document.getElementById('dock')?.classList.contains('open')){window.toggleDock?.();return true;}
+  const audioDock=document.getElementById('audioDock');
+  if(audioDock?.classList.contains('open')){document.getElementById('audioDockStop')?.click();return true;}
+  return false;
+}
+window.closeTopLayerForBack=closeTopLayerForBack;
+function handleAppPopState(event){
+  if(closeTopLayerForBack()){
+    history.pushState({view:activeViewName,academyBackGuard:true},'','#'+activeViewName);
+    rootBackTimestamp=0;
+    return;
+  }
+  const hadPreviousView=appViewHistory.length>1;
+  const returnedToRoot=!!(event.state?.academyBase||event.state?.academyBackGuard);
+  restoreViewFromUrl();
+  if(hadPreviousView){rootBackTimestamp=0;return;}
+  if(!returnedToRoot)return;
+  if(activeViewName!=='home'){
+    history.replaceState({academyBase:true,view:'home'},'','#home');
+    appViewHistory=['home'];
+    showView('home',false);
+    history.pushState({academyBackGuard:true,view:'home'},'','#home');
+    rootBackTimestamp=0;
+    return;
+  }
+  const now=Date.now();
+  if(rootBackTimestamp&&now-rootBackTimestamp<2200){
+    rootBackTimestamp=0;
+    history.back();
+    return;
+  }
+  rootBackTimestamp=now;
+  if(window.__toast)window.__toast('Press back again to exit Al-Ma’rifah.','info',2200);
+  history.pushState({academyBackGuard:true},'',location.href);
+}
+addEventListener('popstate',handleAppPopState);
 addEventListener('hashchange',restoreViewFromUrl);
 document.querySelector('.nav-links').addEventListener('click',e=>{
   const button=e.target.closest('button[data-view]');
@@ -1804,6 +1854,8 @@ window.goBack = goBack;
 const initialView=['home','quran','computer','services','contact'].includes(viewFromHash())?viewFromHash():'home';
 appViewHistory=[initialView];
 showView(initialView,false);
+history.replaceState({academyBase:true,view:initialView},'',location.href);
+history.pushState({academyBackGuard:true,view:initialView},'',location.href);
 document.addEventListener('keydown',event=>{
   if(event.key!=='Enter'&&event.key!==' ')return;
   const card=event.target.closest('.card[role="button"],.track-panel[role="button"]');
@@ -1874,7 +1926,7 @@ async function submitAcademyForm(payload){
   }
   return result;
 }
-function setFormDeliveryUI(buttonId,emailButtonId,consentId,statusId,onlineLabel){
+function setFormDeliveryUI(buttonId,emailButtonId,consentId,statusId,onlineLabel,showSetupInstructions=true){
   const configured=!!getFormspreeEndpoint();
   const button=document.getElementById(buttonId);
   const emailButton=document.getElementById(emailButtonId);
@@ -1885,7 +1937,9 @@ function setFormDeliveryUI(buttonId,emailButtonId,consentId,statusId,onlineLabel
   if(consent)consent.hidden=!configured;
   if(status)status.textContent=configured
     ?'Online delivery is enabled. If you choose Send Online, your form details will be sent to the academy through Formspree. Email draft and copy alternatives remain available.'
-    :'Online delivery is not configured. Create and verify a Formspree form, then enter its form ID in window.ACADEMY_FORMSPREE_FORM_ID near the top of the second application script in index.html. Until then, no form data is sent; email drafts and copying remain available.';
+    :showSetupInstructions
+      ?'Online delivery is not configured. Create and verify a Formspree form, then enter its form ID in window.ACADEMY_FORMSPREE_FORM_ID near the top of the second application script in index.html. Until then, no form data is sent; email drafts and copying remain available.'
+      :'';
   return configured;
 }
 setFormDeliveryUI('contactSubmitButton','contactEmailFallback','contactOnlineConsentWrap','contactDeliveryStatus','Send Online');
@@ -2026,8 +2080,8 @@ async function getAyahs(n,reciterId){
   }));
   return ayahCache[cacheKey];
 }
-async function getSurahAudio(surah){
-  const reciter=RECITERS[state.settings.audioReciter]||RECITERS['ar.alafasy'];
+async function getSurahAudio(surah,reciterId){
+  const reciter=RECITERS[reciterId||state.settings.audioReciter]||RECITERS['ar.alafasy'];
   if(reciter.mode!=='surah')throw new Error('The selected reciter provides verse-by-verse audio.');
   return reciter.server+String(surah).padStart(3,'0')+'.mp3';
 }
@@ -2077,7 +2131,9 @@ function updateAudioDock(){
   const button=document.getElementById('audioDockPlay');
   button.innerHTML='<svg aria-hidden="true"><use href="#i-'+(playing?'pause':'play')+'"/></svg>';
   button.setAttribute('aria-label',playing?'Pause recitation':'Play recitation');
-  document.getElementById('audioDockTitle').textContent=state.currentAudio?.label||'Qur’an recitation';
+  document.getElementById('audioDockTitle').textContent=audioSession?.quranWide
+    ?'Surah '+audioSession.surah+'/114 · '+getSurah(audioSession.surah)[1]
+    :state.currentAudio?.label||'Qur’an recitation';
   const label=document.getElementById('playSurahLbl');
   if(label)label.textContent=active?(playing?'Pause':'Resume'):'Recite';
   if(active&&'mediaSession' in navigator&&'MediaMetadata' in window){
@@ -2140,6 +2196,12 @@ function advanceAudioSession(){
     playSessionItem();
     return;
   }
+  if(session.quranWide&&session.mode==='all'){
+    const nextSurah=session.surah>=114?1:session.surah+1;
+    if(nextSurah===1)session.cycles++;
+    loadQuranWideSurah(session,nextSurah);
+    return;
+  }
   if(session.index<session.items.length-1){
     session.index++;
     playSessionItem();
@@ -2157,6 +2219,39 @@ function advanceAudioSession(){
     return;
   }
   stopAudio();
+}
+async function loadQuranWideSurah(session,surah){
+  try{
+    const selected=RECITERS[session.reciterId]||RECITERS['ar.alafasy'];
+    let items;
+    if(selected.mode==='surah'){
+      const url=await getSurahAudio(surah,session.reciterId);
+      items=[{url,label:getSurah(surah)[1],key:null}];
+    }else{
+      const list=await getAyahs(surah,session.reciterId);
+      const last=list.length?list[list.length-1].n:0;
+      items=await loadVerseItems(surah,session.reciterId,1,last,true);
+    }
+    if(audioSession!==session||session.request!==audioPlayToken)return;
+    if(!items.length)throw new Error('No audio is available for this surah.');
+    session.surah=surah;
+    session.items=items;
+    session.index=0;
+    playSessionItem();
+  }catch(error){
+    if(audioSession!==session)return;
+    stopAudio();
+    toast('Qur’an repeat-all playback stopped at Surah '+surah+': '+error.message,'err',5000);
+  }
+}
+async function startQuranWidePlayback(request){
+  const session={
+    surah:1,items:[],mode:'all',repeatCount:1,cycles:0,index:0,
+    quranWide:true,request,reciterId:state.settings.audioReciter
+  };
+  audioSession=session;
+  updateAudioDock();
+  await loadQuranWideSurah(session,1);
 }
 function startAudioSession(surah,items,mode,repeatCount,startIndex,request){
   if(!items.length){toast('No audio is available for that verse selection.','err');return;}
@@ -2184,7 +2279,11 @@ async function startSurahPlayback(){
   const start=+document.getElementById('readerRangeStart').value||1;
   const end=+document.getElementById('readerRangeEnd').value||start;
   try{
-    if((mode==='off'||mode==='all')&&reciter.mode==='surah'){
+    if(mode==='all'){
+      await startQuranWidePlayback(request);
+      return;
+    }
+    if(mode==='off'&&reciter.mode==='surah'){
       const url=await getSurahAudio(surah);
       if(request!==audioPlayToken)return;
       startAudioSession(surah,[{url,label:reciter.name+' · '+getSurah(surah)[1],key:null}],mode,1,0,request);
@@ -2212,6 +2311,7 @@ async function playAyahAudio(surah,number){
   const request=++audioPlayToken;
   const mode=getRepeatMode();
   if(mode==='range'){await startSurahPlayback();return;}
+  if(mode==='all'){await startQuranWidePlayback(request);return;}
   const reciterId=state.settings.audioReciter;
   const reciter=RECITERS[reciterId]||RECITERS['ar.alafasy'];
   const activeReciter=reciter.mode==='surah'?'ar.alafasy':reciterId;
@@ -2221,12 +2321,6 @@ async function playAyahAudio(surah,number){
     if(request!==audioPlayToken)return;
     const verse=list.find(item=>item.n===number&&item.audio);
     if(!verse){toast('Audio is unavailable for this verse.','err');return;}
-    if(mode==='all'){
-      const items=await loadVerseItems(surah,activeReciter,1,list[list.length-1].n,true);
-      const startIndex=items.findIndex(item=>item.key===surah+':'+number);
-      startAudioSession(surah,items,mode,1,startIndex,request);
-      return;
-    }
     const items=await loadVerseItems(surah,activeReciter,number,number,number===1);
     startAudioSession(surah,items,mode,1,items.length>1?1:0,request);
   }catch(error){
@@ -2334,8 +2428,11 @@ document.querySelectorAll('#readerRepeatMode,#dockRepeatMode').forEach(select=>s
   state.settings.repeatAyah=select.value==='one';
   applySettings();
   syncRepeatControls();
-  if(audioSession&&select.value!=='range')audioSession.mode=select.value;
-  toast(select.value==='one'?'Repeat one is on':select.value==='all'?'Repeat all is on':select.value==='range'?'Set a verse range, then press Recite':'Repeat is off','info',1800);
+  if(audioSession){
+    if(select.value==='range'||(select.value==='all'&&!audioSession.quranWide))startSurahPlayback();
+    else audioSession.mode=select.value;
+  }
+  toast(select.value==='one'?'Repeat one is on':select.value==='all'?'Repeat all 114 surahs is on':select.value==='range'?'Set a verse range, then press Recite':'Repeat is off','info',1800);
 }));
 document.querySelectorAll('#readerRangeStart,#readerRangeEnd,#readerRepeatCount,#dockRangeStart,#dockRangeEnd,#dockRepeatCount').forEach(input=>input.addEventListener('change',()=>{
   persistRepeatSettings(input.id.startsWith('dock')?'dock':'reader');
@@ -2524,9 +2621,8 @@ function openEnroll(track){
     '<button type="button" class="btn btn-ghost" id="enrollEmailFallback" onclick="window.prepareEnrollEmailDraft()" style="width:100%;margin-top:8px" hidden>Prepare Email Draft</button>'+
     '<button type="button" class="btn btn-ghost" id="enrollCopyFallback" onclick="window.copyEnrollRequest()" style="width:100%;margin-top:8px">Copy Request</button>'+
     '<label id="enrollOnlineConsentWrap" class="sub" hidden><input type="checkbox" id="enrollOnlineConsent"> I agree to send my enrollment details to the academy via Formspree.</label>'+
-    '<p id="enrollDeliveryStatus" role="status" aria-live="polite" style="font-size:11.5px;color:var(--muted);text-align:center;margin-top:14px;font-weight:300"></p>'+
-    '<p style="font-size:11.5px;color:var(--muted);text-align:center;margin-top:8px;font-weight:300">We ask only for a name and email as required fields; no date of birth or gender. Course pricing is available on request.</p></form>';
-  setFormDeliveryUI('enrollSubmitButton','enrollEmailFallback','enrollOnlineConsentWrap','enrollDeliveryStatus','Send Request Online');
+    '<p id="enrollDeliveryStatus" role="status" aria-live="polite" style="font-size:11.5px;color:var(--muted);text-align:center;margin-top:14px;font-weight:300"></p></form>';
+  setFormDeliveryUI('enrollSubmitButton','enrollEmailFallback','enrollOnlineConsentWrap','enrollDeliveryStatus','Send Request Online',false);
   const seg = document.getElementById('trackSeg');
   seg.querySelectorAll('button').forEach(b=>{
     if(b.dataset.track === state.enrollTrack){b.classList.add('on');b.setAttribute('aria-pressed','true');}
@@ -2774,6 +2870,7 @@ function closeSearch(){
   document.body.style.overflow=document.querySelector('.modal.open')?'hidden':'';
   if(searchReturnFocus?.isConnected)searchReturnFocus.focus();
 }
+window.closeSearch=closeSearch;
 searchOverlay.addEventListener('click', e=>{ if(e.target===searchOverlay) closeSearch(); });
 function renderSearch(q){
   const term = q.trim().toLowerCase();
@@ -3803,8 +3900,76 @@ document.getElementById('contactForm').addEventListener('reset',()=>{
 });
 
 /* ═══════════ DOCK (middle button) ═══════════ */
+function constrainFloatingControl(element){
+  if(!element||!element.style.left)return;
+  const rect=element.getBoundingClientRect();
+  const left=Math.max(0,Math.min(window.innerWidth-rect.width,rect.left));
+  const top=Math.max(0,Math.min(window.innerHeight-rect.height,rect.top));
+  element.style.left=left+'px';
+  element.style.top=top+'px';
+}
+function makeFloatingControlMovable(element,handle,key){
+  if(!element||!handle)return;
+  const saved=DB.get('floating-position-'+key,null);
+  if(saved&&Number.isFinite(saved.left)&&Number.isFinite(saved.top)){
+    element.style.left=saved.left+'px';
+    element.style.top=saved.top+'px';
+    element.style.right='auto';
+    element.style.bottom='auto';
+    element.style.transform='none';
+    requestAnimationFrame(()=>constrainFloatingControl(element));
+  }
+  handle.style.touchAction='none';
+  let drag=null,suppressClick=false;
+  const place=(left,top)=>{
+    const rect=element.getBoundingClientRect();
+    element.style.left=Math.max(0,Math.min(window.innerWidth-rect.width,left))+'px';
+    element.style.top=Math.max(0,Math.min(window.innerHeight-rect.height,top))+'px';
+    element.style.right='auto';
+    element.style.bottom='auto';
+    element.style.transform='none';
+  };
+  handle.addEventListener('pointerdown',event=>{
+    if(event.button!==undefined&&event.button!==0)return;
+    const rect=element.getBoundingClientRect();
+    drag={pointerId:event.pointerId,startX:event.clientX,startY:event.clientY,left:rect.left,top:rect.top,moved:false};
+    handle.setPointerCapture?.(event.pointerId);
+  });
+  handle.addEventListener('pointermove',event=>{
+    if(!drag||event.pointerId!==drag.pointerId)return;
+    const dx=event.clientX-drag.startX,dy=event.clientY-drag.startY;
+    if(!drag.moved&&Math.hypot(dx,dy)<6)return;
+    drag.moved=true;
+    element.classList.add('moving');
+    place(drag.left+dx,drag.top+dy);
+    event.preventDefault();
+  });
+  const finishDrag=event=>{
+    if(!drag||event.pointerId!==drag.pointerId)return;
+    if(drag.moved){
+      const rect=element.getBoundingClientRect();
+      DB.set('floating-position-'+key,{left:rect.left,top:rect.top});
+      suppressClick=true;
+      setTimeout(()=>{suppressClick=false;},0);
+    }
+    element.classList.remove('moving');
+    drag=null;
+  };
+  handle.addEventListener('pointerup',finishDrag);
+  handle.addEventListener('pointercancel',finishDrag);
+  handle.addEventListener('click',event=>{
+    if(!suppressClick)return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+  },true);
+  window.addEventListener('resize',()=>constrainFloatingControl(element));
+}
+const quickDock=document.getElementById('dock');
+makeFloatingControlMovable(quickDock,document.getElementById('dockMain'),'quick-actions');
+makeFloatingControlMovable(document.getElementById('audioDock'),document.getElementById('audioDockMove'),'audio-player');
 window.toggleDock = function(){
-  document.getElementById('dock').classList.toggle('open');
+  quickDock.classList.toggle('open');
+  requestAnimationFrame(()=>constrainFloatingControl(quickDock));
   if(window.__beep) window.__beep();
 };
 
@@ -4114,7 +4279,7 @@ async function gptReply(text,signal){
   const detail=lengths[state.settings.answerDetail]||lengths.standard;
   const messages=[{
     role:'system',
-    content:'You are KARAMOO, the helpful AI companion for Al-Ma\'rifah Academy (المعرفة). Help with general questions, writing, study, Qur\'an reading navigation, computer skills, and the academy courses and services. '+tones[state.settings.assistantTone]+' Reply in the user’s language, '+detail+'. Be honest when unsure. Do not invent Qur\'an quotations, citations, fees, or prices; course and service pricing is available on request. '+(getFormspreeEndpoint()?'Contact, enrollment and service-feedback forms can be submitted through the configured Formspree endpoint after the visitor consents; an online success message is shown only after Formspree accepts the request. Email-draft and copy alternatives are also available.':'Contact, enrollment and service-feedback forms currently prepare email drafts only; the academy receives nothing until the visitor reviews and sends the email. Online Formspree delivery is not configured yet. Do not claim any form was submitted or received.')+' Do not invent free consultations or other offers. Do not invent Qur\'an citations; distinguish general information from religious rulings and suggest a qualified scholar for personal rulings. Do not claim to enroll users or send emails on the user’s behalf. The academy contact is +20 12 8596 8529, +220 83 505 5653, Muhammadbasiru125g@gmail.com. Never ask for passwords, payment details, API keys, or sensitive personal information.'
+    content:'You are KARAMOO, the helpful AI companion for Al-Ma\'rifah Academy (المعرفة). Help with general questions, writing, study, Qur\'an reading navigation, computer skills, and the academy courses and services. '+tones[state.settings.assistantTone]+' Reply in the user’s language, '+detail+'. Be honest when unsure. Do not invent Qur\'an quotations, citations, fees, or prices; course and service pricing is available on request. '+(getFormspreeEndpoint()?'Contact, enrollment and service-feedback forms can be submitted through the configured Formspree endpoint after the visitor consents; an online success message is shown only after Formspree accepts the request. WhatsApp-draft, email-draft and copy alternatives are also available; visitors must review and send WhatsApp or email drafts themselves.':'Contact, enrollment and service-feedback forms offer WhatsApp drafts, email drafts and copy options; the academy receives nothing until the visitor reviews and sends a draft. Online Formspree delivery is not configured yet. Do not claim any form was submitted or received.')+' Do not invent free consultations or other offers. Do not invent Qur\'an citations; distinguish general information from religious rulings and suggest a qualified scholar for personal rulings. Do not claim to enroll users or send emails on the user’s behalf. The academy contact is +20 12 8596 8529, +220 83 505 5653, Muhammadbasiru125g@gmail.com. Never ask for passwords, payment details, API keys, or sensitive personal information.'
   }];
   const conversation=state.settings.includeChatContext?chatHistory.slice(-13):[{r:'user',t:text}];
   conversation.forEach(m=>{if(m&&typeof m.t==='string'&&(m.r==='user'||m.r==='bot'))messages.push({role:m.r==='bot'?'assistant':'user',content:m.t.slice(0,6000)});});
@@ -4299,8 +4464,7 @@ addEventListener('keydown', e=>{
   if(e.key==='/' && !/input|textarea|select/i.test(document.activeElement.tagName)){ e.preventDefault(); openSearch(); }
   if(e.key==='F6'){ e.preventDefault(); state.settings.focusMode=!state.settings.focusMode; applySettings(); toast(state.settings.focusMode?'Focus mode on · press F6 to exit':'Focus mode off','info',1800); }
   if(e.key==='Escape'){
-    document.querySelectorAll('.modal.open').forEach(m=>closeModal(m.id));
-    closeSearch(); closeDrawer('settingsDrawer'); closeDrawer('menuDrawer'); closeChat();
+    window.closeTopLayerForBack?.();
   }
 });
 

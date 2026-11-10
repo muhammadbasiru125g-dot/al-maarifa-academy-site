@@ -1,4 +1,4 @@
-const CACHE_NAME = 'almaarifah-app-v1';
+const CACHE_NAME = 'almaarifah-app-v2';
 const APP_SHELL = [
   './',
   './index.html',
