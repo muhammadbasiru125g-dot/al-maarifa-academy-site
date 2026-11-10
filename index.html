@@ -365,6 +365,7 @@ body.chat-large .msg{font-size:15.5px}
 .field.err input,.field.err select{border-color:#ef4444;box-shadow:0 0 0 4px rgba(239,68,68,.15)}
 .field .msg{font-size:11.5px;color:#ef4444;margin-top:6px;display:none}
 .field.err .msg{display:block}
+[hidden]{display:none!important}
 .row-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .seg{display:flex;gap:8px;flex-wrap:wrap}
 .seg button{padding:10px 18px;border-radius:100px;font-size:13px;font-weight:500;border:1px solid var(--border);background:var(--bg-3);color:var(--text-2);transition:all .3s var(--ease)}
@@ -958,15 +959,18 @@ footer{border-top:1px solid var(--border);padding:56px 22px 40px;background:var(
   </div>
   <div class="section" style="padding-top:0"><div class="grid-4" id="serviceCards"></div></div>
   <div class="section" id="serviceFeedback">
-    <div class="section-head"><div class="kicker">Service Feedback</div><h2 class="title">Help us <em>improve</em>.</h2><p class="lead">Tell us about your experience with a service. Your device may open an email draft, or you can copy the feedback; this website does not receive or store it.</p></div>
+    <div class="section-head"><div class="kicker">Service Feedback</div><h2 class="title">Help us <em>improve</em>.</h2><p class="lead">Tell us about your experience with a service. When online submissions are configured, you can send it directly or use an email draft/copy instead.</p></div>
     <div class="reader" style="max-width:640px"><form class="modal-body" id="serviceFeedbackForm">
       <div class="field"><label for="feedbackService">Service</label><select id="feedbackService" class="sel"><option>PDF to Word</option><option>Research formatting</option><option>Editing and proofreading</option><option>Design and study aids</option><option>Other service</option></select></div>
       <div class="field"><label for="feedbackName">Your name (optional)</label><input id="feedbackName" type="text" autocomplete="name" placeholder="Your name"></div>
       <div class="field"><label for="feedbackComment">Your feedback</label><textarea id="feedbackComment" required minlength="3" placeholder="What went well, or what could we improve?"></textarea></div>
       <div style="display:flex;gap:10px;flex-wrap:wrap">
-        <button type="submit" class="btn btn-primary" style="flex:1"><svg aria-hidden="true"><use href="#i-send"/></svg> Prepare Feedback Email</button>
+        <button type="submit" class="btn btn-primary" id="feedbackSubmitButton" style="flex:1"><svg aria-hidden="true"><use href="#i-send"/></svg> Prepare Feedback Email</button>
+        <button type="button" class="btn btn-ghost" id="feedbackEmailFallback" onclick="sendServiceFeedbackEmailDraft()" hidden>Prepare Email Draft</button>
         <button type="button" class="btn btn-ghost" onclick="copyServiceFeedbackDraft()">Copy Feedback</button>
       </div>
+      <label id="feedbackOnlineConsentWrap" class="sub" hidden><input type="checkbox" id="feedbackOnlineConsent"> I agree to send this feedback to the academy via Formspree.</label>
+      <p id="feedbackDeliveryStatus" role="status" aria-live="polite" style="font-size:11.5px;color:var(--muted);margin-top:12px">Online delivery is not configured. Create and verify a Formspree form, then enter its form ID in window.ACADEMY_FORMSPREE_FORM_ID near the top of the second application script in index.html. Until then, no feedback is sent; email drafts and copying remain available.</p>
     </form></div>
   </div>
   <div class="section">
@@ -1025,10 +1029,12 @@ footer{border-top:1px solid var(--border);padding:56px 22px 40px;background:var(
         <div class="field"><label for="ct-name">Your name</label><input type="text" id="ct-name" autocomplete="name" placeholder="Your name" required></div>
         <div class="field"><label for="ct-msg">Message</label><textarea id="ct-msg" placeholder="How can we help you?" required minlength="3"></textarea></div>
         <div style="display:flex;gap:10px;flex-wrap:wrap">
-          <button type="submit" class="btn btn-primary" style="flex:1"><svg aria-hidden="true"><use href="#i-send"/></svg> Prepare Email Draft</button>
+          <button type="submit" class="btn btn-primary" id="contactSubmitButton" style="flex:1"><svg aria-hidden="true"><use href="#i-send"/></svg> Prepare Email Draft</button>
+          <button type="button" class="btn btn-ghost" id="contactEmailFallback" onclick="sendContactEmailDraft()" hidden>Prepare Email Draft</button>
           <button type="button" class="btn btn-ghost" onclick="copyContactDraft()">Copy Message</button>
         </div>
-        <p style="font-size:11.5px;color:var(--muted);margin-top:12px">This website cannot send messages. Your device may open an email draft; if it does not, copy the message and email us yourself. The academy has not received anything until you press Send.</p>
+        <label id="contactOnlineConsentWrap" class="sub" hidden><input type="checkbox" id="contactOnlineConsent"> I agree to send my name and message to the academy via Formspree.</label>
+        <p id="contactDeliveryStatus" role="status" aria-live="polite" style="font-size:11.5px;color:var(--muted);margin-top:12px">Online delivery is not configured. Create and verify a Formspree form, then enter its form ID in window.ACADEMY_FORMSPREE_FORM_ID near the top of the second application script in index.html. Until then, no message is sent; email drafts and copying remain available.</p>
       </form></div>
     </div>
   </div>
@@ -1786,6 +1792,50 @@ new MutationObserver(records=>records.forEach(record=>record.addedNodes.forEach(
 <script>
 (function(){
 'use strict';
+// Create one Formspree form, verify its recipient, then paste its public form ID here. Never put a private API token here.
+window.ACADEMY_FORMSPREE_FORM_ID = '';
+function getFormspreeEndpoint(){
+  const formId=String(window.ACADEMY_FORMSPREE_FORM_ID||'').trim();
+  return /^[A-Za-z0-9]+$/.test(formId)?'https://formspree.io/f/'+formId:'';
+}
+async function submitAcademyForm(payload){
+  const endpoint=getFormspreeEndpoint();
+  if(!endpoint)throw new Error('Online submissions are not configured. Use the email draft or copy option instead.');
+  const response=await fetch(endpoint,{
+    method:'POST',
+    headers:{Accept:'application/json','Content-Type':'application/json'},
+    body:JSON.stringify(Object.assign({_gotcha:''},payload))
+  });
+  let result={};
+  try{
+    const parsed=await response.json();
+    if(parsed&&typeof parsed==='object')result=parsed;
+  }
+  catch(error){
+    if(response.ok)throw new Error('Formspree returned no readable confirmation. Check the Formspree dashboard before retrying; the email draft and copy options remain available.');
+  }
+  if(!response.ok||result.ok===false||result.success===false){
+    const details=Array.isArray(result.errors)?result.errors.map(item=>item.message).filter(Boolean).join(' '):'';
+    throw new Error(details||'Formspree did not accept the request (HTTP '+response.status+'). You can use the email draft or copy option instead.');
+  }
+  return result;
+}
+function setFormDeliveryUI(buttonId,emailButtonId,consentId,statusId,onlineLabel){
+  const configured=!!getFormspreeEndpoint();
+  const button=document.getElementById(buttonId);
+  const emailButton=document.getElementById(emailButtonId);
+  const consent=document.getElementById(consentId);
+  const status=document.getElementById(statusId);
+  if(button)button.innerHTML=configured?'<svg aria-hidden="true"><use href="#i-send"/></svg> '+onlineLabel:'<svg aria-hidden="true"><use href="#i-mail"/></svg> Prepare Email Draft';
+  if(emailButton)emailButton.hidden=!configured;
+  if(consent)consent.hidden=!configured;
+  if(status)status.textContent=configured
+    ?'Online delivery is enabled. If you choose Send Online, your form details will be sent to the academy through Formspree. Email draft and copy alternatives remain available.'
+    :'Online delivery is not configured. Create and verify a Formspree form, then enter its form ID in window.ACADEMY_FORMSPREE_FORM_ID near the top of the second application script in index.html. Until then, no form data is sent; email drafts and copying remain available.';
+  return configured;
+}
+setFormDeliveryUI('contactSubmitButton','contactEmailFallback','contactOnlineConsentWrap','contactDeliveryStatus','Send Online');
+setFormDeliveryUI('feedbackSubmitButton','feedbackEmailFallback','feedbackOnlineConsentWrap','feedbackDeliveryStatus','Send Online');
 const DB = {
   get(k, d){ try{ const v = localStorage.getItem('mr_'+k); return v ? JSON.parse(v) : d; }catch(e){ return d; } },
   set(k, v){ try{ localStorage.setItem('mr_'+k, JSON.stringify(v)); return true; }catch(e){ return false; } },
@@ -2400,7 +2450,7 @@ const COUNTRIES = ['Afghanistan','Albania','Algeria','Angola','Argentina','Austr
 function openEnroll(track){
   state.enrollTrack = track || 'both';
   const label = { quran:'Qur\'an Track', computer:'Computer Track', services:'Services', both:'Both Tracks' }[state.enrollTrack];
-  document.getElementById('enrollSub').textContent = 'Prepare an email request for ' + label + '. Course pricing is available on request.';
+  document.getElementById('enrollSub').textContent = 'Request information about ' + label + '. Course pricing is available on request.';
   document.getElementById('enrollBody').innerHTML =
     '<form id="enrollForm">'+
     '<div class="field"><span class="field-label">I want to request</span><div class="seg" id="trackSeg" role="group" aria-label="Choose a track or service">'+
@@ -2415,8 +2465,13 @@ function openEnroll(track){
     '<div class="field track-experience" data-track-experience="quran"><label for="in-qlevel">Qur\'an experience (optional)</label><select id="in-qlevel"><option value="">Select…</option><option>Complete beginner</option><option>Knows the alphabet</option><option>Reads with some mistakes</option><option>Fluent reciter</option><option>Hafiz / Hafiza</option></select></div>'+
     '<div class="field track-experience" data-track-experience="computer"><label for="in-clevel">Computer experience (optional)</label><select id="in-clevel"><option value="">Select…</option><option>Complete beginner</option><option>Basic typing</option><option>Comfortable with Office</option><option>Advanced user</option></select></div></div>'+
     '<div class="field"><label for="in-msg">Message (optional)</label><textarea id="in-msg" maxlength="1500" placeholder="Goals, preferred times, or a question about pricing…"></textarea></div>'+
-    '<button type="submit" class="btn btn-primary" style="width:100%;margin-top:8px"><svg aria-hidden="true"><use href="#i-mail"/></svg> Prepare Email Request</button>'+
-    '<p style="font-size:11.5px;color:var(--muted);text-align:center;margin-top:14px;font-weight:300">This site has no enrollment submission service. We ask only for a name and email; no date of birth or gender. Your details are not saved or sent unless you review and send the email draft. Ask us for course pricing before enrolling.</p></form>';
+    '<button type="submit" class="btn btn-primary" id="enrollSubmitButton" style="width:100%;margin-top:8px"><svg aria-hidden="true"><use href="#i-mail"/></svg> Prepare Email Draft</button>'+
+    '<button type="button" class="btn btn-ghost" id="enrollEmailFallback" onclick="window.prepareEnrollEmailDraft()" style="width:100%;margin-top:8px" hidden>Prepare Email Draft</button>'+
+    '<button type="button" class="btn btn-ghost" id="enrollCopyFallback" onclick="window.copyEnrollRequest()" style="width:100%;margin-top:8px">Copy Request</button>'+
+    '<label id="enrollOnlineConsentWrap" class="sub" hidden><input type="checkbox" id="enrollOnlineConsent"> I agree to send my enrollment details to the academy via Formspree.</label>'+
+    '<p id="enrollDeliveryStatus" role="status" aria-live="polite" style="font-size:11.5px;color:var(--muted);text-align:center;margin-top:14px;font-weight:300"></p>'+
+    '<p style="font-size:11.5px;color:var(--muted);text-align:center;margin-top:8px;font-weight:300">We ask only for a name and email as required fields; no date of birth or gender. Course pricing is available on request.</p></form>';
+  setFormDeliveryUI('enrollSubmitButton','enrollEmailFallback','enrollOnlineConsentWrap','enrollDeliveryStatus','Send Request Online');
   const seg = document.getElementById('trackSeg');
   seg.querySelectorAll('button').forEach(b=>{
     if(b.dataset.track === state.enrollTrack){b.classList.add('on');b.setAttribute('aria-pressed','true');}
@@ -2432,15 +2487,17 @@ function openEnroll(track){
     field.hidden=state.enrollTrack==='services'||(state.enrollTrack!=='both'&&state.enrollTrack!==field.dataset.trackExperience);
   });
   document.getElementById('enrollForm').addEventListener('submit', submitEnroll);
+  document.getElementById('enrollForm').addEventListener('reset',()=>{
+    const consent=document.getElementById('enrollOnlineConsent');
+    if(consent)consent.required=false;
+  });
   openModal('enrollModal');
 }
 window.openEnroll = openEnroll;
-function submitEnroll(e){
-  e.preventDefault();
+function getEnrollmentRequest(){
   const v = id => document.getElementById(id).value.trim();
   const name=v('in-name'),email=v('in-email'),country=v('in-country'),
         quranLevel=v('in-qlevel'),computerLevel=v('in-clevel');
-  if(!name||!email||!document.getElementById('enrollForm').reportValidity())return;
   const trackLabel = { quran:"Qur'an Track", computer:'Computer Track', both:'Both Tracks', services:'Services' }[state.enrollTrack];
   const message = v('in-msg');
   const bodyLines = [
@@ -2453,6 +2510,59 @@ function submitEnroll(e){
     computerLevel ? 'Computer experience: ' + computerLevel : '',
     message ? 'Message: ' + message : ''
   ].filter(Boolean).join('\n');
+  const subject='Enrollment Request: '+name+' — '+trackLabel;
+  return {name,email,trackLabel,message,bodyLines,subject,country,quranLevel,computerLevel};
+}
+window.copyEnrollRequest=function(){
+  const form=document.getElementById('enrollForm');
+  if(!form.reportValidity())return;
+  const request=getEnrollmentRequest();
+  copyDraftText(
+    'To: Muhammadbasiru125g@gmail.com\nSubject: '+request.subject+'\n\n'+request.bodyLines,
+    'Enrollment request copied. Paste it into an email or message.'
+  );
+};
+window.prepareEnrollEmailDraft=function(){
+  submitEnroll({preventDefault(){}},true);
+};
+async function submitEnroll(e,forceEmail=false){
+  e?.preventDefault?.();
+  const form=document.getElementById('enrollForm');
+  if(!form.reportValidity())return;
+  const request=getEnrollmentRequest();
+  const {name,email,trackLabel,bodyLines,subject,country,quranLevel,computerLevel,message}=request;
+  if(getFormspreeEndpoint()&&!forceEmail){
+    const consent=document.getElementById('enrollOnlineConsent');
+    consent.required=true;
+    if(!consent.checked){consent.reportValidity();return;}
+    const button=document.getElementById('enrollSubmitButton');
+    const status=document.getElementById('enrollDeliveryStatus');
+    button.disabled=true;button.textContent='Sending…';
+    status.textContent='Sending your enrollment request to Formspree…';
+    try{
+      await submitAcademyForm({
+        _subject:'Enrollment request: '+trackLabel,
+        _replyto:email,
+        form_type:'Enrollment Request',
+        track:trackLabel,
+        name,email,
+        country_or_timezone:country,
+        quran_experience:quranLevel,
+        computer_experience:computerLevel,
+        message
+      });
+      document.getElementById('enrollBody').innerHTML=
+        '<div class="success"><div class="success-ring"><svg><use href="#i-check"/></svg></div><h3>Request Submitted</h3>'+
+        '<p>Formspree accepted your request for <strong>'+esc(trackLabel)+'</strong>. The academy has been notified through its configured Formspree form. Course pricing is available on request.</p>'+
+        '<button class="btn btn-ghost" onclick="closeModal(\'enrollModal\')">Close</button></div>';
+    }catch(error){
+      button.disabled=false;
+      button.innerHTML='<svg aria-hidden="true"><use href="#i-send"/></svg> Send Request Online';
+      status.textContent='Online submission failed: '+error.message+' You can still prepare an email draft or copy the request.';
+      toast('Online delivery failed. Your request was not submitted; use the email draft or copy option.','err',5000);
+    }
+    return;
+  }
   document.getElementById('enrollBody').innerHTML =
     '<div class="success"><div class="success-ring"><svg><use href="#i-mail"/></svg></div><h3>Email Draft Ready</h3>'+
     '<p>Thank you, <strong>'+esc(name)+'</strong>. Your request for <strong>'+trackLabel+'</strong> is only a draft; the academy has not received it. Open your email app, review the details and press Send. No course pricing is published here, so please ask for a quote.</p>'+
@@ -2460,7 +2570,6 @@ function submitEnroll(e){
     '<a class="btn btn-primary" id="enrollEmailLink"><svg><use href="#i-send"/></svg> Open Email Draft</a>'+
     '<button type="button" class="btn btn-ghost" id="copyEnrollDraft">Copy Request</button>'+
     '<button class="btn btn-ghost" onclick="openEnroll(\''+state.enrollTrack+'\')">Edit details</button></div></div>';
-  const subject='Enrollment Request: '+name+' — '+trackLabel;
   document.getElementById('enrollEmailLink').href = 'mailto:Muhammadbasiru125g@gmail.com?subject='+
     encodeURIComponent(subject)+'&body='+encodeURIComponent(bodyLines);
   document.getElementById('enrollEmailLink').addEventListener('click',()=>toast('Your email app should open. The request is not received until you press Send.','info',5000));
@@ -3519,28 +3628,98 @@ window.copyServiceFeedbackDraft=function(){
     'Feedback copied. Paste it into an email or message.'
   );
 };
-window.sendContact = function(event){
-  if(event)event.preventDefault();
+function openContactEmailDraft(){
   const n = document.getElementById('ct-name').value.trim();
   const m = document.getElementById('ct-msg').value.trim();
-  if(!n || !m){ document.getElementById('contactForm').reportValidity(); return; }
+  if(!n || !m)return;
   const link=document.createElement('a');
   link.href='mailto:Muhammadbasiru125g@gmail.com?subject='+encodeURIComponent('Message from '+n+' — Al-Ma\'rifah website')+'&body='+encodeURIComponent(m+'\n\n— '+n);
   link.click();
   toast('Your device may open an email draft. The academy has not received your message unless you review and send it; you can also use Copy Message.','info',6000);
+}
+window.sendContactEmailDraft=function(){
+  const form=document.getElementById('contactForm');
+  if(!form.reportValidity())return;
+  openContactEmailDraft();
 };
-document.getElementById('serviceFeedbackForm').addEventListener('submit',event=>{
-  event.preventDefault();
+window.sendContact = async function(event){
+  if(event)event.preventDefault();
+  const form=document.getElementById('contactForm');
+  if(!form.reportValidity())return;
+  const n=document.getElementById('ct-name').value.trim();
+  const m=document.getElementById('ct-msg').value.trim();
+  if(!getFormspreeEndpoint()){openContactEmailDraft();return;}
+  const consent=document.getElementById('contactOnlineConsent');
+  consent.required=true;
+  if(!consent.checked){consent.reportValidity();return;}
+  const button=document.getElementById('contactSubmitButton');
+  const status=document.getElementById('contactDeliveryStatus');
+  button.disabled=true;button.textContent='Sending…';
+  status.textContent='Sending your message to Formspree…';
+  try{
+    await submitAcademyForm({_subject:'Website contact from '+n,name:n,message:m,form_type:'Contact'});
+    status.textContent='Formspree accepted your message. The academy has been notified through its configured Formspree form.';
+    form.reset();
+  }catch(error){
+    status.textContent='Online submission failed: '+error.message+' Use Prepare Email Draft or Copy Message instead.';
+    toast('Online delivery failed. Your message was not submitted; use the email draft or copy option.','err',5000);
+  }finally{
+    button.disabled=false;
+    button.innerHTML='<svg aria-hidden="true"><use href="#i-send"/></svg> Send Online';
+  }
+};
+function openServiceFeedbackEmailDraft(){
   const service=document.getElementById('feedbackService').value;
   const name=document.getElementById('feedbackName').value.trim();
   const comment=document.getElementById('feedbackComment').value.trim();
-  if(!comment){document.getElementById('serviceFeedbackForm').reportValidity();return;}
+  if(!comment)return;
   const link=document.createElement('a');
   link.href='mailto:Muhammadbasiru125g@gmail.com?subject='+encodeURIComponent('Service feedback: '+service)+'&body='+encodeURIComponent(
     ['Service: '+service,name?'Name: '+name:'','Feedback:',comment].filter(Boolean).join('\n')
   );
   link.click();
   toast('Your device may open an email draft. Your feedback is not received until you review and send it; you can also use Copy Feedback.','info',6000);
+}
+window.sendServiceFeedbackEmailDraft=function(){
+  const form=document.getElementById('serviceFeedbackForm');
+  if(!form.reportValidity())return;
+  openServiceFeedbackEmailDraft();
+};
+async function submitServiceFeedback(event){
+  event.preventDefault();
+  const form=document.getElementById('serviceFeedbackForm');
+  if(!form.reportValidity())return;
+  const service=document.getElementById('feedbackService').value;
+  const name=document.getElementById('feedbackName').value.trim();
+  const comment=document.getElementById('feedbackComment').value.trim();
+  if(!getFormspreeEndpoint()){openServiceFeedbackEmailDraft();return;}
+  const consent=document.getElementById('feedbackOnlineConsent');
+  consent.required=true;
+  if(!consent.checked){consent.reportValidity();return;}
+  const button=document.getElementById('feedbackSubmitButton');
+  const status=document.getElementById('feedbackDeliveryStatus');
+  button.disabled=true;button.textContent='Sending…';
+  status.textContent='Sending your feedback to Formspree…';
+  try{
+    await submitAcademyForm({_subject:'Service feedback: '+service,form_type:'Service Feedback',service,name,feedback:comment});
+    status.textContent='Formspree accepted your feedback. The academy has been notified through its configured Formspree form.';
+    form.reset();
+  }catch(error){
+    status.textContent='Online submission failed: '+error.message+' Use Prepare Email Draft or Copy Feedback instead.';
+    toast('Online delivery failed. Your feedback was not submitted; use the email draft or copy option.','err',5000);
+  }finally{
+    button.disabled=false;
+    button.innerHTML='<svg aria-hidden="true"><use href="#i-send"/></svg> Send Online';
+  }
+}
+document.getElementById('serviceFeedbackForm').addEventListener('submit',submitServiceFeedback);
+document.getElementById('serviceFeedbackForm').addEventListener('reset',()=>{
+  const consent=document.getElementById('feedbackOnlineConsent');
+  if(consent)consent.required=false;
+});
+document.getElementById('contactForm').addEventListener('reset',()=>{
+  const consent=document.getElementById('contactOnlineConsent');
+  if(consent)consent.required=false;
 });
 
 /* ═══════════ DOCK (middle button) ═══════════ */
@@ -3855,7 +4034,7 @@ async function gptReply(text,signal){
   const detail=lengths[state.settings.answerDetail]||lengths.standard;
   const messages=[{
     role:'system',
-    content:'You are KARAMOO, the helpful AI companion for Al-Ma\'rifah Academy (المعرفة). Help with general questions, writing, study, Qur\'an reading navigation, computer skills, and the academy courses and services. '+tones[state.settings.assistantTone]+' Reply in the user’s language, '+detail+'. Be honest when unsure. Do not invent Qur\'an quotations, citations, fees, or prices; course and service pricing is available on request. Do not claim the website receives enrollment, contact, or feedback submissions: forms only prepare email drafts, and the user must review and send them. Do not invent free consultations or other offers. Do not invent Qur\'an citations; distinguish general information from religious rulings and suggest a qualified scholar for personal rulings. Do not claim to enroll users or send emails. The academy contact is +20 12 8596 8529, +220 83 505 5653, Muhammadbasiru125g@gmail.com. Never ask for passwords, payment details, API keys, or sensitive personal information.'
+    content:'You are KARAMOO, the helpful AI companion for Al-Ma\'rifah Academy (المعرفة). Help with general questions, writing, study, Qur\'an reading navigation, computer skills, and the academy courses and services. '+tones[state.settings.assistantTone]+' Reply in the user’s language, '+detail+'. Be honest when unsure. Do not invent Qur\'an quotations, citations, fees, or prices; course and service pricing is available on request. '+(getFormspreeEndpoint()?'Contact, enrollment and service-feedback forms can be submitted through the configured Formspree endpoint after the visitor consents; an online success message is shown only after Formspree accepts the request. Email-draft and copy alternatives are also available.':'Contact, enrollment and service-feedback forms currently prepare email drafts only; the academy receives nothing until the visitor reviews and sends the email. Online Formspree delivery is not configured yet. Do not claim any form was submitted or received.')+' Do not invent free consultations or other offers. Do not invent Qur\'an citations; distinguish general information from religious rulings and suggest a qualified scholar for personal rulings. Do not claim to enroll users or send emails on the user’s behalf. The academy contact is +20 12 8596 8529, +220 83 505 5653, Muhammadbasiru125g@gmail.com. Never ask for passwords, payment details, API keys, or sensitive personal information.'
   }];
   const conversation=state.settings.includeChatContext?chatHistory.slice(-13):[{r:'user',t:text}];
   conversation.forEach(m=>{if(m&&typeof m.t==='string'&&(m.r==='user'||m.r==='bot'))messages.push({role:m.r==='bot'?'assistant':'user',content:m.t.slice(0,6000)});});
