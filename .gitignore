@@ -1,0 +1,14 @@
+# Local environment and secret files; never publish these with a static site.
+.env
+.env.*
+!.env.example
+
+# Private keys and certificates.
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Common cloud/service credential files.
+credentials.json
+service-account*.json
