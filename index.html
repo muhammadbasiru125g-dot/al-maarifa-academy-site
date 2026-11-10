@@ -3,10 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0a101c">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Al-Ma'rifah">
 <title>المعرفة — Al-Ma'rifah | Enhance Your Skills & Knowledge</title>
 <meta name="description" content="Al-Ma'rifah (المعرفة): Online Qur'an classes and Microsoft Office, Google Workspace & AI training, plus professional document services. Meet KARAMOO, your AI study companion.">
 <link rel="canonical" href="https://muhammadbasiru125g-dot.github.io/al-maarifa-academy-site/">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Al-Ma'rifah Academy">
 <meta property="og:title" content="Al-Ma'rifah Academy — Knowledge is Light">
@@ -1161,6 +1168,7 @@ footer{border-top:1px solid var(--border);padding:56px 22px 40px;background:var(
     <button class="menu-link" onclick="closeDrawer('menuDrawer');openShare()"><svg><use href="#i-share"/></svg> Share</button>
     <button class="menu-link" onclick="closeDrawer('menuDrawer');openSettings()"><svg><use href="#i-settings"/></svg> Settings</button>
     <button class="menu-link" onclick="closeDrawer('menuDrawer');openEnroll('both')"><svg><use href="#i-user"/></svg> Enroll Now</button>
+    <button class="menu-link" id="installAppBtn" onclick="installAcademyApp()"><svg><use href="#i-download"/></svg> Install Al-Ma'rifah App</button>
     <div style="height:1px;background:var(--border);margin:16px 0"></div>
     <button class="menu-link" onclick="closeDrawer('menuDrawer');toggleTheme()"><svg><use href="#i-moon"/></svg> Toggle Dark / Light</button>
     <div style="height:1px;background:var(--border);margin:16px 0"></div>
@@ -4273,6 +4281,41 @@ document.getElementById('year').textContent = new Date().getFullYear();
 setTimeout(animateCounters, 400);
 setTimeout(()=>toast('Welcome to المعرفة — tap the purple button to meet KARAMOO ✨','info',3600), 900);
 })();
+</script>
+<script>
+let deferredInstallPrompt = null;
+window.addEventListener('beforeinstallprompt', event => {
+  event.preventDefault();
+  deferredInstallPrompt = event;
+});
+window.addEventListener('appinstalled', () => {
+  deferredInstallPrompt = null;
+  if(window.__toast)window.__toast("Al-Ma'rifah is installed on this device.",'success');
+});
+window.installAcademyApp = async function(){
+  if(typeof window.closeDrawer==='function')window.closeDrawer('menuDrawer');
+  if(window.matchMedia('(display-mode: standalone)').matches || navigator.standalone){
+    if(window.__toast)window.__toast("Al-Ma'rifah is already installed.",'info');
+    return;
+  }
+  if(deferredInstallPrompt){
+    deferredInstallPrompt.prompt();
+    const choice=await deferredInstallPrompt.userChoice;
+    deferredInstallPrompt=null;
+    if(choice.outcome==='accepted'&&window.__toast)window.__toast("Al-Ma'rifah is installing.",'success');
+    return;
+  }
+  const isAppleMobile=/iphone|ipad|ipod/i.test(navigator.userAgent);
+  const instructions=isAppleMobile
+    ? 'To install: tap Share in Safari, then choose Add to Home Screen.'
+    : 'To install: open your browser menu and choose Install app or Add to Home screen.';
+  if(window.__toast)window.__toast(instructions,'info',6000);
+  else window.alert(instructions);
+};
+if('serviceWorker' in navigator && location.protocol!=='file:'){
+  navigator.serviceWorker.register('./service-worker.js',{scope:'./'})
+    .catch(error=>console.error('Academy app offline support could not start:',error));
+}
 </script>
 </body>
 </html>
