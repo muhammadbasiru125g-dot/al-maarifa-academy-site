@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://muhammadbasiru125g-dot.github.io/al-maarifa-academy-site/sitemap.xml

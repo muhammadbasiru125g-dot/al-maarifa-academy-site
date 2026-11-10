@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1200">
+  <defs>
+    <linearGradient id="night" x2="0" y2="1">
+      <stop stop-color="#102c28"/>
+      <stop offset="1" stop-color="#07111a"/>
+    </linearGradient>
+    <pattern id="stars" width="100" height="100" patternUnits="userSpaceOnUse">
+      <path d="M50 8 56 44 92 50 56 56 50 92 44 56 8 50 44 44z" fill="none" stroke="#e6c65a" stroke-opacity=".24"/>
+      <circle cx="15" cy="15" r="2" fill="#e6c65a" opacity=".55"/>
+    </pattern>
+  </defs>
+  <rect width="900" height="1200" fill="url(#night)"/>
+  <rect width="900" height="1200" fill="url(#stars)"/>
+  <path d="M140 1070V470a310 310 0 0 1 620 0v600" fill="none" stroke="#c9a227" stroke-opacity=".62" stroke-width="8"/>
+  <path d="M210 1070V475a240 240 0 0 1 480 0v595" fill="none" stroke="#e6c65a" stroke-opacity=".3" stroke-width="3"/>
+  <path d="M335 960V630h230v330z" fill="#c9a227" opacity=".13"/>
+  <path d="M450 635v325M335 650l115-120 115 120" fill="none" stroke="#e6c65a" stroke-opacity=".45" stroke-width="5"/>
+</svg>

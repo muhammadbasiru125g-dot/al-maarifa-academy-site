@@ -5,6 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>المعرفة — Al-Ma'rifah | Enhance Your Skills & Knowledge</title>
 <meta name="description" content="Al-Ma'rifah (المعرفة): Online Qur'an classes and Microsoft Office, Google Workspace & AI training, plus professional document services. Meet KARAMOO, your AI study companion.">
+<link rel="canonical" href="https://muhammadbasiru125g-dot.github.io/al-maarifa-academy-site/">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Al-Ma'rifah Academy">
+<meta property="og:title" content="Al-Ma'rifah Academy — Knowledge is Light">
+<meta property="og:description" content="Online Qur'an classes, digital-skills training and professional document services.">
+<meta property="og:url" content="https://muhammadbasiru125g-dot.github.io/al-maarifa-academy-site/">
+<meta property="og:image" content="https://muhammadbasiru125g-dot.github.io/al-maarifa-academy-site/assets/social-card.svg">
+<meta property="og:image:type" content="image/svg+xml">
+<meta property="og:image:alt" content="Al-Ma'rifah Academy — Qur’an and digital-skills learning">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Al-Ma'rifah Academy — Knowledge is Light">
+<meta name="twitter:description" content="Online Qur'an classes, digital-skills training and professional document services.">
+<meta name="twitter:image" content="https://muhammadbasiru125g-dot.github.io/al-maarifa-academy-site/assets/social-card.svg">
+<meta name="twitter:image:alt" content="Al-Ma'rifah Academy — Qur’an and digital-skills learning">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"EducationalOrganization","name":"Al-Ma'rifah Academy","alternateName":"المعرفة","url":"https://muhammadbasiru125g-dot.github.io/al-maarifa-academy-site/","email":"Muhammadbasiru125g@gmail.com","telephone":["+20 12 8596 8529","+220 83 505 5653"],"description":"Online Qur'an and computer-skills classes plus professional document services."}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Amiri+Quran&family=Amiri:wght@400;700&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
@@ -39,12 +58,19 @@
   --bg:#f3f6fc; --bg-2:#ffffff; --bg-3:#ffffff;
   --surface:#ffffff; --surface-2:#ffffff; --surface-3:#f1f5fb;
   --border:rgba(11,26,48,.10); --border-2:rgba(11,26,48,.18);
-  --text:#08152a; --text-2:#2c3e57; --muted:#64748b;
+  --text:#08152a; --text-2:#2c3e57; --muted:#526378;
   --glass:rgba(255,255,255,.82);
   --shadow:0 24px 60px rgba(15,32,60,.13); --shadow-sm:0 8px 24px rgba(15,32,60,.09);
   --chat-bg:#ffffff;
 }
 html{scroll-behavior:smooth}
+html[lang="ar"]{direction:rtl}
+body{direction:ltr}
+body:lang(ar){direction:rtl}
+[lang="ar"],[dir="rtl"],.ar-line{direction:rtl;unicode-bidi:isolate}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[tabindex="0"]:focus-visible{outline:3px solid var(--accent-2);outline-offset:3px}
+.skip-link{position:fixed;top:8px;left:8px;z-index:1000;padding:12px 18px;border-radius:12px;background:var(--bg-2);color:var(--text);border:2px solid var(--accent);transform:translateY(-160%);transition:transform .2s}
+.skip-link:focus{transform:translateY(0)}
 [data-motion="reduced"] *{animation-duration:.001ms!important;transition-duration:.001ms!important}
 body{font-family:var(--font-sans);font-size:var(--fs);background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .5s var(--ease),color .5s var(--ease)}
 img,svg{display:block;max-width:100%}
@@ -75,7 +101,7 @@ html[data-background="stars"] body::before{
 html[data-background="sample"] body::before,
 html[data-background="custom"] body::before{
   background-image:linear-gradient(180deg,rgba(3,18,16,.68),rgba(3,18,16,.82)),
-    var(--custom-background-image, url("assets/quran-background-sample.png"));
+    var(--custom-background-image, url("assets/quran-background-sample.svg"));
   background-size:cover;background-position:center 36%;opacity:var(--background-opacity,.18)}
 html[data-background-animation="drift"] body::before{animation:ambientDrift 34s ease-in-out infinite alternate}
 html[data-background-animation="glow"] body::before{animation:ambientGlow 11s ease-in-out infinite}
@@ -222,6 +248,7 @@ h2.title em{font-style:normal;color:var(--accent)}
 .track-panel .tp-icon{width:58px;height:58px;border-radius:18px;display:grid;place-items:center;background:linear-gradient(140deg,var(--accent-2),var(--accent-3));box-shadow:0 10px 30px var(--accent-glow);margin-bottom:22px}
 .track-panel .tp-icon svg{width:27px;height:27px;stroke:#fff;fill:none;stroke-width:1.7}
 .track-panel h3{font-family:var(--font-serif);font-size:30px;font-weight:700;line-height:1.15}
+.track-panel h3 a{color:inherit}
 .track-panel p{color:var(--muted);font-size:14px;margin-top:10px;font-weight:300;line-height:1.7}
 .track-panel ul{list-style:none;margin-top:20px;display:grid;gap:9px}
 .track-panel li{font-size:13.5px;color:var(--text-2);padding-left:24px;position:relative}
@@ -259,7 +286,7 @@ select.sel:focus{border-color:var(--accent)}
 .reader-search input:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-glow)}
 .reader-search input::placeholder{color:var(--muted)}
 .reader-search-count{flex-shrink:0;font-size:11px;color:var(--muted);white-space:nowrap}
-.reader-source{font-size:11px;color:var(--muted);line-height:1.55;padding:10px 20px;border-bottom:1px solid var(--border)}
+.reader-source{font-size:12px;color:var(--muted);line-height:1.65;padding:10px 20px;border-bottom:1px solid var(--border)}
 .reader-source a{color:var(--accent);text-decoration:underline;text-underline-offset:2px}
 .ayah.is-playing{background:var(--accent-glow);border-color:var(--accent)}
 .reader-audio-controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
@@ -268,13 +295,13 @@ select.sel:focus{border-color:var(--accent)}
 .playing-badge i{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pulse 1.2s infinite}
 
 /* surah header — ornamental */
-.surah-head{text-align:center;padding:30px 10px 26px;border-bottom:1px dashed var(--border);margin-bottom:26px;position:relative}
+.surah-head{text-align:center;padding:40px 10px 34px;border-bottom:1px dashed var(--border);margin-bottom:22px;position:relative}
 .surah-head::before,.surah-head::after{content:"";position:absolute;top:50%;width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--accent));left:8%}
 .surah-head::after{left:auto;right:8%;background:linear-gradient(90deg,var(--accent),transparent)}
 .surah-head .ar{font-family:var(--font-ar);font-size:34px;font-weight:700;color:var(--accent);line-height:1.6;direction:rtl}
 .surah-head .en{font-family:var(--font-serif);font-size:22px;font-weight:600;margin-top:6px}
 .surah-head .basmalah{font-family:var(--font-ar);font-size:26px;margin-top:16px;color:var(--text-2);direction:rtl}
-.surah-head .meta{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:10px}
+.surah-head .meta{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-2);margin-top:12px}
 
 /* ayah — mushaf style */
 .ayah{padding:18px;border-radius:var(--r);border:1px solid transparent;transition:all .35s var(--ease);position:relative}
@@ -291,14 +318,14 @@ body.chat-large .msg{font-size:15.5px}
 .ayah.flash{animation:flash 1.6s var(--ease)}
 @keyframes flash{0%,60%{background:var(--accent-glow);border-color:var(--accent)}100%{background:transparent}}
 .ayah-top{display:flex;align-items:center;gap:12px;margin-bottom:10px}
-.ayah-num{flex-shrink:0;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:700;color:var(--accent);background:var(--surface-3);border:1px solid var(--border-2);font-family:var(--font-serif)}
+.ayah-num{flex-shrink:0;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:700;color:var(--accent);background:var(--surface-3);border:1px solid var(--border-2);font-family:var(--font-serif)}
 .ayah-actions{display:flex;gap:4px;margin-left:auto}
 .ayah-actions button{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;color:var(--muted);transition:all .25s}
 .ayah-actions button:hover{background:var(--surface-3);color:var(--accent);transform:translateY(-2px)}
 .ayah-actions button.on{color:var(--accent);background:var(--surface-3)}
 .ayah-actions svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .ayah-actions button.on svg.filly{fill:currentColor}
-.ayah-ar{font-family:var(--font-ar);font-size:var(--ar-size,30px);line-height:2.15;direction:rtl;text-align:right;color:var(--text)}
+.ayah-ar{font-family:var(--font-ar);font-size:var(--ar-size,30px);line-height:2.4;direction:rtl;text-align:right;color:var(--text);unicode-bidi:isolate}
 .ayah-ar .end{color:var(--accent);font-size:.85em}
 .ayah-tr{font-size:14px;color:var(--muted);margin-top:14px;line-height:1.75;font-weight:300;display:var(--tr-display,block);border-right:2px solid var(--border-2);padding-right:14px}
 .ayah-note-view{font-size:12px;color:var(--accent);margin-top:8px;display:flex;gap:6px;align-items:flex-start}
@@ -328,6 +355,7 @@ body.chat-large .msg{font-size:15.5px}
 
 /* ═══ FORMS ═══ */
 .field{margin-bottom:16px}
+.field-label{display:block;font-size:11.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
 .field label{display:block;font-size:11.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
 .field input,.field select,.field textarea{width:100%;padding:13px 15px;border-radius:12px;background:var(--bg-3);border:1px solid var(--border);color:var(--text);font-size:14px;outline:none;transition:all .3s var(--ease)}
 [data-theme="dark"] .field input,[data-theme="dark"] .field select,[data-theme="dark"] .field textarea{background:rgba(255,255,255,.05)}
@@ -393,8 +421,8 @@ body.chat-large .msg{font-size:15.5px}
 .sr-item:hover{background:var(--surface-2);border-color:var(--border);transform:translateX(4px)}
 .sr-ico{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;flex-shrink:0;background:var(--surface-3);color:var(--accent)}
 .sr-ico svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8}
-.sr-t{font-size:14px;font-weight:500}
-.sr-s{font-size:12px;color:var(--muted)}
+.sr-t{display:block;font-size:14px;font-weight:500}
+.sr-s{display:block;font-size:12px;color:var(--muted)}
 
 /* ═══ DRAWERS ═══ */
 .drawer-backdrop{position:fixed;inset:0;z-index:319;width:100%;height:100%;background:rgba(3,8,16,.58);backdrop-filter:blur(4px);opacity:0;visibility:hidden;transition:opacity .32s var(--ease),visibility .32s}
@@ -409,7 +437,7 @@ body.chat-large .msg{font-size:15.5px}
 .set-group{margin-bottom:28px}
 .set-group h4{font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:14px}
 .background-image-tools{display:grid;grid-template-columns:52px 1fr auto auto;align-items:center;gap:8px;margin-top:12px}
-.background-sample-thumb{width:52px;height:68px;border:1px solid var(--border-2);border-radius:10px;background:url("assets/quran-background-sample.png") center 24%/cover}
+.background-sample-thumb{width:52px;height:68px;border:1px solid var(--border-2);border-radius:10px;background:url("assets/quran-background-sample.svg") center 24%/cover}
 .background-sample-copy{min-width:0;display:grid;gap:3px}
 .background-sample-copy strong{font-size:11px}
 .background-sample-copy span{font-size:10px;line-height:1.4;color:var(--muted)}
@@ -446,10 +474,11 @@ body.chat-large .msg{font-size:15.5px}
 .upload-zone{border:2px dashed var(--border-2);border-radius:var(--r-lg);padding:40px 24px;text-align:center;transition:all .35s var(--ease);cursor:pointer;background:var(--surface)}
 .upload-zone:hover,.upload-zone.drag{border-color:var(--accent);background:var(--surface-2);transform:scale(1.01)}
 .upload-zone svg{width:40px;height:40px;stroke:var(--accent);fill:none;stroke-width:1.5;margin:0 auto 14px}
-.upload-zone h4{font-size:15px;font-weight:600}
+.upload-zone h3{font-size:15px;font-weight:600}
 .upload-zone p{font-size:12.5px;color:var(--muted);margin-top:6px;font-weight:300}
 .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;margin-top:22px}
-.gal-item{position:relative;aspect-ratio:1;border-radius:var(--r);overflow:hidden;border:1px solid var(--border);animation:fadeUp .4s var(--ease);cursor:zoom-in}
+.gal-item{position:relative;aspect-ratio:1;border-radius:var(--r);overflow:hidden;border:1px solid var(--border);animation:fadeUp .4s var(--ease)}
+.gal-preview{display:block;width:100%;height:100%;padding:0}
 .gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
 .gal-item:hover img{transform:scale(1.08)}
 .gal-del{position:absolute;top:8px;right:8px;width:28px;height:28px;border-radius:50%;background:rgba(0,0,0,.65);display:grid;place-items:center;color:#fff;opacity:0;transition:all .3s}
@@ -471,7 +500,7 @@ footer{border-top:1px solid var(--border);padding:56px 22px 40px;background:var(
 .foot-inner{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px}
 .foot-brand{font-family:var(--font-ar);font-size:26px;font-weight:700;color:var(--accent)}
 .foot-brand small{display:block;font-family:var(--font-sans);font-size:9px;letter-spacing:.3em;color:var(--muted);margin-top:6px;font-weight:400}
-.foot-col h5{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:16px}
+.foot-col h2{font-family:var(--font-sans);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:16px}
 .foot-col a,.foot-col p{display:block;font-size:13.5px;color:var(--text-2);margin-bottom:10px;font-weight:300;transition:color .3s}
 .foot-col a:hover{color:var(--accent)}
 .foot-bottom{max-width:1400px;margin:40px auto 0;padding-top:24px;border-top:1px solid var(--border);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
@@ -501,8 +530,28 @@ footer{border-top:1px solid var(--border);padding:56px 22px 40px;background:var(
 #karamooFab:hover{transform:scale(1.1) rotate(-6deg)}
 #karamooFab svg{width:28px;height:28px;stroke:#fff;fill:none;stroke-width:1.7}
 #karamooFab .ping{position:absolute;top:-2px;right:-2px;width:15px;height:15px;border-radius:50%;background:#22c55e;border:2.5px solid var(--bg);animation:pulse 2s infinite}
-#chatPanel{position:fixed;bottom:96px;left:24px;z-index:405;width:min(400px,calc(100vw - 32px));height:min(600px,calc(100vh - 130px));background:var(--chat-bg);border:1px solid var(--border-2);border-radius:24px;box-shadow:0 30px 80px rgba(0,0,0,.5);display:flex;flex-direction:column;overflow:hidden;transform:translateY(26px) scale(.92);opacity:0;pointer-events:none;transition:all .45s var(--ease)}
+#chatPanel{position:fixed;bottom:96px;left:24px;z-index:405;width:min(400px,calc(100vw - 32px));height:min(600px,calc(100vh - 130px));background:var(--chat-bg);border:1px solid var(--border-2);border-radius:24px;box-shadow:0 30px 80px rgba(0,0,0,.5);display:flex;flex-direction:column;overflow:hidden;transform:translateY(26px) scale(.92);opacity:0;visibility:hidden;pointer-events:none;transition:all .45s var(--ease)}
 #chatPanel.open{transform:none;opacity:1;pointer-events:auto}
+#chatPanel.open{visibility:visible}
+#audioDock{position:fixed;right:20px;bottom:20px;z-index:395;display:flex;align-items:center;gap:8px;max-width:min(720px,calc(100vw - 32px));padding:10px 12px;border:1px solid var(--border-2);border-radius:18px;background:var(--glass);box-shadow:var(--shadow);backdrop-filter:blur(18px);visibility:hidden;opacity:0;transform:translateY(12px);transition:opacity .25s,transform .25s,visibility .25s}
+#audioDock.open{visibility:visible;opacity:1;transform:none}
+#audioDock .audio-dock-title{max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px;font-weight:600;color:var(--text-2)}
+#audioDock .icon-btn{width:36px;height:36px;background:var(--surface-2);border-color:var(--border)}
+.reader-repeat-setting{display:flex;align-items:center;gap:6px;color:var(--muted);font-size:11px;font-weight:600}
+.reader-repeat-setting select,.audio-dock-repeat{max-width:135px;padding:8px 26px 8px 10px!important;font-size:12px!important}
+.reader-range-settings{position:relative}
+.reader-range-settings summary{cursor:pointer;list-style:none;padding:9px 12px;border:1px solid var(--border);border-radius:11px;font-size:11.5px;color:var(--text-2);white-space:nowrap}
+.reader-range-settings summary::-webkit-details-marker{display:none}
+.reader-range-settings[open] .range-fields{position:absolute;top:calc(100% + 8px);right:0;z-index:5;display:grid;grid-template-columns:repeat(3,minmax(72px,1fr));gap:8px;padding:12px;border:1px solid var(--border-2);border-radius:14px;background:var(--bg-2);box-shadow:var(--shadow);min-width:250px}
+.range-fields{display:none}
+.range-fields label{display:grid;gap:4px;font-size:10px;color:var(--muted)}
+.range-fields input,.range-fields select{width:100%;min-width:0;padding:7px 8px;border:1px solid var(--border);border-radius:8px;background:var(--bg-3);color:var(--text);font-size:12px}
+.audio-dock-options{display:flex;align-items:center;gap:6px}
+.audio-dock-options details{position:relative}
+.audio-dock-options summary{cursor:pointer;list-style:none;padding:8px 10px;border:1px solid var(--border);border-radius:10px;font-size:11px;color:var(--text-2)}
+.audio-dock-options summary::-webkit-details-marker{display:none}
+.audio-dock-options details[open] .range-fields{position:absolute;bottom:calc(100% + 8px);right:0;z-index:5;display:grid;grid-template-columns:repeat(3,minmax(65px,1fr));gap:6px;padding:10px;border:1px solid var(--border-2);border-radius:12px;background:var(--bg-2);box-shadow:var(--shadow);min-width:230px}
+@media(max-width:680px){#audioDock{right:12px;bottom:78px;left:12px;max-width:none;justify-content:space-between;gap:5px;padding:8px}.audio-dock-options{gap:4px}.audio-dock-options .sel{max-width:105px}.audio-dock-title{display:none}}
 #chatStopBtn[hidden]{display:none}
 .chat-head{padding:16px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,rgba(109,92,245,.18),transparent)}
 .chat-avatar{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(140deg,#9b8cff,#4436b8);color:#fff;font-family:var(--font-serif);font-weight:700;font-size:20px;box-shadow:0 8px 22px rgba(109,92,245,.4)}
@@ -682,13 +731,14 @@ footer{border-top:1px solid var(--border);padding:56px 22px 40px;background:var(
 </div>
 
 <!-- ═══════ HEADER ═══════ -->
+<a class="skip-link" href="#mainContent">Skip to main content</a>
 <header class="nav">
   <div class="nav-inner">
     <a class="logo" href="#" onclick="showView('home');return false">
-      <div class="logo-mark">ع</div>
-      <div class="logo-text">AL-MA'RIFAH<small>المعرفة<em>ENHANCE YOUR SKILLS &amp; KNOWLEDGE</em></small></div>
+      <div class="logo-mark" lang="ar" dir="rtl">ع</div>
+      <div class="logo-text">AL-MA'RIFAH<small lang="ar" dir="rtl">المعرفة<em>ENHANCE YOUR SKILLS &amp; KNOWLEDGE</em></small></div>
     </a>
-    <nav class="nav-links">
+    <nav class="nav-links" aria-label="Primary navigation">
       <button data-view="home" class="active">Home</button>
       <button data-view="quran">Qur'an</button>
       <button data-view="computer">Computer</button>
@@ -696,22 +746,22 @@ footer{border-top:1px solid var(--border);padding:56px 22px 40px;background:var(
       <button data-view="contact">Contact</button>
     </nav>
     <div class="nav-actions">
-      <button class="icon-btn" id="searchBtn" title="Search ( / )"><svg><use href="#i-search"/></svg></button>
-      <button class="icon-btn opt" id="shareBtn" title="Share"><svg><use href="#i-share"/></svg></button>
-      <button class="icon-btn" id="themeBtn" title="Toggle theme"><svg><use href="#i-moon"/></svg></button>
-      <button class="icon-btn" id="settingsBtn" title="Settings"><svg><use href="#i-settings"/></svg></button>
-      <button class="icon-btn only-desktop" id="menuBtn" title="Menu"><svg><use href="#i-menu"/></svg></button>
+      <button class="icon-btn" id="searchBtn" title="Search ( / )" aria-label="Search"><svg aria-hidden="true"><use href="#i-search"/></svg></button>
+      <button class="icon-btn opt" id="shareBtn" title="Share" aria-label="Share"><svg aria-hidden="true"><use href="#i-share"/></svg></button>
+      <button class="icon-btn" id="themeBtn" title="Toggle theme" aria-label="Toggle theme"><svg aria-hidden="true"><use href="#i-moon"/></svg></button>
+      <button class="icon-btn" id="settingsBtn" title="Settings" aria-label="Settings"><svg aria-hidden="true"><use href="#i-settings"/></svg></button>
+      <button class="icon-btn only-desktop" id="menuBtn" title="Menu" aria-label="Open menu"><svg aria-hidden="true"><use href="#i-menu"/></svg></button>
     </div>
   </div>
 </header>
 
-<main>
+<main id="mainContent" tabindex="-1">
 
 <!-- ═══════════ VIEW · HOME ═══════════ -->
 <section class="view active" id="view-home">
   <div class="hero">
     <div class="hero-badge"><span class="dot"></span> Enrollment Open · Worldwide Online · Meet KARAMOO, your AI companion</div>
-    <h1><span class="ar-line">المعرفة</span>Knowledge is <span class="grad">Light.</span><br>Skills are <span class="grad">Power.</span></h1>
+    <h1><span class="ar-line" lang="ar" dir="rtl">المعرفة</span>Knowledge is <span class="grad">Light.</span><br>Skills are <span class="grad">Power.</span></h1>
     <p class="sub">Live one-to-one and small-group classes in Qur'anic studies and modern computing — taught with care, patience and excellence. All levels welcome, everywhere on Earth.</p>
     <div class="hero-cta">
       <button class="btn btn-primary" onclick="showView('quran')"><svg><use href="#i-book"/></svg> Explore Qur'an Track</button>
@@ -730,7 +780,7 @@ footer{border-top:1px solid var(--border);padding:56px 22px 40px;background:var(
     <div class="section-head">
       <div class="kicker">Practice &amp; Progress</div>
       <h2 class="title">Build your knowledge <em>one level at a time</em>.</h2>
-      <p class="lead">Each track has 50 progressive levels with 25 distinct questions per level. Unlocks and best scores stay in this browser.</p>
+      <p class="lead">Each track has 50 increasingly challenging levels. Questions are unique across levels and are not repeated on this browser, including when you retry.</p>
     </div>
     <div class="quiz-launch-grid">
       <article class="quiz-launch-card">
@@ -752,7 +802,7 @@ footer{border-top:1px solid var(--border);padding:56px 22px 40px;background:var(
       <h2 class="title">Begin with <em>reflection</em>.</h2>
     </div>
     <div class="reader" style="max-width:820px">
-      <div class="reader-body" id="dailyAyah" style="text-align:center;padding:46px 30px"></div>
+      <div class="reader-body" id="dailyAyah" style="text-align:center;padding:52px 30px"></div>
     </div>
   </div>
 
@@ -764,8 +814,18 @@ footer{border-top:1px solid var(--border);padding:56px 22px 40px;background:var(
     </div>
     <div class="reader">
       <div class="reader-bar">
-        <div class="select-wrap"><select class="sel" id="surahSelect"></select></div>
-        <button class="btn btn-ghost btn-sm" onclick="readerPlaySurah()" title="Play whole surah"><svg><use href="#i-play"/></svg> <span id="playSurahLbl">Recite</span></button>
+        <div class="select-wrap"><select class="sel" id="surahSelect" aria-label="Choose a surah" dir="auto"></select></div>
+        <button class="btn btn-ghost btn-sm" onclick="readerPlaySurah()" title="Play or pause recitation"><svg aria-hidden="true"><use href="#i-play"/></svg> <span id="playSurahLbl">Recite</span></button>
+        <label class="reader-repeat-setting">Repeat
+          <select class="sel" id="readerRepeatMode" aria-label="Recitation repeat mode">
+            <option value="off">Off</option><option value="all">Repeat all</option><option value="one">Repeat one</option><option value="range">Repeat range</option>
+          </select>
+        </label>
+        <details class="reader-range-settings"><summary>Verse range settings</summary><div class="range-fields">
+          <label>From verse<input type="number" id="readerRangeStart" min="1" value="1" aria-label="Start verse"></label>
+          <label>To verse<input type="number" id="readerRangeEnd" min="1" value="1" aria-label="End verse"></label>
+          <label>Repeat times<select id="readerRepeatCount" aria-label="Range repeat count"><option>1</option><option>2</option><option selected>3</option><option>4</option><option>5</option><option>10</option></select></label>
+        </div></details>
         <button class="btn btn-ghost btn-sm reader-repeat-btn" id="readerRepeatAyah" data-toggle="repeatAyah" type="button" aria-label="Repeat the current ayah" aria-pressed="false"><svg><use href="#i-refresh"/></svg> Repeat ayah</button>
         <div class="select-wrap reader-audio-controls"><select class="sel" id="readerAudioRate" aria-label="Recitation playback speed"><option value="0.75">0.75× speed</option><option value="1">1× speed</option><option value="1.25">1.25× speed</option><option value="1.5">1.5× speed</option></select></div>
         <button class="btn btn-ghost btn-sm" onclick="openSearch()"><svg><use href="#i-search"/></svg> Search</button>
@@ -797,9 +857,9 @@ footer{border-top:1px solid var(--border);padding:56px 22px 40px;background:var(
       <p class="lead">Each track is a layered programme — start where you are, and grow step by step with live guidance.</p>
     </div>
     <div class="grid-2">
-      <div class="track-panel q" onclick="showView('quran')" style="cursor:pointer">
+      <div class="track-panel q" role="group" aria-labelledby="quranTrackTitle" onclick="showView('quran')" style="cursor:pointer">
         <div class="tp-icon"><svg><use href="#i-book"/></svg></div>
-        <h3>Qur'an Studies</h3>
+        <h3 id="quranTrackTitle"><a href="#quran" onclick="event.stopPropagation();event.preventDefault();showView('quran')">Qur'an Studies</a></h3>
         <p>Recitation, memorisation and understanding — with certified teachers and a personal plan.</p>
         <ul><li>Tajweed &amp; Makharij</li><li>Hifdh &amp; Revision</li><li>Tafsir &amp; Meaning</li><li>Arabic Reading</li></ul>
         <div class="tp-actions">
@@ -807,9 +867,9 @@ footer{border-top:1px solid var(--border);padding:56px 22px 40px;background:var(
           <button class="btn btn-ghost btn-sm" onclick="event.stopPropagation();openRate('quran')">Rate Us</button>
         </div>
       </div>
-      <div class="track-panel c" onclick="showView('computer')" style="cursor:pointer">
+      <div class="track-panel c" role="group" aria-labelledby="computerTrackTitle" onclick="showView('computer')" style="cursor:pointer">
         <div class="tp-icon"><svg><use href="#i-ai"/></svg></div>
-        <h3>Computer Skills</h3>
+        <h3 id="computerTrackTitle"><a href="#computer" onclick="event.stopPropagation();event.preventDefault();showView('computer')">Computer Skills</a></h3>
         <p>From documents to AI — practical, project-based training for study, work and business.</p>
         <ul><li>Word · Excel · PowerPoint</li><li>Microsoft Forms</li><li>Google Docs · Forms · Gmail</li><li>Artificial Intelligence</li></ul>
         <div class="tp-actions">
@@ -826,10 +886,10 @@ footer{border-top:1px solid var(--border);padding:56px 22px 40px;background:var(
       <h2 class="title">Everything, <em>one click away</em>.</h2>
     </div>
     <div class="grid-4">
-      <div class="card" onclick="showView('quran')"><div class="card-art" id="qa-art1"></div><div class="card-body"><h3>Qur'an Reader</h3><p>All 114 surahs with audio, notes, favourites and memorisation tracking.</p></div></div>
-      <div class="card" onclick="showView('computer')"><div class="card-art" id="qa-art2"></div><div class="card-body"><h3>Skill Library</h3><p>Word, Excel, PowerPoint, Forms, Google Workspace &amp; AI.</p></div></div>
-      <div class="card" onclick="showView('services')"><div class="card-art" id="qa-art3"></div><div class="card-body"><h3>Document Services</h3><p>PDF to Word, research formatting, indexes, editing &amp; design.</p></div></div>
-      <div class="card" onclick="openEnroll('both')"><div class="card-art" id="qa-art4"></div><div class="card-body"><h3>Enroll Today</h3><p>Fill a short form and we'll contact you to schedule your first class.</p></div></div>
+      <div class="card" role="button" tabindex="0" aria-label="Open the Qur'an Reader" onclick="showView('quran')"><div class="card-art" id="qa-art1"></div><div class="card-body"><h3>Qur'an Reader</h3><p>All 114 surahs with audio, notes, favourites and memorisation tracking.</p></div></div>
+      <div class="card" role="button" tabindex="0" aria-label="Open the Skill Library" onclick="showView('computer')"><div class="card-art" id="qa-art2"></div><div class="card-body"><h3>Skill Library</h3><p>Word, Excel, PowerPoint, Forms, Google Workspace &amp; AI.</p></div></div>
+      <div class="card" role="button" tabindex="0" aria-label="Open Document Services" onclick="showView('services')"><div class="card-art" id="qa-art3"></div><div class="card-body"><h3>Document Services</h3><p>PDF to Word, research formatting, indexes, editing &amp; design.</p></div></div>
+      <div class="card" role="button" tabindex="0" aria-label="Prepare an enrollment email request" onclick="openEnroll('both')"><div class="card-art" id="qa-art4"></div><div class="card-body"><h3>Ask About Enrollment</h3><p>Prepare an email to ask about schedules, availability and pricing.</p></div></div>
     </div>
   </div>
 </section>
@@ -840,7 +900,7 @@ footer{border-top:1px solid var(--border);padding:56px 22px 40px;background:var(
     <div class="section-head">
       <div class="kicker">Track 01 — Qur'anic Studies · 3 Layers</div>
       <h2 class="title">The <em>Qur'an</em> Track.</h2>
-      <p class="lead">Layer 1: this overview · Layer 2: the classes · Layer 3: trusted resources. Personalised recitation, memorisation and tafsir classes supported by the full reader on the Home tab.</p>
+      <p class="lead">Layer 1: this overview · Layer 2: the classes · Layer 3: trusted resources. Personalised recitation, memorisation and tafsir classes supported by the full reader on the Home tab. Course pricing is available on request; ask us before enrolling.</p>
       <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:26px">
         <button class="btn btn-primary" onclick="openEnroll('quran')"><svg><use href="#i-user"/></svg> Enroll in Qur'an Track</button>
         <button class="btn btn-ghost" onclick="openRate('quran')"><svg><use href="#i-star"/></svg> Rate the Qur'an Track</button>
@@ -864,7 +924,7 @@ footer{border-top:1px solid var(--border);padding:56px 22px 40px;background:var(
     <div class="section-head">
       <div class="kicker">Track 02 — Digital Skills · 3 Layers</div>
       <h2 class="title">The <em>Computer</em> Track.</h2>
-      <p class="lead">Layer 1: this overview · Layer 2: eight core tools · Layer 3: your learning path &amp; resources. Project-based training in Microsoft Office, Google Workspace and AI.</p>
+      <p class="lead">Layer 1: this overview · Layer 2: eight core tools · Layer 3: your learning path &amp; resources. Project-based training in Microsoft Office, Google Workspace and AI. Course pricing is available on request; ask us before enrolling.</p>
       <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:26px">
         <button class="btn btn-primary" onclick="openEnroll('computer')"><svg><use href="#i-user"/></svg> Enroll in Computer Track</button>
         <button class="btn btn-ghost" onclick="openRate('computer')"><svg><use href="#i-star"/></svg> Rate the Computer Track</button>
@@ -889,7 +949,7 @@ footer{border-top:1px solid var(--border);padding:56px 22px 40px;background:var(
     <div class="section-head">
       <div class="kicker">Professional Services</div>
       <h2 class="title">We do the <em>heavy lifting</em>.</h2>
-      <p class="lead">Beyond teaching, we deliver expert document, research and design services for students, researchers, teachers and institutions. Send us your file — we return it polished and ready.</p>
+      <p class="lead">Beyond teaching, we deliver expert document, research and design services for students, researchers, teachers and institutions. Contact us for a quote and delivery details before sending files.</p>
       <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:26px">
         <button class="btn btn-primary" onclick="openEnroll('services')"><svg><use href="#i-user"/></svg> Request a Service</button>
         <button class="btn btn-ghost" onclick="openRate('services')"><svg><use href="#i-star"/></svg> Rate Our Services</button>
@@ -897,11 +957,23 @@ footer{border-top:1px solid var(--border);padding:56px 22px 40px;background:var(
     </div>
   </div>
   <div class="section" style="padding-top:0"><div class="grid-4" id="serviceCards"></div></div>
+  <div class="section" id="serviceFeedback">
+    <div class="section-head"><div class="kicker">Service Feedback</div><h2 class="title">Help us <em>improve</em>.</h2><p class="lead">Tell us about your experience with a service. Your device may open an email draft, or you can copy the feedback; this website does not receive or store it.</p></div>
+    <div class="reader" style="max-width:640px"><form class="modal-body" id="serviceFeedbackForm">
+      <div class="field"><label for="feedbackService">Service</label><select id="feedbackService" class="sel"><option>PDF to Word</option><option>Research formatting</option><option>Editing and proofreading</option><option>Design and study aids</option><option>Other service</option></select></div>
+      <div class="field"><label for="feedbackName">Your name (optional)</label><input id="feedbackName" type="text" autocomplete="name" placeholder="Your name"></div>
+      <div class="field"><label for="feedbackComment">Your feedback</label><textarea id="feedbackComment" required minlength="3" placeholder="What went well, or what could we improve?"></textarea></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <button type="submit" class="btn btn-primary" style="flex:1"><svg aria-hidden="true"><use href="#i-send"/></svg> Prepare Feedback Email</button>
+        <button type="button" class="btn btn-ghost" onclick="copyServiceFeedbackDraft()">Copy Feedback</button>
+      </div>
+    </form></div>
+  </div>
   <div class="section">
     <div class="section-head"><div class="kicker">Your Uploads</div><h2 class="title">Your <em>gallery</em>.</h2><p class="lead">Upload reference images, screenshots or design inspiration. Everything stays on your device.</p></div>
-    <div class="upload-zone" id="uploadZone">
+    <div class="upload-zone" id="uploadZone" role="button" tabindex="0" aria-label="Choose reference images to upload">
       <svg><use href="#i-upload"/></svg>
-      <h4>Drop images here or click to upload</h4>
+      <h3>Drop images here or click to upload</h3>
       <p>PNG, JPG, WEBP, GIF · stored locally in your browser</p>
     </div>
     <input type="file" id="fileInput" accept="image/*" multiple hidden>
@@ -915,7 +987,7 @@ footer{border-top:1px solid var(--border);padding:56px 22px 40px;background:var(
     <div class="section-head">
       <div class="kicker">Contact Us</div>
       <h2 class="title">We'd love to <em>hear from you</em>.</h2>
-      <p class="lead">Call, email or message us on WhatsApp — we reply quickly, in English or Arabic.</p>
+      <p class="lead">Call, email or message us on WhatsApp to ask about current availability, schedules and pricing.</p>
     </div>
     <div class="contact-grid">
       <div class="contact-card">
@@ -940,21 +1012,24 @@ footer{border-top:1px solid var(--border);padding:56px 22px 40px;background:var(
       </div>
       <div class="contact-card">
         <div class="cc-ico"><svg><use href="#i-pin"/></svg></div>
-        <h3>Online Worldwide</h3><p>Classes are delivered online. A public walk-in address has not been provided; please contact us to confirm any in-person arrangements.</p>
+        <h3>Online Worldwide</h3><p>Classes are delivered online. Contact the academy to discuss schedules, availability and any in-person options.</p>
       </div>
       <div class="contact-card">
         <div class="cc-ico"><svg><use href="#i-pin"/></svg></div>
-        <h3>Physical Address</h3><p>No public street address has been supplied. Please contact the academy before arranging any in-person visit.</p>
+        <h3>Availability</h3><p>For current class availability, schedules and service timelines, contact the academy directly before making plans.</p>
       </div>
     </div>
     <div class="section" style="padding-bottom:0">
       <div class="section-head"><div class="kicker">Send a Message</div><h2 class="title">Quick <em>message</em>.</h2></div>
-      <div class="reader" style="max-width:640px"><div class="modal-body">
-        <div class="field"><label>Your name</label><input type="text" id="ct-name" placeholder="Your name"></div>
-        <div class="field"><label>Message</label><textarea id="ct-msg" placeholder="How can we help you?"></textarea></div>
-        <button class="btn btn-primary" style="width:100%" onclick="sendContact()"><svg><use href="#i-send"/></svg> Open Email Draft</button>
-        <p style="font-size:11.5px;color:var(--muted);margin-top:12px">Your email app will open with a draft. Review it and press Send; this website cannot transmit messages by itself.</p>
-      </div></div>
+      <div class="reader" style="max-width:640px"><form class="modal-body" id="contactForm" onsubmit="sendContact(event)">
+        <div class="field"><label for="ct-name">Your name</label><input type="text" id="ct-name" autocomplete="name" placeholder="Your name" required></div>
+        <div class="field"><label for="ct-msg">Message</label><textarea id="ct-msg" placeholder="How can we help you?" required minlength="3"></textarea></div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <button type="submit" class="btn btn-primary" style="flex:1"><svg aria-hidden="true"><use href="#i-send"/></svg> Prepare Email Draft</button>
+          <button type="button" class="btn btn-ghost" onclick="copyContactDraft()">Copy Message</button>
+        </div>
+        <p style="font-size:11.5px;color:var(--muted);margin-top:12px">This website cannot send messages. Your device may open an email draft; if it does not, copy the message and email us yourself. The academy has not received anything until you press Send.</p>
+      </form></div>
     </div>
   </div>
 </section>
@@ -965,11 +1040,11 @@ footer{border-top:1px solid var(--border);padding:56px 22px 40px;background:var(
 <footer>
   <div class="foot-inner">
     <div>
-      <div class="foot-brand">المعرفة<small>AL-MA'RIFAH ACADEMY · ENHANCE YOUR SKILLS &amp; KNOWLEDGE</small></div>
+      <div class="foot-brand" lang="ar" dir="rtl">المعرفة<small lang="en" dir="ltr">AL-MA'RIFAH ACADEMY · ENHANCE YOUR SKILLS &amp; KNOWLEDGE</small></div>
       <p style="font-size:13.5px;color:var(--muted);margin-top:16px;font-weight:300;max-width:340px;line-height:1.75">Online Qur'an and computer-skills classes plus professional document services, delivered worldwide with care and excellence.</p>
     </div>
     <div class="foot-col">
-      <h5>Explore</h5>
+      <h2>Explore</h2>
       <a href="#" onclick="showView('quran');return false">Qur'an Track</a>
       <a href="#" onclick="showView('computer');return false">Computer Track</a>
       <a href="#" onclick="showView('services');return false">Services</a>
@@ -977,14 +1052,14 @@ footer{border-top:1px solid var(--border);padding:56px 22px 40px;background:var(
       <a href="#" onclick="openEnroll('both');return false">Enroll</a>
     </div>
     <div class="foot-col">
-      <h5>Contact</h5>
+      <h2>Contact</h2>
       <a href="tel:+201285968529">+20 12 8596 8529</a>
       <a href="tel:+220835055653">+220 83 505 5653</a>
       <a href="mailto:Muhammadbasiru125g@gmail.com">Muhammadbasiru125g@gmail.com</a>
       <a href="https://wa.me/201285968529" target="_blank" rel="noopener">WhatsApp</a>
     </div>
     <div class="foot-col">
-      <h5>Assistant</h5>
+      <h2>Assistant</h2>
       <a href="#" onclick="openChat();return false">Chat with KARAMOO</a>
       <a href="#" onclick="openSettings();return false">Settings</a>
       <a href="#" onclick="openShare();return false">Share this page</a>
@@ -992,7 +1067,7 @@ footer{border-top:1px solid var(--border);padding:56px 22px 40px;background:var(
     </div>
   </div>
   <div class="foot-bottom">
-    <span>© <span id="year"></span> Al-Ma'rifah Academy (المعرفة). All rights reserved.</span>
+    <span>© <span id="year"></span> Al-Ma'rifah Academy (<span lang="ar" dir="rtl">المعرفة</span>). All rights reserved.</span>
     <span>Made with care · <a href="#" onclick="openShare();return false" style="color:var(--accent)">Share this page</a></span>
   </div>
 </footer>
@@ -1007,30 +1082,49 @@ footer{border-top:1px solid var(--border);padding:56px 22px 40px;background:var(
   <button id="dockMain" onclick="toggleDock()" title="Quick actions"><svg><use href="#i-plus"/></svg></button>
 </div>
 
+<aside id="audioDock" role="region" aria-label="Qur'an audio player" aria-live="polite" aria-hidden="true">
+  <span class="audio-dock-title" id="audioDockTitle">Qur'an recitation</span>
+  <button class="icon-btn" id="audioDockPlay" type="button" aria-label="Play recitation" title="Play or pause recitation"><svg aria-hidden="true"><use href="#i-play"/></svg></button>
+  <button class="icon-btn" id="audioDockStop" type="button" aria-label="Stop recitation" title="Stop recitation"><svg aria-hidden="true"><use href="#i-close"/></svg></button>
+  <div class="audio-dock-options">
+    <select class="sel audio-dock-repeat" id="dockRepeatMode" aria-label="Recitation repeat mode">
+      <option value="off">Repeat off</option><option value="all">Repeat all</option><option value="one">Repeat one</option><option value="range">Repeat range</option>
+    </select>
+    <details>
+      <summary>Range</summary>
+      <div class="range-fields">
+        <label>From<input type="number" id="dockRangeStart" min="1" value="1" aria-label="Start verse"></label>
+        <label>To<input type="number" id="dockRangeEnd" min="1" value="1" aria-label="End verse"></label>
+        <label>Times<select id="dockRepeatCount" aria-label="Range repeat count"><option>1</option><option>2</option><option selected>3</option><option>4</option><option>5</option><option>10</option></select></label>
+      </div>
+    </details>
+  </div>
+</aside>
+
 <!-- ═══════ KARAMOO CHATBOT ═══════ -->
-<button id="karamooFab" onclick="openChat()" title="Chat with KARAMOO"><span class="ping"></span><svg><use href="#i-ai"/></svg></button>
-<div id="chatPanel">
+<button id="karamooFab" onclick="openChat()" title="Chat with KARAMOO" aria-label="Open KARAMOO chat" aria-expanded="false" aria-controls="chatPanel"><span class="ping"></span><svg aria-hidden="true"><use href="#i-ai"/></svg></button>
+<div id="chatPanel" role="dialog" aria-modal="false" aria-label="KARAMOO chat" aria-hidden="true">
   <div class="chat-head">
-    <div class="chat-avatar">ك</div>
+    <div class="chat-avatar" lang="ar" dir="rtl">ك</div>
     <div>
-      <div class="ch-name">KARAMOO <span style="font-family:var(--font-ar);color:var(--accent)">كرمو</span></div>
-      <div class="ch-status"><i></i> English · العربية · Français · Español · Kiswahili · Hausa</div>
+      <div class="ch-name">KARAMOO <span lang="ar" dir="rtl" style="font-family:var(--font-ar);color:var(--accent)">كرمو</span></div>
+      <div class="ch-status"><i></i> Language detection: English, Arabic, French, Spanish, Swahili &amp; Hausa</div>
     </div>
     <div class="ch-actions">
       <button id="chatVoiceOut" title="Voice replies on/off" onclick="toggleVoiceOut()"><svg><use href="#i-volume"/></svg></button>
       <button onclick="clearChat()" title="Clear chat"><svg><use href="#i-trash"/></svg></button>
-      <button onclick="closeChat()" title="Close"><svg><use href="#i-close"/></svg></button>
+      <button onclick="closeChat(true)" title="Close" aria-label="Close KARAMOO chat"><svg aria-hidden="true"><use href="#i-close"/></svg></button>
     </div>
   </div>
   <div id="chatBody"></div>
   <div class="chips" id="chatChips"></div>
-  <div class="chat-tools" aria-label="Conversation tools">
+  <div class="chat-tools" role="group" aria-label="Conversation tools">
     <button type="button" onclick="copyChatConversation()">Copy chat</button>
     <button type="button" onclick="exportChatConversation()">Download chat</button>
     <button type="button" onclick="regenerateChatReply()">Try last reply again</button>
   </div>
   <div class="chat-input">
-    <input type="text" id="chatInput" placeholder="Ask KARAMOO anything…" autocomplete="off">
+    <input type="text" id="chatInput" aria-label="Message KARAMOO" placeholder="Ask KARAMOO anything…" autocomplete="off">
     <button id="micBtn" title="Speak" onclick="startVoiceInput()"><svg><use href="#i-mic"/></svg></button>
     <button id="chatStopBtn" title="Stop reply" onclick="stopChatGeneration()" hidden><svg><use href="#i-close"/></svg></button>
     <button id="chatSendBtn" title="Send" onclick="sendChat()"><svg><use href="#i-send"/></svg></button>
@@ -1129,7 +1223,7 @@ footer{border-top:1px solid var(--border);padding:56px 22px 40px;background:var(
       <div class="set-row"><div><div class="lbl">Arabic script style</div><div class="sub">Choose your preferred reader font</div></div>
         <select class="sel" data-setting-select="arabicFont" aria-label="Arabic script style" style="max-width:170px"><option value="amiri">Amiri</option><option value="scheherazade">Scheherazade</option><option value="uthmani">Amiri Quran</option></select></div>
       <div class="set-row"><div><div class="lbl">Arabic font size</div><div class="sub"><span id="arSizeLabel">30</span>px</div></div></div>
-      <input type="range" id="arSize" min="22" max="46" value="30" style="width:100%;accent-color:var(--accent);cursor:pointer">
+      <input type="range" id="arSize" min="22" max="46" value="30" aria-label="Arabic font size" style="width:100%;accent-color:var(--accent);cursor:pointer">
       <div class="set-row" style="margin-top:8px"><div><div class="lbl">Show translation</div><div class="sub">English meaning under each ayah</div></div><button class="switch on" data-toggle="translation"></button></div>
       <div class="set-row"><div><div class="lbl">Repeat current ayah</div><div class="sub">Loop the selected recitation until stopped</div></div><button class="switch" data-toggle="repeatAyah"></button></div>
       <div class="set-row"><div><div class="lbl">Recitation speed</div><div class="sub">Adjust audio playback rate</div></div>
@@ -1171,7 +1265,7 @@ footer{border-top:1px solid var(--border);padding:56px 22px 40px;background:var(
     <div class="set-group">
       <h4>KARAMOO AI (optional GPT mode)</h4>
       <p style="font-size:12px;color:var(--muted);margin-bottom:10px;font-weight:300">Without a key, KARAMOO uses its built-in academy helper. Optional AI mode sends chat messages to OpenAI using a key stored in this browser. Do not use this on shared devices or enter sensitive information; a production site should call AI through a protected backend.</p>
-      <div class="field"><input type="password" id="aiKey" placeholder="sk-… (optional)"></div>
+      <div class="field"><input type="password" id="aiKey" aria-label="Optional OpenAI API key" placeholder="sk-… (optional)"></div>
       <button class="btn btn-ghost btn-sm" onclick="saveAIKey()">Save Key</button>
       <div class="set-row"><div><div class="lbl">AI model</div><div class="sub">Used only when an API key is saved</div></div>
         <select class="sel" data-setting-select="aiModel" aria-label="AI model" style="max-width:145px"><option value="gpt-4o-mini">GPT-4o mini</option><option value="gpt-4o">GPT-4o</option></select></div>
@@ -1209,38 +1303,38 @@ footer{border-top:1px solid var(--border);padding:56px 22px 40px;background:var(
 </aside>
 
 <!-- ═══════ SEARCH OVERLAY ═══════ -->
-<div class="overlay" id="searchOverlay">
+<div class="overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-label="Site search" aria-hidden="true">
   <div class="search-box">
-    <div class="search-input-wrap"><svg><use href="#i-search"/></svg><input id="searchInput" type="text" placeholder="Search surahs, classes, skills, services…" autocomplete="off"></div>
+    <div class="search-input-wrap"><svg><use href="#i-search"/></svg><input id="searchInput" type="text" aria-label="Search surahs, classes, skills, and services" placeholder="Search surahs, classes, skills, services…" autocomplete="off"></div>
     <div class="search-results" id="searchResults"></div>
   </div>
 </div>
 
 <!-- ═══════ MODALS ═══════ -->
-<div class="modal" id="enrollModal"><div class="modal-bg" data-close></div>
-  <div class="modal-box"><div class="modal-head"><div><h3>Enroll Now</h3><p id="enrollSub">Fill the form and we'll contact you to schedule your first class.</p></div>
+<div class="modal" id="enrollModal" role="dialog" aria-modal="true" aria-labelledby="enrollTitle"><div class="modal-bg" data-close></div>
+  <div class="modal-box"><div class="modal-head"><div><h3 id="enrollTitle">Enroll Now</h3><p id="enrollSub">Prepare an email request to ask about classes, availability and pricing.</p></div>
   <button class="modal-close" data-close><svg><use href="#i-close"/></svg></button></div><div class="modal-body" id="enrollBody"></div></div></div>
 
-<div class="modal" id="rateModal"><div class="modal-bg" data-close></div>
-  <div class="modal-box"><div class="modal-head"><div><h3>Rate Your Experience</h3><p id="rateSub">Your feedback helps us improve.</p></div>
+<div class="modal" id="rateModal" role="dialog" aria-modal="true" aria-labelledby="rateTitle"><div class="modal-bg" data-close></div>
+  <div class="modal-box"><div class="modal-head"><div><h3 id="rateTitle">Rate Your Experience</h3><p id="rateSub">Your feedback helps us improve.</p></div>
   <button class="modal-close" data-close><svg><use href="#i-close"/></svg></button></div><div class="modal-body" id="rateBody"></div></div></div>
 
-<div class="modal" id="artModal"><div class="modal-bg" data-close></div>
+<div class="modal" id="artModal" role="dialog" aria-modal="true" aria-labelledby="artTitle"><div class="modal-bg" data-close></div>
   <div class="modal-box wide"><div class="modal-head"><div><h3 id="artTitle">Title</h3><p id="artSub">Subtitle</p></div>
   <button class="modal-close" data-close><svg><use href="#i-close"/></svg></button></div><div class="modal-body" id="artBody"></div></div></div>
 
-<div class="modal" id="shareModal"><div class="modal-bg" data-close></div>
-  <div class="modal-box"><div class="modal-head"><div><h3>Share المعرفة</h3><p id="shareNotice">Invite a friend to learn with you.</p></div>
+<div class="modal" id="shareModal" role="dialog" aria-modal="true" aria-labelledby="shareTitle"><div class="modal-bg" data-close></div>
+  <div class="modal-box"><div class="modal-head"><div><h3 id="shareTitle">Share <span lang="ar" dir="rtl">المعرفة</span></h3><p id="shareNotice">Invite a friend to learn with you.</p></div>
   <button class="modal-close" data-close><svg><use href="#i-close"/></svg></button></div>
   <div class="modal-body"><div class="share-grid" id="shareGrid"></div>
   <button class="btn btn-ghost" style="width:100%;margin-top:18px" onclick="copyLink()"><svg><use href="#i-link"/></svg> Copy link</button></div></div></div>
 
-<div class="modal" id="imgModal"><div class="modal-bg" data-close></div>
-  <div class="modal-box"><div class="modal-head"><div><h3>Image Preview</h3><p>From your gallery</p></div>
+<div class="modal" id="imgModal" role="dialog" aria-modal="true" aria-labelledby="imgTitle"><div class="modal-bg" data-close></div>
+  <div class="modal-box"><div class="modal-head"><div><h3 id="imgTitle">Image Preview</h3><p>From your gallery</p></div>
   <button class="modal-close" data-close><svg><use href="#i-close"/></svg></button></div>
-  <div class="modal-body" style="padding:14px"><img id="imgModalImg" style="width:100%;border-radius:14px" alt="preview"></div></div></div>
+  <div class="modal-body" style="padding:14px"><img id="imgModalImg" src="assets/placeholder.svg" style="width:100%;border-radius:14px" alt="Selected gallery image preview"></div></div></div>
 
-<div class="modal" id="toolModal"><div class="modal-bg" data-close></div>
+<div class="modal" id="toolModal" role="dialog" aria-modal="true" aria-labelledby="toolTitle"><div class="modal-bg" data-close></div>
   <div class="modal-box"><div class="modal-head"><div><h3 id="toolTitle">Study Tool</h3><p id="toolSubtitle">A quick learning activity</p></div>
   <button class="modal-close" data-close><svg><use href="#i-close"/></svg></button></div><div class="modal-body" id="toolBody"></div></div></div>
 
@@ -1305,13 +1399,37 @@ function beep(){
 
 /* ---------- misc ---------- */
 function esc(s){ return String(s||'').replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
-function openModal(id){ document.getElementById(id).classList.add('open'); document.body.style.overflow='hidden'; }
-function closeModal(id){ document.getElementById(id).classList.remove('open'); document.body.style.overflow=''; if(id==='toolModal'&&window.cancelTypingPractice)window.cancelTypingPractice(); }
+function openModal(id){
+  const modal=document.getElementById(id);
+  if(!modal)return;
+  modal._returnFocus=document.activeElement;
+  modal.classList.add('open'); document.body.style.overflow='hidden';
+  requestAnimationFrame(()=>modal.querySelector('input:not([type="hidden"]),select,textarea,button,[href],[tabindex]:not([tabindex="-1"])')?.focus());
+}
+function closeModal(id){
+  const modal=document.getElementById(id);
+  if(!modal)return;
+  modal.classList.remove('open');
+  document.body.style.overflow=document.querySelector('.modal.open')?'hidden':'';
+  if(id==='toolModal'&&window.cancelTypingPractice)window.cancelTypingPractice();
+  modal._returnFocus?.focus?.();
+}
 window.closeModal = closeModal;
 document.querySelectorAll('.modal').forEach(m=>{
   m.addEventListener('click', e=>{
     if(e.target instanceof Element && e.target.closest('[data-close]'))closeModal(m.id);
   });
+});
+document.addEventListener('keydown',event=>{
+  if(event.key!=='Tab')return;
+  const search=document.getElementById('searchOverlay');
+  const modal=search?.classList.contains('open')?search:document.querySelector('.modal.open');
+  if(!modal)return;
+  const items=[...modal.querySelectorAll('a[href],button:not([disabled]),input:not([disabled]):not([type="hidden"]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])')].filter(el=>el.offsetParent!==null);
+  if(!items.length){event.preventDefault();return;}
+  const first=items[0],last=items[items.length-1];
+  if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus();}
+  else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}
 });
 
 /* ---------- generative art (elegant SVG imagery for every card) ---------- */
@@ -1556,7 +1674,7 @@ const COMPUTER_PATH = [
 
 /* ═══════════ RENDER CARDS ═══════════ */
 function cardHTML(item, idx, group){
-  return '<article class="card" data-group="'+group+'" data-idx="'+idx+'">'+
+  return '<article class="card" role="button" tabindex="0" aria-label="View details for '+esc(item.t)+'" data-group="'+group+'" data-idx="'+idx+'">'+
     '<div class="card-hover-tip"><svg><use href="#i-info"/></svg></div>'+
     '<div class="card-art">'+art(item.k, item.c1, item.c2)+'</div>'+
     '<div class="card-body"><h3>'+item.t+'</h3><p>'+item.s+'</p>'+
@@ -1606,8 +1724,12 @@ function openArt(item, group){
 window.openArt = openArt;
 
 /* ═══════════ VIEW SWITCHING ═══════════ */
-function showView(name){
+function showView(name,updateUrl=true){
   if(!document.getElementById('view-'+name))return;
+  if(updateUrl&&location.hash!=='#'+name){
+    try{history.pushState({view:name},'', '#'+name);}
+    catch(error){location.hash=name;}
+  }
   document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active', v.id==='view-'+name));
   document.querySelectorAll('.nav-links [data-view]').forEach(b=>b.classList.toggle('active', b.dataset.view===name));
   window.scrollTo({top:0, behavior:'smooth'});
@@ -1617,14 +1739,47 @@ function showView(name){
     setTimeout(()=>document.querySelector('#surahSelect')?.closest('.reader')?.scrollIntoView({behavior:'smooth',block:'start'}),120);
   }
 }
+function viewFromHash(){return location.hash.slice(1).replace(/^view-/,'');}
+function restoreViewFromUrl(){
+  const view=viewFromHash();
+  showView(['home','quran','computer','services','contact'].includes(view)?view:'home',false);
+}
+addEventListener('popstate',restoreViewFromUrl);
+addEventListener('hashchange',restoreViewFromUrl);
 document.querySelector('.nav-links').addEventListener('click',e=>{
   const button=e.target.closest('button[data-view]');
   if(button)showView(button.dataset.view);
 });
 window.showView = showView;
+if(['home','quran','computer','services','contact'].includes(viewFromHash()))showView(viewFromHash(),false);
+document.addEventListener('keydown',event=>{
+  if(event.key!=='Enter'&&event.key!==' ')return;
+  const card=event.target.closest('.card[role="button"],.track-panel[role="button"]');
+  if(!card||event.target!==card)return;
+  event.preventDefault();card.click();
+});
 window.__toast = toast; window.__beep = beep;
 window.__SURAHS = SURAHS; window.__SAMPLE = SAMPLE;
 window.__QURAN_CLASSES = QURAN_CLASSES; window.__COMPUTER_SKILLS = COMPUTER_SKILLS; window.__SERVICES = SERVICES;
+const iconNames={play:'Play recitation',pause:'Pause recitation',close:'Close',refresh:'Repeat',star:'Star',heart:'Favourite',note:'Add note',copy:'Copy',trash:'Delete',send:'Send',mic:'Start voice input',voice:'Voice',info:'Information',user:'Account',book:'Open reader',search:'Search',share:'Share',settings:'Settings',moon:'Theme',sun:'Theme',menu:'Menu',upload:'Upload',download:'Download',arrow:'Back to top',pin:'Location',check:'Confirm',plus:'Open quick actions'};
+function addAccessibleNames(root){
+  const elements=root instanceof Element?[root,...root.querySelectorAll('button,svg')]:[...document.querySelectorAll('button,svg')];
+  elements.forEach(el=>{
+    if(el.localName==='svg'){if(!el.hasAttribute('aria-label')&&!el.hasAttribute('aria-labelledby'))el.setAttribute('aria-hidden','true');return;}
+    if(el.classList.contains('switch')){
+      const label=el.parentElement?.querySelector('.lbl')?.textContent.trim();
+      if(label&&!el.hasAttribute('aria-label'))el.setAttribute('aria-label',label);
+      el.setAttribute('role','switch');
+      el.setAttribute('aria-checked',String(el.classList.contains('on')));
+    }
+    if(el.localName!=='button'||el.hasAttribute('aria-label')||el.textContent.trim())return;
+    const title=el.getAttribute('title');
+    const icon=el.querySelector('use')?.getAttribute('href')?.split('#').pop()?.replace(/^i-/,'');
+    el.setAttribute('aria-label',title||iconNames[icon]||el.id||'Action');
+  });
+}
+addAccessibleNames();
+new MutationObserver(records=>records.forEach(record=>record.addedNodes.forEach(node=>{if(node instanceof Element)addAccessibleNames(node);}))).observe(document.body,{childList:true,subtree:true});
 })();
 </script>
 
@@ -1648,7 +1803,7 @@ const state = {
     backgroundOpacity:18, backgroundImage:'', motion:false, translation:true, sound:false, voice:false, arSize:30,
     highContrast:false, arabicFont:'amiri', compactReader:false, resumeLast:false,
     scrollReader:false, dailyGoal:5, sprintMinutes:25, focusMode:false,
-    repeatAyah:false, audioRate:1, audioReciter:'ar.alafasy',
+    repeatAyah:false, repeatMode:'off', repeatCount:3, rangeStart:1, rangeEnd:1, audioRate:1, audioReciter:'ar.alafasy',
     chatEnterSend:true, voiceLanguage:'en-US', aiModel:'gpt-4o-mini',
     includeChatContext:true, assistantTone:'friendly', answerDetail:'standard',
     keepChatHistory:true, showChatTime:false, confirmClearChat:true,
@@ -1658,8 +1813,20 @@ const state = {
 let audioPlayToken = 0;
 function esc(s){ return String(s||'').replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 function toast(msg, type, ms){ if(window.__toast) window.__toast(msg, type||'ok', ms||3200); }
-function openModal(id){ document.getElementById(id).classList.add('open'); document.body.style.overflow='hidden'; }
-function closeModal(id){ document.getElementById(id).classList.remove('open'); document.body.style.overflow=''; }
+function openModal(id){
+  const modal=document.getElementById(id);
+  if(!modal)return;
+  modal._returnFocus=document.activeElement;
+  modal.classList.add('open');document.body.style.overflow='hidden';
+  requestAnimationFrame(()=>modal.querySelector('input:not([type="hidden"]),select,textarea,button,[href],[tabindex]:not([tabindex="-1"])')?.focus());
+}
+function closeModal(id){
+  const modal=document.getElementById(id);
+  if(!modal)return;
+  modal.classList.remove('open');
+  document.body.style.overflow=document.querySelector('.modal.open')?'hidden':'';
+  modal._returnFocus?.focus?.();
+}
 window.closeModal = closeModal;
 
 const SURAHS = window.__SURAHS || [];
@@ -1671,7 +1838,7 @@ function ayahKey(s,a){ return s+':'+a; }
 const surahSelect = document.getElementById('surahSelect');
 if(surahSelect){
   surahSelect.innerHTML = SURAHS.map(s=>'<option value="'+s[0]+'">'+s[0]+'. '+s[1]+' — '+s[2]+'</option>').join('');
-  surahSelect.addEventListener('change', ()=>{ stopAudio(); state.surah = +surahSelect.value; DB.set('lastSurah',state.surah); state.rtab='read'; syncTabs(); renderReader(); });
+  surahSelect.addEventListener('change', ()=>{ stopAudio(); state.surah = +surahSelect.value; DB.set('lastSurah',state.surah); state.rtab='read'; syncTabs(); syncRangeBounds(); renderReader(); });
 }
 function syncTabs(){ document.querySelectorAll('.rtab').forEach(t=>t.classList.toggle('active', t.dataset.rtab===state.rtab)); }
 const tabsEl = document.getElementById('readerTabs');
@@ -1729,8 +1896,8 @@ if(readerSearch){
     }
   });
 }
-async function getAyahs(n){
-  const reciter = state.settings.audioReciter;
+async function getAyahs(n,reciterId){
+  const reciter = reciterId||state.settings.audioReciter;
   const reciterInfo=RECITERS[reciter]||RECITERS['ar.alafasy'];
   const cacheKey = n+':'+reciter;
   if(ayahCache[cacheKey]) return ayahCache[cacheKey];
@@ -1762,8 +1929,8 @@ async function getSurahAudio(surah){
 }
 
 function surahHeaderHTML(s){
-  const bas = (s[0]!==1 && s[0]!==9) ? '<div class="basmalah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>' : '';
-  return '<div class="surah-head"><div class="ar">'+s[2]+'</div><div class="en">'+s[1]+'</div>'+bas+
+  const bas = (s[0]!==1 && s[0]!==9) ? '<div class="basmalah" lang="ar" dir="rtl">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>' : '';
+  return '<div class="surah-head"><div class="ar" lang="ar" dir="rtl">'+s[2]+'</div><div class="en">'+s[1]+'</div>'+bas+
     '<div class="meta">Surah '+s[0]+' · '+s[3]+' Ayat · '+s[4]+'</div></div>';
 }
 function ayahHTML(surah, ay, mode){
@@ -1785,35 +1952,190 @@ function ayahHTML(surah, ay, mode){
     '<button data-act="note" data-key="'+key+'" data-s="'+surah+'" data-a="'+ay.n+'" class="'+(noted?'on':'')+'" title="Note"><svg><use href="#i-note"/></svg></button>'+
     '<button data-act="copy" title="Copy Arabic + translation"><svg><use href="#i-copy"/></svg></button>'+
     '</div></div>'+
-    '<div class="ayah-ar">'+ay.ar+endMark+'</div>'+
+    '<div class="ayah-ar" lang="ar" dir="rtl">'+ay.ar+endMark+'</div>'+
     '<div class="ayah-tr">'+esc(ay.tr)+'</div>'+extra+'</div>';
 }
 function getBasmalaAudio(reciterInfo){
   return 'https://cdn.islamic.network/quran/audio/128/'+encodeURIComponent(reciterInfo.edition)+'/1.mp3';
 }
-function playAyahAudio(surah,ayah){
-  const reciterInfo=RECITERS[state.settings.audioReciter]||RECITERS['ar.alafasy'];
-  const label='Ayah '+ayah.n+' · '+getSurah(surah)[1];
-  if(ayah.n!==1||surah===1||surah===9||reciterInfo.mode!=='ayah'){
-    playAudio(ayah.audio,label,surah+':'+ayah.n);
+let audioSession=null;
+function getRepeatMode(source){
+  const select=document.getElementById((source==='dock'?'dock':'reader')+'RepeatMode');
+  return select?.value||state.settings.repeatMode||'off';
+}
+function updateAudioDock(){
+  const dock=document.getElementById('audioDock');
+  if(!dock)return;
+  const active=!!audioSession;
+  dock.classList.toggle('open',active);
+  dock.setAttribute('aria-hidden',String(!active));
+  const playing=active&&!state.audio.paused;
+  const button=document.getElementById('audioDockPlay');
+  button.innerHTML='<svg aria-hidden="true"><use href="#i-'+(playing?'pause':'play')+'"/></svg>';
+  button.setAttribute('aria-label',playing?'Pause recitation':'Play recitation');
+  document.getElementById('audioDockTitle').textContent=state.currentAudio?.label||'Qur’an recitation';
+  const label=document.getElementById('playSurahLbl');
+  if(label)label.textContent=active?(playing?'Pause':'Resume'):'Recite';
+  if(active&&'mediaSession' in navigator&&'MediaMetadata' in window){
+    navigator.mediaSession.metadata=new MediaMetadata({title:state.currentAudio?.label||'Qur’an recitation',artist:'Al-Ma’rifah Academy',album:'Qur’an Reader'});
+  }
+}
+function syncRepeatControls(){
+  const mode=state.settings.repeatMode|| (state.settings.repeatAyah?'one':'off');
+  ['readerRepeatMode','dockRepeatMode'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=mode;});
+  ['readerRangeStart','dockRangeStart'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=String(state.settings.rangeStart||1);});
+  ['readerRangeEnd','dockRangeEnd'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=String(state.settings.rangeEnd||1);});
+  ['readerRepeatCount','dockRepeatCount'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=String(state.settings.repeatCount||3);});
+  document.querySelectorAll('[data-toggle="repeatAyah"]').forEach(button=>{
+    const enabled=mode==='one';
+    button.classList.toggle('on',enabled);
+    button.setAttribute('aria-pressed',String(enabled));
+    button.setAttribute('aria-checked',String(enabled));
+  });
+}
+function persistRepeatSettings(source='reader'){
+  const prefix=source==='dock'?'dock':'reader';
+  state.settings.repeatMode=getRepeatMode(source);
+  state.settings.repeatAyah=state.settings.repeatMode==='one';
+  const start=+document.getElementById(prefix+'RangeStart').value||1;
+  const end=+document.getElementById(prefix+'RangeEnd').value||start;
+  state.settings.rangeStart=start;
+  state.settings.rangeEnd=end;
+  state.settings.repeatCount=+document.getElementById(prefix+'RepeatCount').value||3;
+  DB.set('settings',state.settings);
+  syncRepeatControls();
+  if(audioSession&&state.settings.repeatMode!=='range')audioSession.mode=state.settings.repeatMode;
+}
+function syncRangeBounds(){
+  const surah=+surahSelect.value||state.surah;
+  const limit=SAMPLE[surah]?SAMPLE[surah].verses.length:getSurah(surah)[3];
+  ['readerRangeStart','readerRangeEnd','dockRangeStart','dockRangeEnd'].forEach(id=>{
+    const input=document.getElementById(id);
+    input.max=String(limit);
+    input.value=String(Math.max(1,Math.min(limit,+input.value||1)));
+  });
+  state.settings.rangeStart=+document.getElementById('readerRangeStart').value;
+  state.settings.rangeEnd=+document.getElementById('readerRangeEnd').value;
+  syncRepeatControls();
+}
+function makeAudioItem(surah,ayah){
+  return {url:ayah.audio,label:getSurah(surah)[1]+' · Ayah '+ayah.n,key:surah+':'+ayah.n};
+}
+function playSessionItem(){
+  if(!audioSession)return;
+  const item=audioSession.items[audioSession.index];
+  playAudio(item.url,item.label,item.key);
+  state.playingAll=true;
+  state.audio.onended=advanceAudioSession;
+  updateAudioDock();
+}
+function advanceAudioSession(){
+  if(!audioSession)return;
+  const session=audioSession;
+  if(session.mode==='one'){
+    playSessionItem();
     return;
   }
-  const token=++audioPlayToken;
-  playAudio(getBasmalaAudio(reciterInfo),'Bismillah · '+getSurah(surah)[1],null);
-  state.audio.onended=()=>{
-    if(token===audioPlayToken)playAudio(ayah.audio,label,surah+':'+ayah.n);
-  };
+  if(session.index<session.items.length-1){
+    session.index++;
+    playSessionItem();
+    return;
+  }
+  if(session.mode==='all'){
+    session.index=0;
+    playSessionItem();
+    return;
+  }
+  if(session.mode==='range'&&session.cycles<session.repeatCount-1){
+    session.cycles++;
+    session.index=0;
+    playSessionItem();
+    return;
+  }
+  stopAudio();
+}
+function startAudioSession(surah,items,mode,repeatCount,startIndex,request){
+  if(!items.length){toast('No audio is available for that verse selection.','err');return;}
+  if(request!==audioPlayToken)return;
+  audioSession={surah,items,mode,repeatCount:Math.max(1,repeatCount||1),cycles:0,index:Math.max(0,Math.min(items.length-1,startIndex||0))};
+  playSessionItem();
+}
+async function loadVerseItems(surah,reciterId,start,end,includeBasmala){
+  const list=await getAyahs(surah,reciterId);
+  const selected=list.filter(item=>item.n>=start&&item.n<=end&&item.audio);
+  if(includeBasmala&&start===1&&surah!==1&&surah!==9){
+    const reciter=RECITERS[reciterId]||RECITERS['ar.alafasy'];
+    selected.unshift({n:0,audio:getBasmalaAudio(reciter),basmala:true});
+  }
+  return selected.map(item=>item.basmala
+    ?{url:item.audio,label:'Bismillah · '+getSurah(surah)[1],key:null}
+    :makeAudioItem(surah,item));
+}
+async function startSurahPlayback(){
+  stopAudio();
+  const request=++audioPlayToken;
+  const surah=+surahSelect.value||state.surah,mode=getRepeatMode();
+  const reciterId=state.settings.audioReciter;
+  const reciter=RECITERS[reciterId]||RECITERS['ar.alafasy'];
+  const start=+document.getElementById('readerRangeStart').value||1;
+  const end=+document.getElementById('readerRangeEnd').value||start;
+  try{
+    if((mode==='off'||mode==='all')&&reciter.mode==='surah'){
+      const url=await getSurahAudio(surah);
+      if(request!==audioPlayToken)return;
+      startAudioSession(surah,[{url,label:reciter.name+' · '+getSurah(surah)[1],key:null}],mode,1,0,request);
+      return;
+    }
+    let activeReciter=reciterId;
+    if(reciter.mode==='surah'){
+      activeReciter='ar.alafasy';
+      toast('This reciter provides full-surah audio only; verse controls use Mishary Alafasy.','info',4500);
+    }
+    const list=await getAyahs(surah,activeReciter);
+    if(request!==audioPlayToken)return;
+    const max=list.length?list[list.length-1].n:0;
+    const first=mode==='range'?start:mode==='one'?start:1;
+    const last=mode==='range'?end:mode==='one'?start:max;
+    if(first<1||last<first||last>max){toast('Choose a valid verse range for the selected surah.','err');return;}
+    const items=await loadVerseItems(surah,activeReciter,first,last,first===1);
+    startAudioSession(surah,items,mode,+document.getElementById('readerRepeatCount').value||3,0,request);
+  }catch(error){
+    toast('Recitation could not be loaded: '+error.message,'err',3500);
+  }
+}
+async function playAyahAudio(surah,number){
+  stopAudio();
+  const request=++audioPlayToken;
+  const mode=getRepeatMode();
+  if(mode==='range'){await startSurahPlayback();return;}
+  const reciterId=state.settings.audioReciter;
+  const reciter=RECITERS[reciterId]||RECITERS['ar.alafasy'];
+  const activeReciter=reciter.mode==='surah'?'ar.alafasy':reciterId;
+  if(reciter.mode==='surah')toast('This reciter has full-surah audio only; verse playback uses Mishary Alafasy.','info',4500);
+  try{
+    const list=await getAyahs(surah,activeReciter);
+    if(request!==audioPlayToken)return;
+    const verse=list.find(item=>item.n===number&&item.audio);
+    if(!verse){toast('Audio is unavailable for this verse.','err');return;}
+    if(mode==='all'){
+      const items=await loadVerseItems(surah,activeReciter,1,list[list.length-1].n,true);
+      const startIndex=items.findIndex(item=>item.key===surah+':'+number);
+      startAudioSession(surah,items,mode,1,startIndex,request);
+      return;
+    }
+    const items=await loadVerseItems(surah,activeReciter,number,number,number===1);
+    startAudioSession(surah,items,mode,1,items.length>1?1:0,request);
+  }catch(error){
+    toast('Recitation could not be loaded: '+error.message,'err',3500);
+  }
 }
 function bindAyahActions(container){
   container.querySelectorAll('.ayah-actions button').forEach(b=>{
     b.addEventListener('click', async ()=>{
       const act = b.dataset.act;
       if(act==='play'){
-        stopAudio();
         const surah=+b.dataset.s,number=+b.dataset.a;
-        const ayah=(ayahCache[surah+':'+state.settings.audioReciter]||[]).find(item=>item.n===number);
-        if(ayah)playAyahAudio(surah,ayah);
-        else playAudio(b.dataset.audio,'Ayah '+number+' · '+getSurah(surah)[1],surah+':'+number);
+        playAyahAudio(surah,number);
       }
       if(act==='star'){
         const i = state.stars.indexOf(b.dataset.key);
@@ -1858,7 +2180,7 @@ function bindAyahActions(container){
 function setPlayingAyah(key){
   document.querySelectorAll('#readerBody .ayah.is-playing').forEach(el=>el.classList.remove('is-playing'));
   const ayah = key && document.getElementById('ayah-'+key.replace(':','-'));
-  if(ayah){
+  if(ayah&&document.getElementById('view-home').classList.contains('active')){
     ayah.classList.add('is-playing');
     ayah.scrollIntoView({behavior:'smooth',block:'center'});
   }
@@ -1877,71 +2199,57 @@ function playAudio(url, label, key){
     stopAudio();
     toast('Recitation could not start. Check your connection and try again.','err');
   });
-  state.audio.onended = ()=>{
-    if(state.settings.repeatAyah && !state.playingAll && state.currentAudio){
-      playAudio(state.currentAudio.url,state.currentAudio.label,state.currentAudio.key);
-      return;
-    }
-    setPlayingAyah(null);
-    np.style.display = 'none';
-  };
 }
 function stopAudio(){
   audioPlayToken++;
+  audioSession=null;
   state.audio.pause(); state.audio.onended=null; state.playingAll = false; state.audioQueue = []; state.currentAudio=null;
+  state.audio.removeAttribute('src');state.audio.load();
   setPlayingAyah(null);
   document.getElementById('nowPlaying').style.display = 'none';
-  updatePlayUI(false);
+  updateAudioDock();
 }
-function updatePlayUI(on){
-  const lbl = document.getElementById('playSurahLbl');
-  if(lbl) lbl.textContent = on ? 'Stop' : 'Recite';
+state.audio.addEventListener('play',updateAudioDock);
+state.audio.addEventListener('pause',updateAudioDock);
+document.getElementById('audioDockPlay').addEventListener('click',readerPlaySurah);
+document.getElementById('audioDockStop').addEventListener('click',stopAudio);
+if('mediaSession' in navigator){
+  const mediaHandlers={
+    play:()=>audioSession&&state.currentAudio?state.audio.play().catch(()=>toast('Recitation could not resume. Check your connection and try again.','err')):startSurahPlayback(),
+    pause:()=>state.audio.pause(),
+    stop:stopAudio
+  };
+  Object.entries(mediaHandlers).forEach(([action,handler])=>{
+    if(typeof navigator.mediaSession.setActionHandler!=='function')return;
+    try{navigator.mediaSession.setActionHandler(action,handler);}
+    catch(error){if(error.name!=='NotSupportedError')console.warn('Media session action could not be registered:',error);}
+  });
+}
+document.querySelectorAll('#readerRepeatMode,#dockRepeatMode').forEach(select=>select.addEventListener('change',()=>{
+  state.settings.repeatMode=select.value;
+  state.settings.repeatAyah=select.value==='one';
+  applySettings();
+  syncRepeatControls();
+  if(audioSession&&select.value!=='range')audioSession.mode=select.value;
+  toast(select.value==='one'?'Repeat one is on':select.value==='all'?'Repeat all is on':select.value==='range'?'Set a verse range, then press Recite':'Repeat is off','info',1800);
+}));
+document.querySelectorAll('#readerRangeStart,#readerRangeEnd,#readerRepeatCount,#dockRangeStart,#dockRangeEnd,#dockRepeatCount').forEach(input=>input.addEventListener('change',()=>{
+  persistRepeatSettings(input.id.startsWith('dock')?'dock':'reader');
+  syncRangeBounds();
+}));
+syncRepeatControls();
+syncRangeBounds();
+function toggleAudioPlayback(){
+  if(audioSession&&state.currentAudio){
+    if(state.audio.paused){
+      state.audio.play().catch(()=>toast('Recitation could not resume. Check your connection and try again.','err'));
+    }else state.audio.pause();
+    updateAudioDock();return;
+  }
+  startSurahPlayback();
 }
 function readerPlaySurah(){
-  if(state.playingAll){ stopAudio(); return; }
-  stopAudio();
-  const surah = state.surah;
-  const token=++audioPlayToken;
-  const reciter=RECITERS[state.settings.audioReciter]||RECITERS['ar.alafasy'];
-  if(reciter.mode==='surah'){
-    state.playingAll=true;updatePlayUI(true);
-    getSurahAudio(surah).then(url=>{
-      if(token!==audioPlayToken||surah!==state.surah)return;
-      const label=reciter.name+' · '+getSurah(surah)[1];
-      const playFullSurah=()=>{
-        playAudio(url,label,null);
-        state.audio.onended=()=>{
-          if(state.settings.repeatAyah&&state.playingAll)playFullSurah();
-          else stopAudio();
-        };
-      };
-      playFullSurah();
-    }).catch(error=>{
-      if(token!==audioPlayToken)return;
-      stopAudio();
-      toast('Recitation could not be loaded: '+error.message,'err',3500);
-    });
-    return;
-  }
-  getAyahs(surah).then(list=>{
-    if(token!==audioPlayToken || surah!==state.surah)return;
-    const reciterInfo=RECITERS[state.settings.audioReciter]||RECITERS['ar.alafasy'];
-    const opening=surah!==1&&surah!==9
-      ?[{audio:getBasmalaAudio(reciterInfo),n:0,basmala:true}]
-      :[];
-    state.audioQueue = opening.concat(list); state.playingAll = true; updatePlayUI(true);
-    const next = ()=>{
-      if(token!==audioPlayToken || !state.playingAll)return;
-      if(!state.audioQueue.length){ stopAudio(); return; }
-      const ay = state.audioQueue.shift();
-      playAudio(ay.audio, ay.basmala?'Bismillah · '+getSurah(surah)[1]:getSurah(surah)[1]+' · Ayah '+ay.n, ay.basmala?null:surah+':'+ay.n);
-      state.audio.onended = ()=>{
-        if(state.settings.repeatAyah&&!ay.basmala) state.audioQueue.unshift(ay);
-        next();
-      };
-    };
-    next();
-  }).catch(()=>toast('Recitation needs internet','err'));
+  toggleAudioPlayback();
 }
 window.readerPlaySurah = readerPlaySurah;
 
@@ -2082,7 +2390,7 @@ window.setTab = function(t){ state.rtab = t; syncTabs(); renderReader(); };
     ['إِنَّ اللَّهَ مَعَ الصَّابِرِينَ','Indeed, Allah is with the patient.','Al-Baqarah 2:153']
   ];
   const d = pool[Math.floor(Date.now()/86400000) % pool.length];
-  el.innerHTML = '<div style="font-family:var(--font-ar);font-size:clamp(22px,4vw,34px);line-height:2.1;direction:rtl">'+d[0]+'</div>'+
+  el.innerHTML = '<div lang="ar" dir="rtl" style="font-family:var(--font-ar);font-size:clamp(22px,4vw,34px);line-height:2.4;direction:rtl">'+d[0]+'</div>'+
     '<div style="font-size:15px;color:var(--muted);margin-top:20px;font-weight:300;line-height:1.75;max-width:520px;margin-left:auto;margin-right:auto">'+d[1]+'</div>'+
     '<div style="font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin-top:18px;font-weight:600">'+d[2]+'</div>';
 })();
@@ -2092,88 +2400,74 @@ const COUNTRIES = ['Afghanistan','Albania','Algeria','Angola','Argentina','Austr
 function openEnroll(track){
   state.enrollTrack = track || 'both';
   const label = { quran:'Qur\'an Track', computer:'Computer Track', services:'Services', both:'Both Tracks' }[state.enrollTrack];
-  document.getElementById('enrollSub').textContent = 'Enrolling in: ' + label;
+  document.getElementById('enrollSub').textContent = 'Prepare an email request for ' + label + '. Course pricing is available on request.';
   document.getElementById('enrollBody').innerHTML =
-    '<form id="enrollForm" novalidate>'+
-    '<div class="field"><label>I want to enroll in</label><div class="seg" id="trackSeg">'+
-    '<button type="button" data-track="quran">Qur\'an Track</button>'+
-    '<button type="button" data-track="computer">Computer Track</button>'+
-    '<button type="button" data-track="both">Both Tracks</button>'+
-    '<button type="button" data-track="services">Services</button></div></div>'+
+    '<form id="enrollForm">'+
+    '<div class="field"><span class="field-label">I want to request</span><div class="seg" id="trackSeg" role="group" aria-label="Choose a track or service">'+
+    '<button type="button" data-track="quran" aria-pressed="false">Qur\'an Track</button>'+
+    '<button type="button" data-track="computer" aria-pressed="false">Computer Track</button>'+
+    '<button type="button" data-track="both" aria-pressed="false">Both Tracks</button>'+
+    '<button type="button" data-track="services" aria-pressed="false">Services</button></div></div>'+
+    '<div class="field"><label for="in-name">Name *</label><input type="text" id="in-name" placeholder="Your name" autocomplete="name" required maxlength="120"></div>'+
+    '<div class="field"><label for="in-email">Email address *</label><input type="email" id="in-email" placeholder="you@example.com" autocomplete="email" required maxlength="254"></div>'+
+    '<div class="field"><label for="in-country">Country or time zone (optional)</label><input type="text" id="in-country" list="countryList" placeholder="For scheduling, if useful" autocomplete="country-name" maxlength="80"><datalist id="countryList">'+COUNTRIES.map(c=>'<option value="'+c+'">').join('')+'</datalist></div>'+
     '<div class="row-2">'+
-    '<div class="field" id="f-first"><label>First name *</label><input type="text" id="in-first" placeholder="e.g. Muhammad" autocomplete="given-name"><div class="msg">Please enter your first name.</div></div>'+
-    '<div class="field" id="f-last"><label>Surname *</label><input type="text" id="in-last" placeholder="e.g. Basiru" autocomplete="family-name"><div class="msg">Please enter your surname.</div></div></div>'+
-    '<div class="row-2">'+
-    '<div class="field" id="f-dob"><label>Date of birth *</label><input type="date" id="in-dob"><div class="msg">Please enter a valid date of birth in the past.</div></div>'+
-    '<div class="field" id="f-gender"><label>Gender *</label><select id="in-gender"><option value="">Select…</option><option>Male</option><option>Female</option></select><div class="msg">Please select your gender.</div></div></div>'+
-    '<div class="field" id="f-email"><label>Email address *</label><input type="email" id="in-email" placeholder="you@example.com" autocomplete="email"><div class="msg">Please enter a valid email address.</div></div>'+
-    '<div class="row-2">'+
-    '<div class="field" id="f-origin"><label>Country of origin *</label><input type="text" id="in-origin" list="countryList" placeholder="Start typing…"><datalist id="countryList">'+COUNTRIES.map(c=>'<option value="'+c+'">').join('')+'</datalist><div class="msg">Please enter your country of origin.</div></div>'+
-    '<div class="field" id="f-residence"><label>Country of residence *</label><input type="text" id="in-residence" list="countryList" placeholder="Start typing…"><div class="msg">Please enter your country of residence.</div></div></div>'+
-    '<div class="row-2">'+
-    '<div class="field" id="f-qlevel"><label>Qur\'an experience level *</label><select id="in-qlevel"><option value="">Select…</option><option>None — complete beginner</option><option>Beginner — knows the alphabet</option><option>Intermediate — reads with mistakes</option><option>Advanced — fluent reciter</option><option>Hafiz / Hafiza</option></select><div class="msg">Please select your Qur\'an experience level.</div></div>'+
-    '<div class="field" id="f-clevel"><label>Computer skill level *</label><select id="in-clevel"><option value="">Select…</option><option>None — complete beginner</option><option>Beginner — basic typing</option><option>Intermediate — comfortable with Office</option><option>Advanced — advanced user</option></select><div class="msg">Please select your computer skill level.</div></div></div>'+
-    '<div class="field"><label>Anything else we should know? (optional)</label><textarea id="in-msg" placeholder="Preferred times, goals, special requests…"></textarea></div>'+
-    '<button type="submit" class="btn btn-primary" style="width:100%;margin-top:8px"><svg><use href="#i-check"/></svg> Register Now</button>'+
-    '<p style="font-size:11.5px;color:var(--muted);text-align:center;margin-top:14px;font-weight:300">This standalone website cannot submit forms or send confirmation emails. Your details are not stored here; the next step prepares an email draft for you to review and send.</p></form>';
+    '<div class="field track-experience" data-track-experience="quran"><label for="in-qlevel">Qur\'an experience (optional)</label><select id="in-qlevel"><option value="">Select…</option><option>Complete beginner</option><option>Knows the alphabet</option><option>Reads with some mistakes</option><option>Fluent reciter</option><option>Hafiz / Hafiza</option></select></div>'+
+    '<div class="field track-experience" data-track-experience="computer"><label for="in-clevel">Computer experience (optional)</label><select id="in-clevel"><option value="">Select…</option><option>Complete beginner</option><option>Basic typing</option><option>Comfortable with Office</option><option>Advanced user</option></select></div></div>'+
+    '<div class="field"><label for="in-msg">Message (optional)</label><textarea id="in-msg" maxlength="1500" placeholder="Goals, preferred times, or a question about pricing…"></textarea></div>'+
+    '<button type="submit" class="btn btn-primary" style="width:100%;margin-top:8px"><svg aria-hidden="true"><use href="#i-mail"/></svg> Prepare Email Request</button>'+
+    '<p style="font-size:11.5px;color:var(--muted);text-align:center;margin-top:14px;font-weight:300">This site has no enrollment submission service. We ask only for a name and email; no date of birth or gender. Your details are not saved or sent unless you review and send the email draft. Ask us for course pricing before enrolling.</p></form>';
   const seg = document.getElementById('trackSeg');
   seg.querySelectorAll('button').forEach(b=>{
-    if(b.dataset.track === state.enrollTrack) b.classList.add('on');
+    if(b.dataset.track === state.enrollTrack){b.classList.add('on');b.setAttribute('aria-pressed','true');}
     b.addEventListener('click', ()=>{
-      seg.querySelectorAll('button').forEach(x=>x.classList.remove('on'));
-      b.classList.add('on'); state.enrollTrack = b.dataset.track;
+      seg.querySelectorAll('button').forEach(x=>{x.classList.remove('on');x.setAttribute('aria-pressed','false');});
+      b.classList.add('on');b.setAttribute('aria-pressed','true');state.enrollTrack = b.dataset.track;
+      document.querySelectorAll('[data-track-experience]').forEach(field=>{
+        field.hidden=state.enrollTrack==='services'||(state.enrollTrack!=='both'&&state.enrollTrack!==field.dataset.trackExperience);
+      });
     });
+  });
+  document.querySelectorAll('[data-track-experience]').forEach(field=>{
+    field.hidden=state.enrollTrack==='services'||(state.enrollTrack!=='both'&&state.enrollTrack!==field.dataset.trackExperience);
   });
   document.getElementById('enrollForm').addEventListener('submit', submitEnroll);
   openModal('enrollModal');
 }
 window.openEnroll = openEnroll;
-function setErr(id,on){ document.getElementById(id).classList.toggle('err',on); }
 function submitEnroll(e){
   e.preventDefault();
   const v = id => document.getElementById(id).value.trim();
-  let ok = true;
-  const first=v('in-first'), last=v('in-last'), dob=v('in-dob'), gender=v('in-gender'),
-        email=v('in-email'), origin=v('in-origin'), residence=v('in-residence'),
-        quranLevel=v('in-qlevel'), computerLevel=v('in-clevel');
-  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
-  const dobDate = dob ? new Date(dob + 'T00:00:00') : null;
-  const dobOk = !!dobDate && !Number.isNaN(dobDate.getTime()) && dobDate < new Date();
-  setErr('f-first',!first); if(!first) ok=false;
-  setErr('f-last',!last); if(!last) ok=false;
-  setErr('f-dob',!dobOk); if(!dobOk) ok=false;
-  setErr('f-gender',!gender); if(!gender) ok=false;
-  setErr('f-email',!emailOk); if(!emailOk) ok=false;
-  setErr('f-origin',!origin); if(!origin) ok=false;
-  setErr('f-residence',!residence); if(!residence) ok=false;
-  setErr('f-qlevel',!quranLevel); if(!quranLevel) ok=false;
-  setErr('f-clevel',!computerLevel); if(!computerLevel) ok=false;
-  if(!ok){ toast('Please complete the highlighted fields.','err'); return; }
+  const name=v('in-name'),email=v('in-email'),country=v('in-country'),
+        quranLevel=v('in-qlevel'),computerLevel=v('in-clevel');
+  if(!name||!email||!document.getElementById('enrollForm').reportValidity())return;
   const trackLabel = { quran:"Qur'an Track", computer:'Computer Track', both:'Both Tracks', services:'Services' }[state.enrollTrack];
   const message = v('in-msg');
   const bodyLines = [
     'ENROLLMENT REQUEST — Al-Ma\'rifah Academy (المعرفة)','',
     'Track: ' + trackLabel,
-    'Name: ' + first + ' ' + last,
-    'Date of birth: ' + dob,
-    'Gender: ' + gender,
+    'Name: ' + name,
     'Email: ' + email,
-    'Country of origin: ' + origin,
-    'Country of residence: ' + residence,
-    'Qur\'an level: ' + quranLevel,
-    'Computer level: ' + computerLevel,
+    country ? 'Country or time zone: ' + country : '',
+    quranLevel ? 'Qur\'an experience: ' + quranLevel : '',
+    computerLevel ? 'Computer experience: ' + computerLevel : '',
     message ? 'Message: ' + message : ''
   ].filter(Boolean).join('\n');
   document.getElementById('enrollBody').innerHTML =
     '<div class="success"><div class="success-ring"><svg><use href="#i-mail"/></svg></div><h3>Email Draft Ready</h3>'+
-    '<p>Thank you, <strong>'+esc(first)+'</strong>. Your enrollment request is ready for <strong>'+trackLabel+'</strong>. This website cannot submit it or send a confirmation email: click below to open your email app, then review and press Send. The form details are not stored on this device or sent anywhere until you send that email.</p>'+
+    '<p>Thank you, <strong>'+esc(name)+'</strong>. Your request for <strong>'+trackLabel+'</strong> is only a draft; the academy has not received it. Open your email app, review the details and press Send. No course pricing is published here, so please ask for a quote.</p>'+
     '<div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:28px">'+
     '<a class="btn btn-primary" id="enrollEmailLink"><svg><use href="#i-send"/></svg> Open Email Draft</a>'+
+    '<button type="button" class="btn btn-ghost" id="copyEnrollDraft">Copy Request</button>'+
     '<button class="btn btn-ghost" onclick="openEnroll(\''+state.enrollTrack+'\')">Edit details</button></div></div>';
-  document.getElementById('enrollEmailLink').href = 'mailto:Muhammadbasiru125g@gmail.com?subject=' +
-    encodeURIComponent('Enrollment Request: ' + first + ' ' + last + ' — ' + trackLabel) +
-    '&body=' + encodeURIComponent(bodyLines);
-  toast('Email draft is ready — send it from your email app to complete enrollment.','info',5000);
+  const subject='Enrollment Request: '+name+' — '+trackLabel;
+  document.getElementById('enrollEmailLink').href = 'mailto:Muhammadbasiru125g@gmail.com?subject='+
+    encodeURIComponent(subject)+'&body='+encodeURIComponent(bodyLines);
+  document.getElementById('enrollEmailLink').addEventListener('click',()=>toast('Your email app should open. The request is not received until you press Send.','info',5000));
+  document.getElementById('copyEnrollDraft').addEventListener('click',()=>copyDraftText(
+    'To: Muhammadbasiru125g@gmail.com\nSubject: '+subject+'\n\n'+bodyLines,
+    'Enrollment request copied. Paste it into an email or message.'
+  ));
 }
 window.submitEnroll = submitEnroll;
 
@@ -2200,14 +2494,19 @@ function openRate(target){
 window.openRate = openRate;
 window.__submitRate = function(){
   if(!state.rating){ toast('Please select a star rating first.','err'); return; }
-  const all = DB.get('ratings', []);
-  all.push({ target: state.rateTarget, stars: state.rating, comment: (document.getElementById('rateComment').value||'').trim(), ts: Date.now() });
-  DB.set('ratings', all);
+  const comment=(document.getElementById('rateComment').value||'').trim();
+  const label={quran:"Qur'an Track",computer:'Computer Track',services:'Services'}[state.rateTarget]||'Academy';
+  const emailBody=['Feedback for '+label,'Rating: '+state.rating+' out of 5',comment?'Comment: '+comment:''].filter(Boolean).join('\n');
   document.getElementById('rateBody').innerHTML =
-    '<div class="success"><div class="success-ring"><svg><use href="#i-star"/></svg></div><h3>Thank You!</h3>'+
-    '<p>Your '+state.rating+'-star rating has been saved. We truly appreciate your feedback.</p>'+
-    '<button class="btn btn-primary" style="margin-top:24px" onclick="closeModal(\'rateModal\')">Close</button></div>';
-  toast('Rating submitted — thank you!','ok');
+    '<div class="success"><div class="success-ring"><svg><use href="#i-mail"/></svg></div><h3>Email Draft Ready</h3>'+
+    '<p>Your '+state.rating+'-star feedback is ready to email. The academy has not received it yet; review the draft and press Send in your email app.</p>'+
+    '<a class="btn btn-primary" style="margin-top:24px" href="mailto:Muhammadbasiru125g@gmail.com?subject='+encodeURIComponent('Feedback: '+label)+'&body='+encodeURIComponent(emailBody)+'">Open Feedback Email</a>'+
+    '<button type="button" class="btn btn-ghost" style="margin-top:24px" id="copyRateFeedback">Copy Feedback</button>'+
+    '<button class="btn btn-ghost" style="margin-top:24px" onclick="closeModal(\'rateModal\')">Close</button></div>';
+  document.getElementById('copyRateFeedback').addEventListener('click',()=>copyDraftText(
+    'To: Muhammadbasiru125g@gmail.com\nSubject: Feedback: '+label+'\n\n'+emailBody,
+    'Feedback copied. Paste it into an email or message.'
+  ));
 };
 
 /* ═══════════ SHARE (real links) ═══════════ */
@@ -2286,16 +2585,29 @@ function buildSearchIndex(){
 const searchOverlay = document.getElementById('searchOverlay');
 const searchInput = document.getElementById('searchInput');
 const searchResults = document.getElementById('searchResults');
-function openSearch(){ searchOverlay.classList.add('open'); document.body.style.overflow='hidden'; setTimeout(()=>searchInput.focus(),60); renderSearch(''); }
+let searchReturnFocus=null;
+function openSearch(){
+  searchReturnFocus=document.activeElement;
+  searchOverlay.classList.add('open');
+  searchOverlay.setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';
+  setTimeout(()=>searchInput.focus(),60);
+  renderSearch('');
+}
 document.getElementById('searchBtn').addEventListener('click',openSearch);
 window.openSearch = openSearch;
-function closeSearch(){ searchOverlay.classList.remove('open'); document.body.style.overflow=''; }
+function closeSearch(){
+  searchOverlay.classList.remove('open');
+  searchOverlay.setAttribute('aria-hidden','true');
+  document.body.style.overflow=document.querySelector('.modal.open')?'hidden':'';
+  if(searchReturnFocus?.isConnected)searchReturnFocus.focus();
+}
 searchOverlay.addEventListener('click', e=>{ if(e.target===searchOverlay) closeSearch(); });
 function renderSearch(q){
   const term = q.trim().toLowerCase();
   const list = term ? searchIndex.filter(x=>x.title.toLowerCase().includes(term)||x.sub.toLowerCase().includes(term)).slice(0,24) : searchIndex.slice(0,12);
   if(!list.length){ searchResults.innerHTML = '<div class="empty" style="padding:40px 20px"><svg><use href="#i-search"/></svg><p>No results for "'+esc(q)+'"</p></div>'; return; }
-  searchResults.innerHTML = list.map((x,i)=>'<div class="sr-item" data-sr="'+i+'"><div class="sr-ico"><svg><use href="#i-'+x.ico+'"/></svg></div><div><div class="sr-t">'+x.title+'</div><div class="sr-s">'+x.sub+'</div></div></div>').join('');
+  searchResults.innerHTML = list.map((x,i)=>'<button type="button" class="sr-item" data-sr="'+i+'"><span class="sr-ico"><svg><use href="#i-'+x.ico+'"/></svg></span><span><span class="sr-t">'+x.title+'</span><span class="sr-s">'+x.sub+'</span></span></button>').join('');
   searchResults.querySelectorAll('.sr-item').forEach((el,i)=>{ el.addEventListener('click', ()=>{ closeSearch(); list[i].act(); }); });
 }
 searchInput.addEventListener('input', ()=>renderSearch(searchInput.value));
@@ -2316,6 +2628,11 @@ function applySettings(){
   if(typeof s.ttsVoice!=='string'||s.ttsVoice.length>200) s.ttsVoice='auto';
   if(!Number.isFinite(+s.ttsPitch)||+s.ttsPitch<0.85||+s.ttsPitch>1.2) s.ttsPitch=1.05;
   if(![0.75,1,1.25,1.5].includes(+s.audioRate)) s.audioRate=1;
+  if(!['off','all','one','range'].includes(s.repeatMode))s.repeatMode=s.repeatAyah?'one':'off';
+  s.repeatAyah=s.repeatMode==='one';
+  if(![1,2,3,4,5,10].includes(+s.repeatCount))s.repeatCount=3;
+  if(!Number.isInteger(+s.rangeStart)||+s.rangeStart<1)s.rangeStart=1;
+  if(!Number.isInteger(+s.rangeEnd)||+s.rangeEnd<1)s.rangeEnd=1;
   if(!RECITERS[s.audioReciter]) s.audioReciter='ar.alafasy';
   if(!fontChoices[s.arabicFont]) s.arabicFont='amiri';
   if(![3,5,10,20].includes(+s.dailyGoal)) s.dailyGoal=5;
@@ -2336,10 +2653,10 @@ function applySettings(){
   document.documentElement.setAttribute('data-background-animation',s.backgroundAnimation);
   document.documentElement.setAttribute('data-background-motion',s.motion?'reduced':'full');
   document.documentElement.style.setProperty('--background-opacity',(s.backgroundOpacity/100).toFixed(2));
-  document.documentElement.style.setProperty('--custom-background-image',s.backgroundImage?'url("'+s.backgroundImage+'")':'url("assets/quran-background-sample.png")');
+  document.documentElement.style.setProperty('--custom-background-image',s.backgroundImage?'url("'+s.backgroundImage+'")':'url("assets/quran-background-sample.svg")');
   const backgroundPreview=document.getElementById('backgroundSampleThumb');
   if(backgroundPreview){
-    backgroundPreview.style.backgroundImage=s.backgroundImage?'url("'+s.backgroundImage+'")':'url("assets/quran-background-sample.png")';
+    backgroundPreview.style.backgroundImage=s.backgroundImage?'url("'+s.backgroundImage+'")':'url("assets/quran-background-sample.svg")';
     backgroundPreview.setAttribute('aria-label',s.backgroundImage?'Preview of your uploaded background image':'Preview of the supplied Qur’an poster sample');
   }
   document.documentElement.style.setProperty('--ar-size', s.arSize+'px');
@@ -2357,10 +2674,13 @@ function applySettings(){
     const enabled=!!state.settings[t.dataset.toggle];
     t.classList.toggle('on',enabled);
     if(t.dataset.toggle==='repeatAyah') t.setAttribute('aria-pressed',String(enabled));
+    if(t.classList.contains('switch'))t.setAttribute('aria-checked',String(enabled));
   });
   document.querySelectorAll('[data-setting-select]').forEach(el=>{ el.value=String(s[el.dataset.settingSelect]); });
   const readerRate=document.getElementById('readerAudioRate');
   if(readerRate) readerRate.value=String(s.audioRate);
+  syncRepeatControls();
+  syncRangeBounds();
   const reciterHelp=document.getElementById('reciterHelp');
   if(reciterHelp)reciterHelp.textContent=RECITERS[s.audioReciter].mode==='surah'
     ?'Full-surah audio; individual ayah playback is unavailable'
@@ -2437,7 +2757,10 @@ window.__revealView('home');
 document.querySelectorAll('[data-theme-set]').forEach(b=>b.addEventListener('click', ()=>{ state.settings.theme=b.dataset.themeSet; applySettings(); }));
 document.querySelectorAll('[data-accent-set]').forEach(b=>b.addEventListener('click', ()=>{ state.settings.accent=b.dataset.accentSet; applySettings(); }));
 document.querySelectorAll('[data-toggle]').forEach(t=>t.addEventListener('click', ()=>{
-  const k = t.dataset.toggle; state.settings[k] = !state.settings[k]; applySettings();
+  const k = t.dataset.toggle; state.settings[k] = !state.settings[k];
+  if(k==='repeatAyah')state.settings.repeatMode=state.settings.repeatAyah?'one':'off';
+  applySettings();
+  if(k==='repeatAyah')syncRepeatControls();
   if(k==='keepChatHistory'&&window.syncChatPersistence)window.syncChatPersistence();
 }));
 document.querySelectorAll('[data-setting-select]').forEach(el=>el.addEventListener('change',()=>{
@@ -2606,6 +2929,11 @@ window.openComputerHub = function(){
 };
 const QUIZ_LEVELS=50,QUIZ_QUESTIONS_PER_LEVEL=25,QUIZ_PASS_SCORE=15;
 const QUIZ_PROGRESS_DEFAULT={quran:{unlocked:1,bestScores:{}},computer:{unlocked:1,bestScores:{}}};
+function quizPassTarget(level){
+  return QUIZ_PASS_SCORE+(level-1)*(QUIZ_QUESTIONS_PER_LEVEL-QUIZ_PASS_SCORE)/(QUIZ_LEVELS-1);
+}
+function quizRequiredScore(level){return Math.ceil(quizPassTarget(level));}
+function quizTargetPercent(level){return (quizPassTarget(level)/QUIZ_QUESTIONS_PER_LEVEL*100).toFixed(1);}
 function validQuizProgress(value){
   return value&&['quran','computer'].every(track=>{
     const item=value[track];
@@ -2644,23 +2972,23 @@ function buildQuranQuestionBank(){
   const surahs=window.__SURAHS||[];
   const names=surahs.map(s=>s[1]),arabicNames=surahs.map(s=>s[2]),numbers=surahs.map(s=>String(s[0])),counts=surahs.map(s=>String(s[3]));
   const templates=[
-    {q:s=>'Which English name is listed for surah number '+s[0]+'?',a:s=>s[1],pool:names},
-    {q:s=>'Which Arabic name is shown beside surah number '+s[0]+'?',a:s=>s[2],pool:arabicNames},
-    {q:s=>'What number does this reader assign to '+s[1]+'?',a:s=>String(s[0]),pool:numbers},
-    {q:s=>'How many ayat does this reader list for '+s[1]+'?',a:s=>String(s[3]),pool:counts},
-    {q:s=>'Is '+s[1]+' labelled Meccan or Medinan in this reader?',a:s=>s[4],pool:['Meccan','Medinan','Not stated in this reader','Unknown in this reader']},
-    {q:s=>'In the reader index, what English title appears at position '+s[0]+'?',a:s=>s[1],pool:names},
-    {q:s=>'Find '+s[1]+' in the index. What is its surah number?',a:s=>String(s[0]),pool:numbers},
-    {q:s=>'According to the surah list, what is the ayah count for '+s[1]+'?',a:s=>String(s[3]),pool:counts},
-    {q:s=>'What revelation-place label does the reader show for '+s[1]+'?',a:s=>s[4],pool:['Meccan','Medinan','Not stated in this reader','Unknown in this reader']},
-    {q:s=>'Which English title is paired with the Arabic label '+s[2]+'?',a:s=>s[1],pool:names},
-    {q:s=>'When opening surah '+s[0]+', which Arabic title should you expect?',a:s=>s[2],pool:arabicNames},
-    {q:s=>'The reader lists '+s[1]+'. What ayah total appears beside it?',a:s=>String(s[3]),pool:counts}
+    {q:s=>'Which English name is listed for surah number '+s[0]+'?',a:s=>s[1],pool:names,difficulty:1},
+    {q:s=>'Which Arabic name is shown beside surah number '+s[0]+'?',a:s=>s[2],pool:arabicNames,difficulty:2},
+    {q:s=>'What number does this reader assign to '+s[1]+'?',a:s=>String(s[0]),pool:numbers,difficulty:1},
+    {q:s=>'How many ayat does this reader list for '+s[1]+'?',a:s=>String(s[3]),pool:counts,difficulty:2},
+    {q:s=>'Is '+s[1]+' labelled Meccan or Medinan in this reader?',a:s=>s[4],pool:['Meccan','Medinan','Not stated in this reader','Unknown in this reader'],difficulty:3},
+    {q:s=>'In the reader index, what English title appears at position '+s[0]+'?',a:s=>s[1],pool:names,difficulty:3},
+    {q:s=>'Find '+s[1]+' in the index. What is its surah number?',a:s=>String(s[0]),pool:numbers,difficulty:1},
+    {q:s=>'According to the surah list, what is the ayah count for '+s[1]+'?',a:s=>String(s[3]),pool:counts,difficulty:2},
+    {q:s=>'What revelation-place label does the reader show for '+s[1]+'?',a:s=>s[4],pool:['Meccan','Medinan','Not stated in this reader','Unknown in this reader'],difficulty:3},
+    {q:s=>'Which English title is paired with the Arabic label '+s[2]+'?',a:s=>s[1],pool:names,difficulty:4},
+    {q:s=>'When opening surah '+s[0]+', which Arabic title should you expect?',a:s=>s[2],pool:arabicNames,difficulty:4},
+    {q:s=>'The reader lists '+s[1]+'. What ayah total appears beside it?',a:s=>String(s[3]),pool:counts,difficulty:4}
   ];
   const bank=[];
   for(const surah of surahs)for(const template of templates){
     const answer=template.a(surah);
-    bank.push({q:template.q(surah),a:answer,o:quizChoices(answer,template.pool),scope:'Surah-list metadata'});
+    bank.push({q:template.q(surah),a:answer,o:quizChoices(answer,template.pool),scope:'Surah-list metadata',difficulty:template.difficulty});
   }
   return bank;
 }
@@ -2766,29 +3094,55 @@ function buildComputerQuestionBank(){
   const bank=[];
   COMPUTER_QUIZ_FACTS.forEach(fact=>COMPUTER_QUESTION_TEMPLATES.forEach(template=>{
     const answer=fact.answer;
-    bank.push({q:template(fact.task).replace('{app}',fact.app),a:answer,o:quizChoices(answer,[...fact.wrong]),scope:fact.app});
+    bank.push({q:template(fact.task).replace('{app}',fact.app),a:answer,o:quizChoices(answer,[...fact.wrong]),scope:fact.app,difficulty:computerQuestionDifficulty(fact)});
   }));
   return bank;
 }
+function computerQuestionDifficulty(fact){
+  if(fact.app==='AI literacy')return 4;
+  if(fact.app==='Digital literacy')return 3;
+  if(fact.app==='Computer basics')return 1;
+  if(/table of contents|Mail Merge|absolute reference|Data Validation|PivotTable|Conditional Formatting|branching|section routing|response validation|Version history|offline access|quiz settings|formula|PivotTable/i.test(fact.task))return 3;
+  if(/start a new page|add the values|calculate the mean|count numeric|show only rows|keep header rows|audience full-screen|make a question mandatory|choose only one|group related messages|file easier|save regularly/i.test(fact.task))return 1;
+  return 2;
+}
 function prepareQuizBank(bank,track){
   const unique=new Set(bank.map(item=>item.q));
-  if(bank.length<QUIZ_LEVELS*QUIZ_QUESTIONS_PER_LEVEL||unique.size!==bank.length)throw new Error('The '+track+' quiz bank must contain at least 1,250 unique questions.');
-  return seededShuffle(bank,track==='quran'?114:'computer'.length+520);
+  if(bank.length<QUIZ_LEVELS*QUIZ_QUESTIONS_PER_LEVEL||unique.size!==bank.length||bank.some(item=>![1,2,3,4].includes(item.difficulty)))throw new Error('The '+track+' quiz bank must contain at least 1,250 unique, tiered questions.');
+  return [1,2,3,4].flatMap(difficulty=>seededShuffle(
+    bank.filter(item=>item.difficulty===difficulty),
+    (track==='quran'?114:528)+difficulty*37
+  ));
 }
-const QUIZ_BANKS={quran:prepareQuizBank(buildQuranQuestionBank(),'Qur’an'),computer:prepareQuizBank(buildComputerQuestionBank(),'Computer')};
+const QUIZ_BANKS={quran:prepareQuizBank(buildQuranQuestionBank(),'quran'),computer:prepareQuizBank(buildComputerQuestionBank(),'computer')};
 let quizSession=null;
+let usedQuizQuestions=DB.get('usedQuizQuestions',{quran:[],computer:[]});
+if(!usedQuizQuestions||!Array.isArray(usedQuizQuestions.quran)||!Array.isArray(usedQuizQuestions.computer))usedQuizQuestions={quran:[],computer:[]};
+['quran','computer'].forEach(track=>{
+  usedQuizQuestions[track]=[...new Set(usedQuizQuestions[track].filter(question=>typeof question==='string'&&question.length<=5000))];
+});
 function quizTrackName(track){return track==='quran'?'Qur’an Facts':'Computer Skills';}
+function quizLevelDifficulty(track,level){
+  let assigned=0;
+  for(let difficulty=1;difficulty<=4;difficulty++){
+    const available=QUIZ_BANKS[track].filter(item=>item.difficulty===difficulty).length;
+    assigned+=Math.floor(available/QUIZ_QUESTIONS_PER_LEVEL);
+    if(level<=assigned)return difficulty;
+  }
+  return 4;
+}
+function quizDifficultyName(difficulty){return ['','Foundations','Core knowledge','Applied skills','Advanced'][difficulty]||'Advanced';}
 function showQuizLevelPicker(track){
   if(!QUIZ_BANKS[track])return;
   quizSession={track,levelPicker:true};
   const progress=quizProgress[track];
   closeDrawer('menuDrawer');
   document.getElementById('toolTitle').textContent=quizTrackName(track)+' Quiz';
-  document.getElementById('toolSubtitle').textContent=progress.unlocked+' of '+QUIZ_LEVELS+' levels unlocked · 25 questions per level';
+  document.getElementById('toolSubtitle').textContent=progress.unlocked+' of '+QUIZ_LEVELS+' levels unlocked · difficulty and mastery target rise by level';
   document.getElementById('toolBody').innerHTML=
-    '<p style="font-size:13px;color:var(--muted);margin:0 0 16px">Pass a level with at least '+QUIZ_PASS_SCORE+' correct answers to unlock the next one. Your progress is saved only in this browser.</p>'+
+    '<p style="font-size:13px;color:var(--muted);margin:0 0 16px">Question difficulty advances from foundations to advanced topics, while the mastery target rises every level from '+quizTargetPercent(1)+'% at level 1 to '+quizTargetPercent(QUIZ_LEVELS)+'% at level '+QUIZ_LEVELS+'. Questions are never repeated in this browser; retries use fresh questions from the same or a harder tier.</p>'+
     '<div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px" role="group" aria-label="Quiz levels">'+
-    Array.from({length:QUIZ_LEVELS},(_,i)=>{const level=i+1,locked=level>progress.unlocked,best=progress.bestScores[level];return '<button type="button" class="btn '+(locked?'btn-ghost':'btn-primary')+'" data-quiz-level="'+level+'" '+(locked?'disabled aria-label="Level '+level+' locked"':'aria-label="Start level '+level+(best!==undefined?', best score '+best+' out of 25':'')+'"')+' style="min-width:0;padding:10px 4px;display:grid;gap:2px;opacity:'+(locked?'.45':'1')+'"><strong>'+level+'</strong>'+(best!==undefined?'<small style="font-size:9px">'+best+'/25</small>':'')+'</button>';}).join('')+
+    Array.from({length:QUIZ_LEVELS},(_,i)=>{const level=i+1,locked=level>progress.unlocked,best=progress.bestScores[level],difficulty=quizLevelDifficulty(track,level),target=quizRequiredScore(level),targetPercent=quizTargetPercent(level);return '<button type="button" class="btn '+(locked?'btn-ghost':'btn-primary')+'" data-quiz-level="'+level+'" '+(locked?'disabled aria-label="Level '+level+' locked"':'aria-label="Start level '+level+', '+quizDifficultyName(difficulty)+', mastery target '+targetPercent+' percent, minimum '+target+' out of 25'+(best!==undefined?', best score '+best+' out of 25':'')+'"')+' title="'+quizDifficultyName(difficulty)+' · mastery target '+targetPercent+'% (minimum '+target+'/25)" style="min-width:0;padding:10px 4px;display:grid;gap:2px;opacity:'+(locked?'.45':'1')+'"><strong>'+level+'</strong><small style="font-size:11px">'+quizDifficultyName(difficulty)+'</small><small style="font-size:11px">Target '+targetPercent+'%</small>'+(best!==undefined?'<small style="font-size:11px">Best '+best+'/25</small>':'')+'</button>';}).join('')+
     '</div><p style="font-size:11px;color:var(--muted);margin-top:16px">'+(track==='quran'?'Questions use the reader’s surah names, order, listed ayah counts and Makki/Madani labels. This is not tafsir or religious guidance.':'Questions cover practical computer productivity and digital literacy. Verify important security and AI advice against current trusted guidance.')+'</p>';
   document.querySelectorAll('[data-quiz-level]:not([disabled])').forEach(button=>button.addEventListener('click',()=>startQuizLevel(track,+button.dataset.quizLevel)));
   openModal('toolModal');
@@ -2796,9 +3150,26 @@ function showQuizLevelPicker(track){
 function startQuizLevel(track,level){
   const progress=quizProgress[track];
   if(!QUIZ_BANKS[track]||!Number.isInteger(level)||level<1||level>progress.unlocked||level>QUIZ_LEVELS)return;
-  const start=(level-1)*QUIZ_QUESTIONS_PER_LEVEL;
-  const questions=shuffleList(QUIZ_BANKS[track].slice(start,start+QUIZ_QUESTIONS_PER_LEVEL)).map(q=>Object.assign({},q,{o:shuffleList(q.o)}));
-  if(questions.length!==QUIZ_QUESTIONS_PER_LEVEL||new Set(questions.map(q=>q.q)).size!==QUIZ_QUESTIONS_PER_LEVEL)throw new Error('Quiz level '+level+' does not contain 25 unique questions.');
+  const difficulty=quizLevelDifficulty(track,level);
+  const used=new Set(usedQuizQuestions[track]);
+  const available=[];
+  for(let tier=difficulty;tier<=4&&available.length<QUIZ_QUESTIONS_PER_LEVEL;tier++){
+    const fresh=shuffleList(QUIZ_BANKS[track].filter(question=>question.difficulty===tier&&!used.has(question.q)));
+    available.push(...fresh.slice(0,QUIZ_QUESTIONS_PER_LEVEL-available.length));
+  }
+  const questions=available.map(q=>Object.assign({},q,{o:shuffleList(q.o)}));
+  if(questions.length<QUIZ_QUESTIONS_PER_LEVEL){
+    toast('No 25 fresh questions remain at this difficulty or above. No questions were repeated; choose a lower unlocked level for any remaining unused questions.','info',5000);
+    return;
+  }
+  if(new Set(questions.map(q=>q.q)).size!==QUIZ_QUESTIONS_PER_LEVEL)throw new Error('Quiz level '+level+' does not contain 25 unique questions.');
+  const previous=usedQuizQuestions[track];
+  usedQuizQuestions[track]=previous.concat(questions.map(question=>question.q));
+  if(!DB.set('usedQuizQuestions',usedQuizQuestions)){
+    usedQuizQuestions[track]=previous;
+    toast('Quiz cannot start safely because question history could not be saved. Free browser storage and try again.','err',4500);
+    return;
+  }
   quizSession={track,level,questions,index:0,score:0,answered:false};
   renderQuiz();
   if(!document.getElementById('toolModal').classList.contains('open'))openModal('toolModal');
@@ -2809,12 +3180,12 @@ function renderQuiz(){
   const q=quizSession.questions[quizSession.index];
   const total=quizSession.questions.length;
   document.getElementById('toolTitle').textContent=quizTrackName(quizSession.track)+' · Level '+quizSession.level;
-  document.getElementById('toolSubtitle').textContent='Question '+(quizSession.index+1)+' of '+total;
+  document.getElementById('toolSubtitle').textContent=quizDifficultyName(quizLevelDifficulty(quizSession.track,quizSession.level))+' · mastery '+quizTargetPercent(quizSession.level)+'% (min '+quizRequiredScore(quizSession.level)+'/'+total+') · Question '+(quizSession.index+1)+' of '+total;
   document.getElementById('toolBody').innerHTML=
     '<div class="progress-line" role="progressbar" aria-label="Quiz progress" aria-valuemin="0" aria-valuemax="'+total+'" aria-valuenow="'+(quizSession.index+1)+'"><i style="width:'+Math.round((quizSession.index+1)/total*100)+'%"></i></div>'+
     '<p style="font-size:16px;font-weight:600;margin:18px 0 16px">'+esc(q.q)+'</p>'+
     '<div style="display:grid;gap:10px" role="group" aria-label="Answer choices">'+
-    q.o.map((answer,i)=>'<button type="button" class="btn btn-ghost quiz-answer" data-answer-index="'+i+'">'+esc(answer)+'</button>').join('')+
+    q.o.map((answer,i)=>'<button type="button" class="btn btn-ghost quiz-answer" data-answer-index="'+i+'"'+(/^[\s\u0600-\u06FF\u064b-\u065f\u0670\u06d6-\u06ed]+$/.test(answer)?' lang="ar" dir="rtl"':'')+'>'+esc(answer)+'</button>').join('')+
     '</div><p id="quizResult" aria-live="polite" style="min-height:26px;margin-top:16px;color:var(--accent)"></p>'+
     '<p id="quizScore" style="font-size:12px;color:var(--muted);margin:0 0 12px">Correct answers: '+quizSession.score+'</p>'+
     '<button type="button" class="btn btn-primary" id="nextQuiz" style="width:100%" disabled>'+(quizSession.index===total-1?'See Results':'Next Question')+'</button>'+
@@ -2844,16 +3215,17 @@ function renderQuiz(){
 function renderQuizSummary(){
   const session=quizSession,score=session.score,total=session.questions.length;
   const trackProgress=quizProgress[session.track];
-  const passed=score>=QUIZ_PASS_SCORE;
+  const requiredScore=quizRequiredScore(session.level);
+  const passed=score>=requiredScore;
   trackProgress.bestScores[session.level]=Math.max(trackProgress.bestScores[session.level]||0,score);
   if(passed&&session.level<QUIZ_LEVELS)trackProgress.unlocked=Math.max(trackProgress.unlocked,session.level+1);
   saveQuizProgress();
   document.getElementById('toolTitle').textContent='Level '+session.level+' Complete';
-  document.getElementById('toolSubtitle').textContent=quizTrackName(session.track)+' · '+(passed?'Level passed':'Keep practicing');
+  document.getElementById('toolSubtitle').textContent=quizTrackName(session.track)+' · mastery target '+quizTargetPercent(session.level)+'% (min '+requiredScore+'/'+total+') · '+(passed?'Level passed':'Keep practicing');
   document.getElementById('toolBody').innerHTML=
     '<div class="success"><div class="success-ring"><svg><use href="#i-check"/></svg></div>'+
-    '<h3>'+score+' / '+total+'</h3><p>You answered '+score+' of '+total+' correctly. '+(passed?(session.level===QUIZ_LEVELS?'You completed all 50 levels!':'Level '+(session.level+1)+' is now unlocked.'):'Score at least '+QUIZ_PASS_SCORE+' to unlock the next level.')+'</p>'+
-    '<button type="button" class="btn btn-primary" id="retryQuiz" style="margin-top:22px;width:100%">Retry Level '+session.level+'</button>'+
+    '<h3>'+score+' / '+total+'</h3><p>You answered '+score+' of '+total+' correctly. '+(passed?(session.level===QUIZ_LEVELS?'You completed all 50 levels!':'Level '+(session.level+1)+' is now unlocked.'):'Score at least '+requiredScore+' to unlock the next level.')+'</p>'+
+    '<button type="button" class="btn btn-primary" id="retryQuiz" style="margin-top:22px;width:100%">Retry with Fresh Questions · Level '+session.level+'</button>'+
     (passed&&session.level<QUIZ_LEVELS?'<button type="button" class="btn btn-ghost" id="nextLevelQuiz" style="margin-top:10px;width:100%">Start Level '+(session.level+1)+'</button>':'')+
     '<button type="button" class="btn btn-ghost" id="chooseQuizLevel" style="margin-top:10px;width:100%">Choose a Level</button></div>'+
     '<p style="font-size:11px;color:var(--muted);text-align:center">'+(session.track==='quran'?'Qur’an questions cover reader metadata only; consult qualified teachers for interpretation.':'Computer questions are for learning and should be checked against current trusted guidance.')+'</p>';
@@ -2929,7 +3301,7 @@ function exportData(){
   const data = { format:'al-marifah-study-backup', version:1,
     settings:state.settings, stars:state.stars, review:state.review, notes:state.notes,
     favSurahs:state.favSurahs, memo:state.memo, dailyReviews:state.dailyReviews,
-    quizProgress,
+    quizProgress, usedQuizQuestions,
     lastSurah:DB.get('lastSurah',1), registrations:DB.get('registrations',[]),
     ratings:DB.get('ratings',[]), gallery:DB.get('gallery',[]) };
   const blob = new Blob([JSON.stringify(data,null,2)], {type:'application/json'});
@@ -2947,6 +3319,11 @@ window.importStudyData = async function(input){
   try{data=JSON.parse(await file.text());}
   catch(e){toast('Could not read this backup. Choose a valid JSON export.','err');return;}
   const isObject=value=>!!value&&typeof value==='object'&&!Array.isArray(value);
+  const validUsedQuestions=value=>isObject(value)&&['quran','computer'].every(track=>
+    Array.isArray(value[track])&&value[track].length<=5000&&
+    value[track].every(question=>typeof question==='string'&&question.length<=5000)&&
+    new Set(value[track]).size===value[track].length
+  );
   const validDateKey=day=>{
     if(!/^\d{4}-\d{2}-\d{2}$/.test(day))return false;
     const date=new Date(day+'T00:00:00Z');
@@ -2971,6 +3348,7 @@ window.importStudyData = async function(input){
      !isObject(data.memo)||Object.keys(data.memo).length>114||Object.entries(data.memo).some(([n,v])=>!Number.isInteger(+n)||+n<1||+n>114||v!==true)||
      !isObject(data.dailyReviews)||Object.keys(data.dailyReviews).length>5000||Object.entries(data.dailyReviews).some(([day,items])=>!validDateKey(day)||!validAyahKeys(items))||
      ('quizProgress' in data&&!validQuizProgress(data.quizProgress))||
+     ('usedQuizQuestions' in data&&!validUsedQuestions(data.usedQuizQuestions))||
      !Number.isInteger(data.lastSurah)||data.lastSurah<1||data.lastSurah>114){
     toast('This backup has an unsupported or invalid study-data format. No data was changed.','err',4500);
     return;
@@ -3009,9 +3387,14 @@ window.importStudyData = async function(input){
   const next={
     settings:Object.assign({},state.settings,safeSettings),
     stars:data.stars,review:data.review,notes:data.notes,favSurahs:data.favSurahs,
-    memo:data.memo,dailyReviews:data.dailyReviews,quizProgress:data.quizProgress||quizProgress,lastSurah:data.lastSurah
+    memo:data.memo,dailyReviews:data.dailyReviews,quizProgress:data.quizProgress||quizProgress,
+    usedQuizQuestions:{
+      quran:[...new Set([...usedQuizQuestions.quran,...(data.usedQuizQuestions?.quran||[])])],
+      computer:[...new Set([...usedQuizQuestions.computer,...(data.usedQuizQuestions?.computer||[])])]
+    },
+    lastSurah:data.lastSurah
   };
-  const keys=['settings','stars','review','notes','favSurahs','memo','dailyReviews','lastSurah'];
+  const keys=['settings','stars','review','notes','favSurahs','memo','dailyReviews','usedQuizQuestions','lastSurah'];
   if('quizProgress' in data)keys.push('quizProgress');
   let previous;
   try{
@@ -3027,7 +3410,7 @@ window.importStudyData = async function(input){
   state.settings=next.settings;
   state.stars=next.stars;state.review=next.review;state.notes=next.notes;
   state.favSurahs=next.favSurahs;state.memo=next.memo;state.dailyReviews=next.dailyReviews;
-  quizProgress=next.quizProgress;
+  quizProgress=next.quizProgress;usedQuizQuestions=next.usedQuizQuestions;
   state.surah=next.lastSurah;
   if(surahSelect)surahSelect.value=String(state.surah);
   state.rtab='read';syncTabs();applySettings();renderReader();
@@ -3036,7 +3419,7 @@ window.importStudyData = async function(input){
 };
 function resetData(){
   if(!confirm('This erases all notes, favourites, quiz and reader progress, registrations and gallery on this device. Continue?')) return;
-  ['stars','review','notes','favSurahs','memo','dailyReviews','quizProgress','lastSurah','registrations','ratings','gallery','settings','aikey'].forEach(k=>DB.del(k));
+  ['stars','review','notes','favSurahs','memo','dailyReviews','quizProgress','usedQuizQuestions','lastSurah','registrations','ratings','gallery','settings','aikey'].forEach(k=>DB.del(k));
   toast('All data reset. Reloading…','info',1500);
   setTimeout(()=>location.reload(),1200);
 }
@@ -3049,7 +3432,7 @@ const uploadZone = document.getElementById('uploadZone');
 function renderGallery(){
   const items = DB.get('gallery', []);
   if(!galleryEl) return;
-  galleryEl.innerHTML = items.map((src,i)=>'<div class="gal-item" data-img="'+i+'"><img src="'+src+'" alt="Upload '+(i+1)+'"><button class="gal-del" data-del="'+i+'"><svg><use href="#i-close"/></svg></button></div>').join('');
+  galleryEl.innerHTML = items.map((src,i)=>'<div class="gal-item" data-img="'+i+'"><button type="button" class="gal-preview" aria-label="Preview uploaded image '+(i+1)+'"><img src="'+src+'" alt="Upload '+(i+1)+'"></button><button type="button" class="gal-del" data-del="'+i+'" aria-label="Delete uploaded image '+(i+1)+'"><svg><use href="#i-close"/></svg></button></div>').join('');
   galleryEl.querySelectorAll('[data-del]').forEach(b=>b.addEventListener('click', e=>{
     e.stopPropagation();
     const items2 = DB.get('gallery', []); items2.splice(+b.dataset.del,1); DB.set('gallery', items2);
@@ -3062,6 +3445,10 @@ function renderGallery(){
 }
 if(uploadZone){
   uploadZone.addEventListener('click', ()=>fileInput.click());
+  uploadZone.addEventListener('keydown',event=>{
+    if(event.key!=='Enter'&&event.key!==' ')return;
+    event.preventDefault();fileInput.click();
+  });
   fileInput.addEventListener('change', ()=>{ handleFiles([...fileInput.files]); fileInput.value=''; });
   ['dragenter','dragover'].forEach(ev=>uploadZone.addEventListener(ev, e=>{ e.preventDefault(); uploadZone.classList.add('drag'); }));
   ['dragleave','drop'].forEach(ev=>uploadZone.addEventListener(ev, e=>{ e.preventDefault(); uploadZone.classList.remove('drag'); }));
@@ -3093,13 +3480,68 @@ function handleFiles(files){
 }
 
 /* ═══════════ CONTACT ═══════════ */
-window.sendContact = function(){
+function copyDraftText(text,successMessage){
+  const fallback=()=>{
+    const textarea=document.createElement('textarea');
+    textarea.value=text;textarea.style.position='fixed';textarea.style.opacity='0';
+    document.body.appendChild(textarea);textarea.select();
+    try{
+      if(!document.execCommand('copy'))throw new Error('Clipboard copy was rejected.');
+      toast(successMessage,'ok');
+    }catch(error){toast('Clipboard access is unavailable in this browser. You can select and copy the message manually.','err',4000);}
+    finally{textarea.remove();}
+  };
+  try{
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(()=>toast(successMessage,'ok')).catch(fallback);
+    }else fallback();
+  }catch(error){fallback();}
+}
+window.copyContactDraft=function(){
+  const form=document.getElementById('contactForm');
+  if(!form.reportValidity())return;
+  const name=document.getElementById('ct-name').value.trim();
+  const message=document.getElementById('ct-msg').value.trim();
+  copyDraftText(
+    'To: Muhammadbasiru125g@gmail.com\nSubject: Message from '+name+' — Al-Ma’rifah website\n\n'+message+'\n\n— '+name,
+    'Message copied. Paste it into an email or message.'
+  );
+};
+window.copyServiceFeedbackDraft=function(){
+  const form=document.getElementById('serviceFeedbackForm');
+  if(!form.reportValidity())return;
+  const service=document.getElementById('feedbackService').value;
+  const name=document.getElementById('feedbackName').value.trim();
+  const comment=document.getElementById('feedbackComment').value.trim();
+  copyDraftText(
+    'To: Muhammadbasiru125g@gmail.com\nSubject: Service feedback: '+service+'\n\n'+
+    ['Service: '+service,name?'Name: '+name:'','Feedback:',comment].filter(Boolean).join('\n'),
+    'Feedback copied. Paste it into an email or message.'
+  );
+};
+window.sendContact = function(event){
+  if(event)event.preventDefault();
   const n = document.getElementById('ct-name').value.trim();
   const m = document.getElementById('ct-msg').value.trim();
-  if(!n || !m){ toast('Please write your name and message.','err'); return; }
-  location.href = 'mailto:Muhammadbasiru125g@gmail.com?subject='+encodeURIComponent('Message from '+n+' — Al-Ma\'rifah website')+'&body='+encodeURIComponent(m+'\n\n— '+n);
-  toast('Opening your email app…','info');
+  if(!n || !m){ document.getElementById('contactForm').reportValidity(); return; }
+  const link=document.createElement('a');
+  link.href='mailto:Muhammadbasiru125g@gmail.com?subject='+encodeURIComponent('Message from '+n+' — Al-Ma\'rifah website')+'&body='+encodeURIComponent(m+'\n\n— '+n);
+  link.click();
+  toast('Your device may open an email draft. The academy has not received your message unless you review and send it; you can also use Copy Message.','info',6000);
 };
+document.getElementById('serviceFeedbackForm').addEventListener('submit',event=>{
+  event.preventDefault();
+  const service=document.getElementById('feedbackService').value;
+  const name=document.getElementById('feedbackName').value.trim();
+  const comment=document.getElementById('feedbackComment').value.trim();
+  if(!comment){document.getElementById('serviceFeedbackForm').reportValidity();return;}
+  const link=document.createElement('a');
+  link.href='mailto:Muhammadbasiru125g@gmail.com?subject='+encodeURIComponent('Service feedback: '+service)+'&body='+encodeURIComponent(
+    ['Service: '+service,name?'Name: '+name:'','Feedback:',comment].filter(Boolean).join('\n')
+  );
+  link.click();
+  toast('Your device may open an email draft. Your feedback is not received until you review and send it; you can also use Copy Feedback.','info',6000);
+});
 
 /* ═══════════ DOCK (middle button) ═══════════ */
 window.toggleDock = function(){
@@ -3111,22 +3553,36 @@ window.toggleDock = function(){
 const chatPanel = document.getElementById('chatPanel');
 const chatBody = document.getElementById('chatBody');
 const chatInput = document.getElementById('chatInput');
+const chatFab = document.getElementById('karamooFab');
+let chatReturnFocus = null;
 let chatHistory = state.settings.keepChatHistory ? DB.get('chathistory', []) : [];
 let chatAbortController = null, chatBusy = false, lastChatPrompt = (chatHistory.slice().reverse().find(m=>m.r==='user')||{}).t||'', chatTurn = 0;
 function persistChat(){ if(state.settings.keepChatHistory) DB.set('chathistory',chatHistory.slice(-40)); }
 window.syncChatPersistence=function(){if(state.settings.keepChatHistory)persistChat();else DB.del('chathistory');};
 if(!state.settings.keepChatHistory)DB.del('chathistory');
 window.openChat = function(){
+  chatReturnFocus=document.activeElement;
   chatPanel.classList.add('open');
-  document.getElementById('karamooFab').querySelector('.ping').style.display = 'none';
+  chatPanel.setAttribute('aria-hidden','false');
+  chatFab.setAttribute('aria-expanded','true');
+  chatFab.querySelector('.ping').style.display = 'none';
   if(!chatHistory.length){
-    addMsg('bot', 'Assalamu alaikum! I am <b>KARAMOO</b> (كرمو), your AI study companion at <b>المعرفة</b>. I can help you choose a course, read ayat, enrol, or practise your skills. Tap a suggestion below or type — I can also listen and speak.');
-    chatHistory.push({r:'bot', t:'Assalamu alaikum! I am KARAMOO, your AI study companion at المعرفة. How can I help?'});
+    addMsg('bot', 'Assalamu alaikum! I am <b>KARAMOO</b> (<span lang="ar" dir="rtl">كرمو</span>), your AI study companion at <b>Al-Ma\'rifah Academy</b>. I can help you choose a course, read ayat, enrol, or practise your skills. Tap a suggestion below or type — I can also listen and speak.');
+    chatHistory.push({r:'bot', t:'Assalamu alaikum! I am KARAMOO, your AI study companion at Al-Ma\'rifah Academy. How can I help?'});
     persistChat();
   }
   renderChips();
+  chatInput.focus();
 };
-window.closeChat = function(){ chatPanel.classList.remove('open'); };
+window.closeChat = function(restoreFocus=false){
+  chatPanel.classList.remove('open');
+  chatPanel.setAttribute('aria-hidden','true');
+  chatFab.setAttribute('aria-expanded','false');
+  if(restoreFocus&&chatReturnFocus instanceof HTMLElement)chatReturnFocus.focus();
+};
+document.addEventListener('pointerdown',event=>{
+  if(chatPanel.classList.contains('open')&&!chatPanel.contains(event.target)&&!chatFab.contains(event.target))window.closeChat();
+});
 window.clearChat = function(){
   if(state.settings.confirmClearChat&&!confirm('Clear this conversation? This cannot be undone.'))return;
   stopChatGeneration(false);
@@ -3137,11 +3593,36 @@ window.clearChat = function(){
   persistChat();
   renderChips();
 };
+function markArabicRuns(root){
+  const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);
+  const textNodes=[];
+  while(walker.nextNode())textNodes.push(walker.currentNode);
+  textNodes.forEach(node=>{
+    if(!/[\u0600-\u06FF]/.test(node.textContent)||node.parentElement.closest('[lang="ar"][dir="rtl"]'))return;
+    const pattern=/[\u0600-\u06FF\u064b-\u065f\u0670\u06d6-\u06ed]+(?:\s+[\u0600-\u06FF\u064b-\u065f\u0670\u06d6-\u06ed]+)*/g;
+    const fragment=document.createDocumentFragment();
+    let lastIndex=0,match;
+    while((match=pattern.exec(node.textContent))){
+      fragment.append(document.createTextNode(node.textContent.slice(lastIndex,match.index)));
+      const arabic=document.createElement('span');
+      arabic.lang='ar';arabic.dir='rtl';arabic.textContent=match[0];
+      fragment.append(arabic);
+      lastIndex=pattern.lastIndex;
+    }
+    if(!lastIndex)return;
+    fragment.append(document.createTextNode(node.textContent.slice(lastIndex)));
+    node.replaceWith(fragment);
+  });
+}
 function addMsg(who, html, speakText){
   const el = document.createElement('div');
   el.className = 'msg ' + who;
   const content=document.createElement('div');
-  content.className='msg-content';content.innerHTML=html;el.appendChild(content);
+  content.className='msg-content';content.innerHTML=html;markArabicRuns(content);el.appendChild(content);
+  content.setAttribute('dir','auto');
+  const language=chatLanguage(content.textContent);
+  const startsArabic=/^[\s"'`]*[\u0600-\u06FF]/.test(content.textContent);
+  if(language!=='en'&&(!/[\u0600-\u06FF]/.test(content.textContent)||startsArabic))content.lang=language;
   if(state.settings.showChatTime){
     const time=document.createElement('time');time.className='msg-time';time.dateTime=new Date().toISOString();
     time.textContent=new Intl.DateTimeFormat(undefined,{hour:'numeric',minute:'2-digit'}).format(new Date());el.appendChild(time);
@@ -3177,7 +3658,7 @@ chatBody.addEventListener('click',async e=>{
 });
 function renderChips(){
   const chips = ['Enroll me','Qur\'an classes','Computer skills','Qur\'an quiz','Computer quiz','السلام عليكم','اختبرني في القرآن','Read Ayat Al-Kursi','Our services','Contact info','Motivate me'];
-  document.getElementById('chatChips').innerHTML = chips.map(c=>'<button class="chip" data-chip="'+esc(c)+'">'+esc(c)+'</button>').join('');
+  document.getElementById('chatChips').innerHTML = chips.map(c=>'<button class="chip" data-chip="'+esc(c)+'"'+(/^[\s\u0600-\u06FF\u064b-\u065f\u0670\u06d6-\u06ed]+$/.test(c)?' lang="ar" dir="rtl"':'')+'>'+esc(c)+'</button>').join('');
   document.querySelectorAll('[data-chip]').forEach(b=>b.addEventListener('click', ()=>{ chatInput.value = b.dataset.chip; sendChat(); }));
 }
 function speak(text){
@@ -3310,6 +3791,7 @@ const BRAIN_AR = [
   {keys:['اختبار','كويز','امتحان'],reply:'يمكنك اختيار اختبار القرآن أو اختبار مهارات الحاسوب. اختر المسار المناسب للبدء.',chips:['اختبرني في القرآن','اختبار الحاسوب']},
   {keys:['القران','قران','تجويد','حفظ','تلاوه'],reply:'يضم مسار القرآن دروس القراءة والتجويد والحفظ. يمكنني فتح قارئ القرآن أو بدء اختبار معلومات السور؛ وللتفسير والأحكام الشرعية اسأل معلماً مؤهلاً.',action:{label:'افتح قارئ القرآن',fn:'showView(\'home\')'}},
   {keys:['الحاسوب','كمبيوتر','اكسل','وورد','مهارات الحاسوب'],reply:'يشمل مسار الحاسوب Microsoft Word وExcel وPowerPoint وForms، إضافةً إلى Google Docs وGoogle Forms وGmail ومبادئ الذكاء الاصطناعي. يمكنني أيضاً بدء اختبار المهارات.',action:{label:'ابدأ اختبار الحاسوب',fn:'startComputerQuiz()'}},
+  {keys:['السعر','الأسعار','رسوم','تكلفة','كم يكلف','الثمن'],reply:'أسعار الدورات والخدمات غير منشورة على الموقع؛ اطلب عرض السعر الحالي عبر البريد أو واتساب قبل التسجيل. رابط البريد يجهّز مسودة فقط، ولن يصلنا شيء حتى تراجعها وترسلها.',action:{label:'معلومات التواصل',fn:'showView(\'contact\')'}},
   {keys:['شكرا','جزاك الله خيرا','بارك الله فيك'],reply:'على الرحب والسعة! أسأل الله أن يبارك في وقتك وعلمك. هل أساعدك في اختبار أو درس؟',chips:['اختبرني في القرآن','اختبار الحاسوب']},
   {keys:['من انت','ما اسمك','ماذا تستطيع','ساعدني'],reply:'أنا كرامو، مساعد التعلّم في أكاديمية المعرفة. أساعدك في معلومات الأكاديمية وأدوات الدراسة والاختبارات. إجاباتي ليست بديلاً عن المعلم أو العالم، والإجابات العامة الأوسع تحتاج إلى تفعيل مزود ذكاء اصطناعي في الإعدادات.',chips:['اختبرني في القرآن','اختبار الحاسوب','معلومات التواصل']}
 ];
@@ -3317,20 +3799,24 @@ const BRAIN_EXTRA={
   fr:[
     {keys:['bonjour','salut','bonsoir','merci'],reply:'Bonjour ! Je suis KARAMOO, votre compagnon d’apprentissage. Je peux vous aider avec les cours, les outils d’étude ou les quiz.',chips:['Quiz du Coran','Quiz informatique']},
     {keys:['quiz du coran','quiz coran','test coran'],reply:'Commençons un quiz sur les informations des sourates affichées dans le lecteur. Il ne s’agit ni de tafsir ni d’un avis religieux.',action:{label:'Commencer le quiz du Coran',fn:'startQuranQuiz()'}},
-    {keys:['quiz informatique','quiz ordinateur','test informatique'],reply:'Commençons un quiz pratique sur les compétences informatiques. Votre progression reste enregistrée dans ce navigateur.',action:{label:'Commencer le quiz informatique',fn:'startComputerQuiz()'}}
+    {keys:['quiz informatique','quiz ordinateur','test informatique'],reply:'Commençons un quiz pratique sur les compétences informatiques. Votre progression reste enregistrée dans ce navigateur.',action:{label:'Commencer le quiz informatique',fn:'startComputerQuiz()'}},
+    {keys:['prix','tarif','tarifs','coût','combien'],reply:'Les tarifs des cours et services ne sont pas publiés. Contactez l’académie pour un devis actuel avant de vous inscrire. Le lien e-mail prépare un brouillon ; rien n’est envoyé avant que vous l’envoyiez.',action:{label:'Contacter l’académie',fn:'showView(\'contact\')'}}
   ],
   es:[
     {keys:['hola','buenos dias','buenas tardes','gracias'],reply:'¡Hola! Soy KARAMOO, tu compañero de aprendizaje. Puedo ayudarte con los cursos, las herramientas de estudio y los cuestionarios.',chips:['Prueba del Corán','Prueba de informática']},
     {keys:['prueba del coran','quiz del coran','prueba coran'],reply:'Empecemos una prueba sobre los datos de las suras del lector. No es tafsir ni una orientación religiosa.',action:{label:'Empezar prueba del Corán',fn:'startQuranQuiz()'}},
-    {keys:['prueba de informatica','quiz de informatica','prueba de computadora'],reply:'Empecemos una prueba práctica de informática. Tu progreso se guarda solo en este navegador.',action:{label:'Empezar prueba de informática',fn:'startComputerQuiz()'}}
+    {keys:['prueba de informatica','quiz de informatica','prueba de computadora'],reply:'Empecemos una prueba práctica de informática. Tu progreso se guarda solo en este navegador.',action:{label:'Empezar prueba de informática',fn:'startComputerQuiz()'}},
+    {keys:['precio','precios','tarifa','tarifas','costo','cuanto'],reply:'Los precios de los cursos y servicios no están publicados. Contacta con la academia para solicitar un presupuesto actual antes de inscribirte. El enlace de correo prepara un borrador; no se envía hasta que tú lo envíes.',action:{label:'Contactar la academia',fn:'showView(\'contact\')'}}
   ],
   sw:[
     {keys:['habari','hujambo','asante','karibu'],reply:'Habari! Mimi ni KARAMOO, msaidizi wako wa kujifunza. Naweza kukusaidia kuhusu kozi, zana za masomo na maswali ya mazoezi.',chips:['Jaribio la Qurani','Jaribio la kompyuta']},
-    {keys:['jaribio la qurani','jaribio la kompyuta'],reply:'Karibu kwenye jaribio la mazoezi. Unaweza kuchagua maswali ya taarifa za sura au ujuzi wa kompyuta.',chips:['Jaribio la Qurani','Jaribio la kompyuta']}
+    {keys:['jaribio la qurani','jaribio la kompyuta'],reply:'Karibu kwenye jaribio la mazoezi. Unaweza kuchagua maswali ya taarifa za sura au ujuzi wa kompyuta.',chips:['Jaribio la Qurani','Jaribio la kompyuta']},
+    {keys:['bei','gharama','kiasi'],reply:'Bei za kozi na huduma hazijawekwa kwenye tovuti. Wasiliana na akademia kuomba bei ya sasa kabla ya kujiandikisha. Kiungo cha barua pepe hutengeneza rasimu tu; hakitumwi hadi ubonyeze Tuma.',action:{label:'Wasiliana na akademia',fn:'showView(\'contact\')'}}
   ],
   ha:[
     {keys:['sannu','na gode','yaya'],reply:'Sannu! Ni KARAMOO, mataimakin koyon karatu. Zan iya taimaka maka game da darussa, kayan karatu da tambayoyin gwaji.',chips:['Gwajin Alkur’ani','Gwajin kwamfuta']},
-    {keys:['gwajin alkurani','gwajin kwamfuta'],reply:'Za ka iya zaɓar gwajin bayanan surori ko gwajin ƙwarewar kwamfuta.',chips:['Gwajin Alkur’ani','Gwajin kwamfuta']}
+    {keys:['gwajin alkurani','gwajin kwamfuta'],reply:'Za ka iya zaɓar gwajin bayanan surori ko gwajin ƙwarewar kwamfuta.',chips:['Gwajin Alkur’ani','Gwajin kwamfuta']},
+    {keys:['farashi','kudin','nawa'],reply:'Ba a wallafa farashin darussa ko ayyuka a shafin ba. Tuntuɓi makarantar don neman farashin yanzu kafin yin rajista. Haɗin imel yana buɗe daftari ne kawai; ba a aika shi sai ka danna Aika.',action:{label:'Tuntuɓi makarantar',fn:'showView(\'contact\')'}}
   ]
 };
 const BRAIN = [
@@ -3339,15 +3825,15 @@ const BRAIN = [
   { keys:['excel formula','sum formula','=sum','spreadsheet formula'], reply:'Excel starter formulas: <b>=SUM(B2:B10)</b> adds a range, <b>=AVERAGE(B2:B10)</b> finds its mean, and <b>=IF(B2&gt;=50,"Pass","Try again")</b> checks a condition. Change the cell references and test on a practice sheet.', action:{label:'Explore Computer Skills',fn:'showView(\'computer\')'} },
   { keys:['computer quiz','quiz computer','computer skills quiz'], reply:'Let’s check practical computer skills. Each level has 25 questions; your progress stays in this browser.', action:{label:'Start Computer Quiz',fn:'startComputerQuiz()'} },
   { keys:['quiz me','quran quiz','quick quiz'], reply:'Let’s do a knowledge check using the reader’s surah metadata, not tafsir or a religious ruling.', action:{label:'Choose a Quiz Track',fn:'startQuranQuiz()'} },
-  { keys:['enroll','register','sign up','join','admission','apply'], reply:'Wonderful decision! Tap the button below and I\'ll open the enrollment form — it takes about a minute. You\'ll enter your name, date of birth, gender, email, countries and experience levels.', action:{label:'Open Enrollment Form', fn:'openEnroll(\'both\')'} },
+  { keys:['enroll','register','sign up','join','admission','apply'], reply:'I can open a short enrollment email request. It asks for your name and email; country, experience and a message are optional. The academy has not received anything unless you open, review and send the email. Course pricing is available on request.', action:{label:'Prepare Enrollment Email', fn:'openEnroll(\'both\')'} },
   { keys:['quran class','qur\'an class','tajweed','hifdh','hifz','memoriz','recitation','makhraj','arabic read'], reply:'Our <b>Qur\'an Track</b> has six classes: <b>Tajweed & Makharij</b>, <b>Hifdh & Memorization</b>, <b>Tafsir & Meaning</b>, <b>Arabic Reading</b>, <b>Recitation Correction</b> and <b>Qur\'anic Arabic</b>. Which one interests you?', chips:['Tajweed details','Hifdh details','Enroll me'] },
   { keys:['tajweed detail'], reply:'<b>Tajweed & Makharij</b>: master articulation points, Noon Sakinah & Tanween rules, Madd, Qalqalah and Waqf — with live correction every session. Perfect first step for beautiful recitation.', action:{label:'Enroll in Tajweed', fn:'openEnroll(\'quran\')'} },
   { keys:['hifdh detail'], reply:'<b>Hifdh & Memorization</b>: a personal daily plan, spaced-repetition revision, weekly reviews — and you track progress right here in the reader (My Memorization tab).', action:{label:'Enroll in Hifdh', fn:'openEnroll(\'quran\')'} },
   { keys:['computer','excel','word','powerpoint','office','gmail','google','forms','typing'], reply:'The <b>Computer Track</b> covers eight tools: <b>Microsoft Word, Excel, PowerPoint, Forms</b>, <b>Google Docs, Google Forms, Gmail</b> and <b>Artificial Intelligence</b>. Classes are project-based — you learn by building real documents, sheets and slides.', chips:['Excel details','AI details','Enroll me'] },
   { keys:['excel detail'], reply:'<b>Excel</b>: formulas & functions, sorting and filtering, pivot tables, charts and conditional formatting — taught around real projects like budgets and gradebooks.', action:{label:'Enroll in Computer Track', fn:'openEnroll(\'computer\')'} },
   { keys:['ai detail','artificial intelligence','karamoo work','gpt'], reply:'<b>AI class</b>: learn prompt writing, AI for research & writing, summarising, translating and automation — the same skills that power me! I run on a smart built-in brain, and the academy can also plug in a full GPT key in Settings.', action:{label:'Enroll in Computer Track', fn:'openEnroll(\'computer\')'} },
-  { keys:['service','pdf','format','index','typing','design','logo','thesis','research','edit'], reply:'Our <b>Services</b> include: PDF Book → Word, Research Formatting, Printed Book → Word, Indexes & Tables, Writing From Scratch, Review & Editing, Design & Study Aids, and Any Computer Service. Send your file and we return it polished.', action:{label:'Request a Service', fn:'openEnroll(\'services\')'} },
-  { keys:['price','cost','fee','payment','how much','tuition'], reply:'Fees depend on the programme and schedule you choose. Message us on WhatsApp or email <b>Muhammadbasiru125g@gmail.com</b> for a personal quote — first consultation is free.', action:{label:'Contact Us', fn:'showView(\'contact\')'} },
+  { keys:['service','pdf','format','index','typing','design','logo','thesis','research','edit'], reply:'Our <b>Services</b> include: PDF Book → Word, Research Formatting, Printed Book → Word, Indexes & Tables, Writing From Scratch, Review & Editing, Design & Study Aids, and Any Computer Service. Contact us for a quote and delivery details before sharing any files; this website does not accept service-file uploads.', action:{label:'Request a Service Quote', fn:'openEnroll(\'services\')'} },
+  { keys:['price','pricing','cost','fee','payment','how much','tuition','charge','rate'], reply:'Course and service prices are not published on this website. Please email or WhatsApp the academy to request a current quote before enrolling or ordering. The email link only prepares a draft; the academy receives it only if you review and send it.', action:{label:'Ask About Pricing', fn:'showView(\'contact\')'} },
   { keys:['contact','phone','email','whatsapp','call','number','address','location'], reply:'You can reach the academy at:<br>• Egypt: <b>+20 12 8596 8529</b><br>• Gambia: <b>+220 83 505 5653</b><br>• Email: <b>Muhammadbasiru125g@gmail.com</b><br>• WhatsApp is the fastest — tap below.', action:{label:'Open WhatsApp', fn:'window.open(\'https://wa.me/201285968529\',\'_blank\')'} },
   { keys:['ayat al-kursi','kursi','2:255'], reply:'Here is Ayat Al-Kursi (Al-Baqarah 2:255):<br><br><span style="font-family:var(--font-ar);font-size:19px;direction:rtl;display:block;text-align:right;line-height:2">اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۚ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ ۚ لَّهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ</span><br>"Allah — there is no deity except Him, the Ever-Living, the Sustainer of existence…" — open the full surah in the reader below.', action:{label:'Open Al-Baqarah', fn:'showView(\'home\');setTimeout(()=>window.__jumpTo(2,255),200)'} },
   { keys:['surah','read quran','open quran','mushaf'], reply:'The full reader is on the <b>Home</b> tab — all 114 surahs with audio recitation, translation, notes, starred ayat and memorisation tracking. Which surah shall we open?', action:{label:'Open the Reader', fn:'showView(\'home\')'} },
@@ -3369,7 +3855,7 @@ async function gptReply(text,signal){
   const detail=lengths[state.settings.answerDetail]||lengths.standard;
   const messages=[{
     role:'system',
-    content:'You are KARAMOO, the helpful AI companion for Al-Ma\'rifah Academy (المعرفة). Help with general questions, writing, study, Qur\'an reading navigation, computer skills, and the academy courses and services. '+tones[state.settings.assistantTone]+' Reply in the user’s language, '+detail+'. Be honest when unsure. Do not invent Qur\'an quotations or citations; distinguish general information from religious rulings and suggest a qualified scholar for personal rulings. Do not claim to enroll users or send emails. The academy contact is +20 12 8596 8529, +220 83 505 5653, Muhammadbasiru125g@gmail.com. Never ask for passwords, payment details, API keys, or sensitive personal information.'
+    content:'You are KARAMOO, the helpful AI companion for Al-Ma\'rifah Academy (المعرفة). Help with general questions, writing, study, Qur\'an reading navigation, computer skills, and the academy courses and services. '+tones[state.settings.assistantTone]+' Reply in the user’s language, '+detail+'. Be honest when unsure. Do not invent Qur\'an quotations, citations, fees, or prices; course and service pricing is available on request. Do not claim the website receives enrollment, contact, or feedback submissions: forms only prepare email drafts, and the user must review and send them. Do not invent free consultations or other offers. Do not invent Qur\'an citations; distinguish general information from religious rulings and suggest a qualified scholar for personal rulings. Do not claim to enroll users or send emails. The academy contact is +20 12 8596 8529, +220 83 505 5653, Muhammadbasiru125g@gmail.com. Never ask for passwords, payment details, API keys, or sensitive personal information.'
   }];
   const conversation=state.settings.includeChatContext?chatHistory.slice(-13):[{r:'user',t:text}];
   conversation.forEach(m=>{if(m&&typeof m.t==='string'&&(m.r==='user'||m.r==='bot'))messages.push({role:m.r==='bot'?'assistant':'user',content:m.t.slice(0,6000)});});
