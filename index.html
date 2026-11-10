@@ -558,7 +558,7 @@ footer{border-top:1px solid var(--border);padding:56px 22px 40px;background:var(
 .reader-range-settings{position:relative}
 .reader-range-settings summary{cursor:pointer;list-style:none;padding:9px 12px;border:1px solid var(--border);border-radius:11px;font-size:11.5px;color:var(--text-2);white-space:nowrap}
 .reader-range-settings summary::-webkit-details-marker{display:none}
-.reader-range-settings[open] .range-fields{position:absolute;top:calc(100% + 8px);right:0;z-index:5;display:grid;grid-template-columns:repeat(3,minmax(72px,1fr));gap:8px;padding:12px;border:1px solid var(--border-2);border-radius:14px;background:var(--bg-2);box-shadow:var(--shadow);min-width:250px}
+.reader-range-settings[open] .range-fields{position:absolute;top:calc(100% + 8px);right:0;z-index:5;display:grid;grid-template-columns:repeat(5,minmax(64px,1fr));gap:8px;padding:12px;border:1px solid var(--border-2);border-radius:14px;background:var(--bg-2);box-shadow:var(--shadow);min-width:min(420px,calc(100vw - 32px))}
 .range-fields{display:none}
 .range-fields label{display:grid;gap:4px;font-size:10px;color:var(--muted)}
 .range-fields input,.range-fields select{width:100%;min-width:0;padding:7px 8px;border:1px solid var(--border);border-radius:8px;background:var(--bg-3);color:var(--text);font-size:12px}
@@ -566,7 +566,7 @@ footer{border-top:1px solid var(--border);padding:56px 22px 40px;background:var(
 .audio-dock-options details{position:relative}
 .audio-dock-options summary{cursor:pointer;list-style:none;padding:8px 10px;border:1px solid var(--border);border-radius:10px;font-size:11px;color:var(--text-2)}
 .audio-dock-options summary::-webkit-details-marker{display:none}
-.audio-dock-options details[open] .range-fields{position:absolute;bottom:calc(100% + 8px);right:0;z-index:5;display:grid;grid-template-columns:repeat(3,minmax(65px,1fr));gap:6px;padding:10px;border:1px solid var(--border-2);border-radius:12px;background:var(--bg-2);box-shadow:var(--shadow);min-width:230px}
+.audio-dock-options details[open] .range-fields{position:absolute;bottom:calc(100% + 8px);right:0;z-index:5;display:grid;grid-template-columns:repeat(5,minmax(58px,1fr));gap:6px;padding:10px;border:1px solid var(--border-2);border-radius:12px;background:var(--bg-2);box-shadow:var(--shadow);min-width:min(390px,calc(100vw - 24px))}
 @media(max-width:680px){#audioDock{right:12px;bottom:78px;left:12px;max-width:none;justify-content:space-between;gap:5px;padding:8px}.audio-dock-options{gap:4px}.audio-dock-options .sel{max-width:105px}.audio-dock-title{display:none}}
 #chatStopBtn[hidden]{display:none}
 .chat-head{padding:16px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,rgba(109,92,245,.18),transparent)}
@@ -835,15 +835,17 @@ footer{border-top:1px solid var(--border);padding:56px 22px 40px;background:var(
         <button class="btn btn-ghost btn-sm" onclick="readerPlaySurah()" title="Play or pause recitation"><svg aria-hidden="true"><use href="#i-play"/></svg> <span id="playSurahLbl">Recite</span></button>
         <label class="reader-repeat-setting">Repeat
           <select class="sel" id="readerRepeatMode" aria-label="Recitation repeat mode">
-            <option value="off">Off</option><option value="all">Repeat all 114 surahs</option><option value="one">Repeat one</option><option value="range">Repeat range</option>
+            <option value="off">Off</option><option value="all">Repeat all 114 surahs</option><option value="surah">Repeat one surah</option><option value="one">Repeat one ayah</option><option value="range">Repeat range</option>
           </select>
         </label>
-        <details class="reader-range-settings"><summary>Verse range settings</summary><div class="range-fields">
+        <details class="reader-range-settings"><summary>Surah &amp; verse range</summary><div class="range-fields">
+          <label>From surah<select id="readerRangeStartSurah" aria-label="Start surah"></select></label>
           <label>From verse<input type="number" id="readerRangeStart" min="1" value="1" aria-label="Start verse"></label>
+          <label>To surah<select id="readerRangeEndSurah" aria-label="End surah"></select></label>
           <label>To verse<input type="number" id="readerRangeEnd" min="1" value="1" aria-label="End verse"></label>
           <label>Repeat times<select id="readerRepeatCount" aria-label="Range repeat count"><option>1</option><option>2</option><option selected>3</option><option>4</option><option>5</option><option>10</option></select></label>
         </div></details>
-        <button class="btn btn-ghost btn-sm reader-repeat-btn" id="readerRepeatAyah" data-toggle="repeatAyah" type="button" aria-label="Repeat the current ayah" aria-pressed="false"><svg><use href="#i-refresh"/></svg> Repeat ayah</button>
+        <button class="btn btn-ghost btn-sm reader-repeat-btn" id="readerRepeatAyah" data-toggle="repeatAyah" type="button" aria-label="Repeat the current ayah" aria-pressed="false" title="Repeat the current or selected ayah"><svg><use href="#i-refresh"/></svg> Repeat ayah</button>
         <div class="select-wrap reader-audio-controls"><select class="sel" id="readerAudioRate" aria-label="Recitation playback speed"><option value="0.75">0.75× speed</option><option value="1">1× speed</option><option value="1.25">1.25× speed</option><option value="1.5">1.5× speed</option></select></div>
         <button class="btn btn-ghost btn-sm" onclick="openSearch()"><svg><use href="#i-search"/></svg> Search</button>
         <button class="btn btn-ghost btn-sm" onclick="readerRandom()"><svg><use href="#i-refresh"/></svg> Random</button>
@@ -1107,18 +1109,21 @@ footer{border-top:1px solid var(--border);padding:56px 22px 40px;background:var(
 </div>
 
 <aside id="audioDock" role="region" aria-label="Qur'an audio player" aria-live="polite" aria-hidden="true">
-  <button class="audio-dock-move" id="audioDockMove" type="button" aria-label="Move audio player" title="Drag to move"><svg aria-hidden="true"><use href="#i-grid"/></svg></button>
+  <button class="audio-dock-move" id="audioDockMove" type="button" aria-label="Move audio player; click for next corner or use arrow keys" aria-keyshortcuts="ArrowUp ArrowDown ArrowLeft ArrowRight" title="Drag or use arrow keys to move; click for next corner"><svg aria-hidden="true"><use href="#i-grid"/></svg></button>
   <span class="audio-dock-title" id="audioDockTitle">Qur'an recitation</span>
   <button class="icon-btn" id="audioDockPlay" type="button" aria-label="Play recitation" title="Play or pause recitation"><svg aria-hidden="true"><use href="#i-play"/></svg></button>
   <button class="icon-btn" id="audioDockStop" type="button" aria-label="Stop recitation" title="Stop recitation"><svg aria-hidden="true"><use href="#i-close"/></svg></button>
+  <button class="icon-btn" id="dockRepeatAyah" data-toggle="repeatAyah" type="button" aria-label="Repeat the current ayah" aria-pressed="false" title="Repeat the current or selected ayah"><svg aria-hidden="true"><use href="#i-refresh"/></svg></button>
   <div class="audio-dock-options">
     <select class="sel audio-dock-repeat" id="dockRepeatMode" aria-label="Recitation repeat mode">
-      <option value="off">Repeat off</option><option value="all">Repeat all 114 surahs</option><option value="one">Repeat one</option><option value="range">Repeat range</option>
+      <option value="off">Repeat off</option><option value="all">Repeat all 114 surahs</option><option value="surah">Repeat one surah</option><option value="one">Repeat one ayah</option><option value="range">Repeat range</option>
     </select>
     <details>
-      <summary>Range</summary>
+      <summary>Surah &amp; verse range</summary>
       <div class="range-fields">
+        <label>From surah<select id="dockRangeStartSurah" aria-label="Start surah"></select></label>
         <label>From<input type="number" id="dockRangeStart" min="1" value="1" aria-label="Start verse"></label>
+        <label>To surah<select id="dockRangeEndSurah" aria-label="End surah"></select></label>
         <label>To<input type="number" id="dockRangeEnd" min="1" value="1" aria-label="End verse"></label>
         <label>Times<select id="dockRepeatCount" aria-label="Range repeat count"><option>1</option><option>2</option><option selected>3</option><option>4</option><option>5</option><option>10</option></select></label>
       </div>
@@ -1251,7 +1256,7 @@ footer{border-top:1px solid var(--border);padding:56px 22px 40px;background:var(
       <div class="set-row"><div><div class="lbl">Arabic font size</div><div class="sub"><span id="arSizeLabel">30</span>px</div></div></div>
       <input type="range" id="arSize" min="22" max="46" value="30" aria-label="Arabic font size" style="width:100%;accent-color:var(--accent);cursor:pointer">
       <div class="set-row" style="margin-top:8px"><div><div class="lbl">Show translation</div><div class="sub">English meaning under each ayah</div></div><button class="switch on" data-toggle="translation"></button></div>
-      <div class="set-row"><div><div class="lbl">Repeat current ayah</div><div class="sub">Loop the selected recitation until stopped</div></div><button class="switch" data-toggle="repeatAyah"></button></div>
+      <div class="set-row"><div><div class="lbl">Repeat current ayah</div><div class="sub">Loop the selected ayah until stopped</div></div><button class="switch" data-toggle="repeatAyah"></button></div>
       <div class="set-row"><div><div class="lbl">Recitation speed</div><div class="sub">Adjust audio playback rate</div></div>
         <select class="sel" data-setting-select="audioRate" aria-label="Recitation speed" style="max-width:140px"><option value="0.75">0.75×</option><option value="1">Normal</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option></select></div>
       <div class="set-row"><div><div class="lbl">Reciter</div><div class="sub" id="reciterHelp">Verse-by-verse audio; requires internet access</div></div>
@@ -1961,7 +1966,9 @@ const state = {
     backgroundOpacity:18, backgroundImage:'', motion:false, translation:true, sound:false, voice:false, arSize:30,
     highContrast:false, arabicFont:'amiri', compactReader:false, resumeLast:false,
     scrollReader:false, dailyGoal:5, sprintMinutes:25, focusMode:false,
-    repeatAyah:false, repeatMode:'off', repeatCount:3, rangeStart:1, rangeEnd:1, audioRate:1, audioReciter:'ar.alafasy',
+    repeatAyah:false, repeatMode:'off', repeatCount:3,
+    rangeStartSurah:1, rangeStart:1, rangeEndSurah:1, rangeEnd:1,
+    audioRate:1, audioReciter:'ar.alafasy',
     chatEnterSend:true, voiceLanguage:'en-US', aiModel:'gpt-4o-mini',
     includeChatContext:true, assistantTone:'friendly', answerDetail:'standard',
     keepChatHistory:true, showChatTime:false, confirmClearChat:true,
@@ -2121,6 +2128,13 @@ function getRepeatMode(source){
   const select=document.getElementById((source==='dock'?'dock':'reader')+'RepeatMode');
   return select?.value||state.settings.repeatMode||'off';
 }
+function populateRangeSurahOptions(){
+  ['readerRangeStartSurah','readerRangeEndSurah','dockRangeStartSurah','dockRangeEndSurah'].forEach(id=>{
+    const select=document.getElementById(id);
+    if(!select)return;
+    select.innerHTML=SURAHS.map(s=>'<option value="'+s[0]+'">'+s[0]+'. '+esc(s[1])+'</option>').join('');
+  });
+}
 function updateAudioDock(){
   const dock=document.getElementById('audioDock');
   if(!dock)return;
@@ -2133,6 +2147,8 @@ function updateAudioDock(){
   button.setAttribute('aria-label',playing?'Pause recitation':'Play recitation');
   document.getElementById('audioDockTitle').textContent=audioSession?.quranWide
     ?'Surah '+audioSession.surah+'/114 · '+getSurah(audioSession.surah)[1]
+    :audioSession?.rangeWide
+      ?'Surah '+audioSession.surah+' · '+getSurah(audioSession.surah)[1]
     :state.currentAudio?.label||'Qur’an recitation';
   const label=document.getElementById('playSurahLbl');
   if(label)label.textContent=active?(playing?'Pause':'Resume'):'Recite';
@@ -2143,7 +2159,9 @@ function updateAudioDock(){
 function syncRepeatControls(){
   const mode=state.settings.repeatMode|| (state.settings.repeatAyah?'one':'off');
   ['readerRepeatMode','dockRepeatMode'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=mode;});
+  ['readerRangeStartSurah','dockRangeStartSurah'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=String(state.settings.rangeStartSurah||1);});
   ['readerRangeStart','dockRangeStart'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=String(state.settings.rangeStart||1);});
+  ['readerRangeEndSurah','dockRangeEndSurah'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=String(state.settings.rangeEndSurah||1);});
   ['readerRangeEnd','dockRangeEnd'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=String(state.settings.rangeEnd||1);});
   ['readerRepeatCount','dockRepeatCount'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=String(state.settings.repeatCount||3);});
   document.querySelectorAll('[data-toggle="repeatAyah"]').forEach(button=>{
@@ -2157,24 +2175,49 @@ function persistRepeatSettings(source='reader'){
   const prefix=source==='dock'?'dock':'reader';
   state.settings.repeatMode=getRepeatMode(source);
   state.settings.repeatAyah=state.settings.repeatMode==='one';
+  state.settings.rangeStartSurah=+document.getElementById(prefix+'RangeStartSurah').value||1;
   const start=+document.getElementById(prefix+'RangeStart').value||1;
+  state.settings.rangeEndSurah=+document.getElementById(prefix+'RangeEndSurah').value||1;
   const end=+document.getElementById(prefix+'RangeEnd').value||start;
   state.settings.rangeStart=start;
   state.settings.rangeEnd=end;
   state.settings.repeatCount=+document.getElementById(prefix+'RepeatCount').value||3;
   DB.set('settings',state.settings);
   syncRepeatControls();
-  if(audioSession&&state.settings.repeatMode!=='range')audioSession.mode=state.settings.repeatMode;
+  if(audioSession&&state.settings.repeatMode!=='range'&&state.settings.repeatMode!=='one')audioSession.mode=state.settings.repeatMode;
+}
+function rangePlaybackSettingsChanged(session){
+  return session.rangeWide&&session.mode==='range'&&state.settings.repeatMode==='range'&&(
+    session.fromSurah!==state.settings.rangeStartSurah||
+    session.fromVerse!==state.settings.rangeStart||
+    session.toSurah!==state.settings.rangeEndSurah||
+    session.toVerse!==state.settings.rangeEnd||
+    session.repeatCount!==state.settings.repeatCount
+  );
+}
+function getSurahVerseCount(surah){
+  return SAMPLE[surah]?SAMPLE[surah].verses.length:getSurah(surah)[3];
 }
 function syncRangeBounds(){
-  const surah=+surahSelect.value||state.surah;
-  const limit=SAMPLE[surah]?SAMPLE[surah].verses.length:getSurah(surah)[3];
-  ['readerRangeStart','readerRangeEnd','dockRangeStart','dockRangeEnd'].forEach(id=>{
-    const input=document.getElementById(id);
+  const startSurah=Math.max(1,Math.min(114,+document.getElementById('readerRangeStartSurah').value||state.settings.rangeStartSurah||1));
+  const endSurah=Math.max(1,Math.min(114,+document.getElementById('readerRangeEndSurah').value||state.settings.rangeEndSurah||1));
+  ['readerRangeStartSurah','dockRangeStartSurah'].forEach(id=>{document.getElementById(id).value=String(startSurah);});
+  ['readerRangeEndSurah','dockRangeEndSurah'].forEach(id=>{document.getElementById(id).value=String(endSurah);});
+  [
+    ['readerRangeStart','dockRangeStart',startSurah],
+    ['readerRangeEnd','dockRangeEnd',endSurah]
+  ].forEach(([readerId,dockId,surah])=>{
+    const input=document.getElementById(readerId);
+    const limit=getSurahVerseCount(surah);
     input.max=String(limit);
     input.value=String(Math.max(1,Math.min(limit,+input.value||1)));
+    const dockInput=document.getElementById(dockId);
+    dockInput.max=String(limit);
+    dockInput.value=input.value;
   });
+  state.settings.rangeStartSurah=startSurah;
   state.settings.rangeStart=+document.getElementById('readerRangeStart').value;
+  state.settings.rangeEndSurah=endSurah;
   state.settings.rangeEnd=+document.getElementById('readerRangeEnd').value;
   syncRepeatControls();
 }
@@ -2194,6 +2237,30 @@ function advanceAudioSession(){
   const session=audioSession;
   if(session.mode==='one'){
     playSessionItem();
+    return;
+  }
+  if(session.mode==='surah'&&!session.rangeWide){
+    if(session.index<session.items.length-1)session.index++;
+    else session.index=0;
+    playSessionItem();
+    return;
+  }
+  if(session.rangeWide){
+    if(session.index<session.items.length-1){
+      session.index++;
+      playSessionItem();
+      return;
+    }
+    if(session.surah<session.toSurah){
+      loadQuranRangeSurah(session,session.surah+1);
+      return;
+    }
+    if(session.mode==='range'&&session.cycles<session.repeatCount-1){
+      session.cycles++;
+      loadQuranRangeSurah(session,session.fromSurah);
+      return;
+    }
+    stopAudio();
     return;
   }
   if(session.quranWide&&session.mode==='all'){
@@ -2253,6 +2320,54 @@ async function startQuranWidePlayback(request){
   updateAudioDock();
   await loadQuranWideSurah(session,1);
 }
+async function loadQuranRangeSurah(session,surah){
+  try{
+    const list=await getAyahs(surah,session.reciterId);
+    if(audioSession!==session||session.request!==audioPlayToken)return;
+    const max=list.length?list[list.length-1].n:getSurahVerseCount(surah);
+    const first=surah===session.fromSurah?session.fromVerse:1;
+    const last=surah===session.toSurah?session.toVerse:max;
+    if(first<1||last<first||last>max)throw new Error('The selected verse range is not valid for Surah '+surah+'.');
+    const items=await loadVerseItems(surah,session.reciterId,first,last,first===1);
+    if(audioSession!==session||session.request!==audioPlayToken)return;
+    if(!items.length)throw new Error('No audio is available for Surah '+surah+'.');
+    session.surah=surah;
+    session.items=items;
+    session.index=0;
+    playSessionItem();
+  }catch(error){
+    if(audioSession!==session)return;
+    stopAudio();
+    toast('Qur’an range playback stopped at Surah '+surah+': '+error.message,'err',5000);
+  }
+}
+async function startQuranRangePlayback(request){
+  const fromSurah=+state.settings.rangeStartSurah||1;
+  const toSurah=+state.settings.rangeEndSurah||fromSurah;
+  const fromVerse=+state.settings.rangeStart||1;
+  const toVerse=+state.settings.rangeEnd||fromVerse;
+  const fromLimit=getSurahVerseCount(fromSurah);
+  const toLimit=getSurahVerseCount(toSurah);
+  if(fromSurah<1||toSurah>114||fromSurah>toSurah||fromVerse<1||toVerse<1||
+    fromVerse>fromLimit||toVerse>toLimit||(fromSurah===toSurah&&fromVerse>toVerse)){
+    toast('Choose a valid start and end surah/ayah range before playing.','err',4000);
+    return;
+  }
+  let reciterId=state.settings.audioReciter;
+  if(RECITERS[reciterId]?.mode==='surah'){
+    reciterId='ar.alafasy';
+    toast('This reciter provides full-surah audio only; verse ranges use Mishary Alafasy.','info',4500);
+  }
+  const session={
+    surah:fromSurah,items:[],mode:'range',
+    repeatCount:Math.max(1,+state.settings.repeatCount||1),cycles:0,index:0,
+    rangeWide:true,fromSurah,toSurah,fromVerse,toVerse,
+    request,reciterId
+  };
+  audioSession=session;
+  updateAudioDock();
+  await loadQuranRangeSurah(session,fromSurah);
+}
 function startAudioSession(surah,items,mode,repeatCount,startIndex,request){
   if(!items.length){toast('No audio is available for that verse selection.','err');return;}
   if(request!==audioPlayToken)return;
@@ -2283,7 +2398,11 @@ async function startSurahPlayback(){
       await startQuranWidePlayback(request);
       return;
     }
-    if(mode==='off'&&reciter.mode==='surah'){
+    if(mode==='range'){
+      await startQuranRangePlayback(request);
+      return;
+    }
+    if((mode==='off'||mode==='surah')&&reciter.mode==='surah'){
       const url=await getSurahAudio(surah);
       if(request!==audioPlayToken)return;
       startAudioSession(surah,[{url,label:reciter.name+' · '+getSurah(surah)[1],key:null}],mode,1,0,request);
@@ -2312,6 +2431,7 @@ async function playAyahAudio(surah,number){
   const mode=getRepeatMode();
   if(mode==='range'){await startSurahPlayback();return;}
   if(mode==='all'){await startQuranWidePlayback(request);return;}
+  if(mode==='surah'){await startSurahPlayback();return;}
   const reciterId=state.settings.audioReciter;
   const reciter=RECITERS[reciterId]||RECITERS['ar.alafasy'];
   const activeReciter=reciter.mode==='surah'?'ar.alafasy':reciterId;
@@ -2429,18 +2549,23 @@ document.querySelectorAll('#readerRepeatMode,#dockRepeatMode').forEach(select=>s
   applySettings();
   syncRepeatControls();
   if(audioSession){
-    if(select.value==='range'||(select.value==='all'&&!audioSession.quranWide))startSurahPlayback();
+    if(select.value==='range'||select.value==='surah'||(select.value==='all'&&!audioSession.quranWide))startSurahPlayback();
     else audioSession.mode=select.value;
   }
-  toast(select.value==='one'?'Repeat one is on':select.value==='all'?'Repeat all 114 surahs is on':select.value==='range'?'Set a verse range, then press Recite':'Repeat is off','info',1800);
+  toast(select.value==='one'?'Repeat one ayah is on':select.value==='surah'?'Repeat one surah is on':select.value==='all'?'Repeat all 114 surahs is on':select.value==='range'?'Set a surah and verse range, then press Recite':'Repeat is off','info',1800);
 }));
-document.querySelectorAll('#readerRangeStart,#readerRangeEnd,#readerRepeatCount,#dockRangeStart,#dockRangeEnd,#dockRepeatCount').forEach(input=>input.addEventListener('change',()=>{
+document.querySelectorAll('#readerRangeStartSurah,#readerRangeStart,#readerRangeEndSurah,#readerRangeEnd,#readerRepeatCount,#dockRangeStartSurah,#dockRangeStart,#dockRangeEndSurah,#dockRangeEnd,#dockRepeatCount').forEach(input=>input.addEventListener('change',()=>{
   persistRepeatSettings(input.id.startsWith('dock')?'dock':'reader');
   syncRangeBounds();
 }));
+populateRangeSurahOptions();
 syncRepeatControls();
 syncRangeBounds();
 function toggleAudioPlayback(){
+  if(audioSession&&rangePlaybackSettingsChanged(audioSession)){
+    startSurahPlayback();
+    return;
+  }
   if(audioSession&&state.currentAudio){
     if(state.audio.paused){
       state.audio.play().catch(()=>toast('Recitation could not resume. Check your connection and try again.','err'));
@@ -2897,9 +3022,11 @@ function applySettings(){
   if(typeof s.ttsVoice!=='string'||s.ttsVoice.length>200) s.ttsVoice='auto';
   if(!Number.isFinite(+s.ttsPitch)||+s.ttsPitch<0.85||+s.ttsPitch>1.2) s.ttsPitch=1.05;
   if(![0.75,1,1.25,1.5].includes(+s.audioRate)) s.audioRate=1;
-  if(!['off','all','one','range'].includes(s.repeatMode))s.repeatMode=s.repeatAyah?'one':'off';
+  if(!['off','all','surah','one','range'].includes(s.repeatMode))s.repeatMode=s.repeatAyah?'one':'off';
   s.repeatAyah=s.repeatMode==='one';
   if(![1,2,3,4,5,10].includes(+s.repeatCount))s.repeatCount=3;
+  if(!Number.isInteger(+s.rangeStartSurah)||+s.rangeStartSurah<1||+s.rangeStartSurah>114)s.rangeStartSurah=1;
+  if(!Number.isInteger(+s.rangeEndSurah)||+s.rangeEndSurah<1||+s.rangeEndSurah>114)s.rangeEndSurah=s.rangeStartSurah;
   if(!Number.isInteger(+s.rangeStart)||+s.rangeStart<1)s.rangeStart=1;
   if(!Number.isInteger(+s.rangeEnd)||+s.rangeEnd<1)s.rangeEnd=1;
   if(!RECITERS[s.audioReciter]) s.audioReciter='ar.alafasy';
@@ -3026,10 +3153,41 @@ window.__revealView('home');
 document.querySelectorAll('[data-theme-set]').forEach(b=>b.addEventListener('click', ()=>{ state.settings.theme=b.dataset.themeSet; applySettings(); }));
 document.querySelectorAll('[data-accent-set]').forEach(b=>b.addEventListener('click', ()=>{ state.settings.accent=b.dataset.accentSet; applySettings(); }));
 document.querySelectorAll('[data-toggle]').forEach(t=>t.addEventListener('click', ()=>{
-  const k = t.dataset.toggle; state.settings[k] = !state.settings[k];
-  if(k==='repeatAyah')state.settings.repeatMode=state.settings.repeatAyah?'one':'off';
+  const k = t.dataset.toggle;
+  if(k==='repeatAyah'){
+    const enabled=!state.settings.repeatAyah;
+    const fullSurahOnly=enabled&&audioSession&&
+      RECITERS[state.settings.audioReciter]?.mode==='surah'&&!state.currentAudio?.key;
+    const currentVerse=state.currentAudio?.key?.match(/^(\d+):(\d+)$/);
+    const fallbackSurah=fullSurahOnly?audioSession.surah:null;
+    state.settings.repeatAyah=enabled;
+    if(enabled){
+      state.settings.repeatMode='one';
+      if(audioSession){
+        audioSession.repeatModeBeforeAyah=audioSession.mode==='one'?'off':audioSession.mode;
+        audioSession.mode='one';
+      }
+    }else{
+      const restoredMode=audioSession?.repeatModeBeforeAyah||'off';
+      state.settings.repeatMode=restoredMode;
+      if(audioSession){
+        audioSession.mode=restoredMode;
+        delete audioSession.repeatModeBeforeAyah;
+      }
+    }
+    applySettings();
+    if(fullSurahOnly){
+      stopAudio();
+      playAyahAudio(fallbackSurah||(+surahSelect.value||state.surah),currentVerse?+currentVerse[2]:(+document.getElementById('readerRangeStart').value||1));
+    }else if(enabled&&!audioSession){
+      const surah=currentVerse?+currentVerse[1]:(+surahSelect.value||state.surah);
+      const ayah=currentVerse?+currentVerse[2]:(+document.getElementById('readerRangeStart').value||1);
+      playAyahAudio(surah,ayah);
+    }
+    return;
+  }
+  state.settings[k] = !state.settings[k];
   applySettings();
-  if(k==='repeatAyah')syncRepeatControls();
   if(k==='keepChatHistory'&&window.syncChatPersistence)window.syncChatPersistence();
 }));
 document.querySelectorAll('[data-setting-select]').forEach(el=>el.addEventListener('change',()=>{
@@ -3962,6 +4120,29 @@ function makeFloatingControlMovable(element,handle,key){
     event.preventDefault();
     event.stopImmediatePropagation();
   },true);
+  if(key==='audio-player'){
+    const corners=['top-left','top-right','bottom-right','bottom-left'];
+    let cornerIndex=0;
+    const moveToNextCorner=()=>{
+      const rect=element.getBoundingClientRect();
+      cornerIndex=(cornerIndex+1)%corners.length;
+      const corner=corners[cornerIndex];
+      const left=corner.endsWith('left')?12:window.innerWidth-rect.width-12;
+      const top=corner.startsWith('top')?12:window.innerHeight-rect.height-12;
+      place(left,top);
+      DB.set('floating-position-'+key,{left:element.getBoundingClientRect().left,top:element.getBoundingClientRect().top});
+    };
+    handle.addEventListener('click',event=>{if(!suppressClick&&event.detail>0)moveToNextCorner();});
+    handle.addEventListener('keydown',event=>{
+      const shifts={ArrowUp:[0,-20],ArrowDown:[0,20],ArrowLeft:[-20,0],ArrowRight:[20,0]};
+      const shift=shifts[event.key];
+      if(!shift)return;
+      event.preventDefault();
+      const rect=element.getBoundingClientRect();
+      place(rect.left+shift[0],rect.top+shift[1]);
+      DB.set('floating-position-'+key,{left:element.getBoundingClientRect().left,top:element.getBoundingClientRect().top});
+    });
+  }
   window.addEventListener('resize',()=>constrainFloatingControl(element));
 }
 const quickDock=document.getElementById('dock');
