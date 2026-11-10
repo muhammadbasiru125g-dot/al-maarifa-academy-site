@@ -970,13 +970,14 @@ footer{border-top:1px solid var(--border);padding:56px 22px 40px;background:var(
   </div>
   <div class="section" style="padding-top:0"><div class="grid-4" id="serviceCards"></div></div>
   <div class="section" id="serviceFeedback">
-    <div class="section-head"><div class="kicker">Service Feedback</div><h2 class="title">Help us <em>improve</em>.</h2><p class="lead">Tell us about your experience with a service. When online submissions are configured, you can send it directly or use an email draft/copy instead.</p></div>
+    <div class="section-head"><div class="kicker">Service Feedback</div><h2 class="title">Help us <em>improve</em>.</h2><p class="lead">Tell us about your experience with a service. Send it through WhatsApp for review, or use an email draft/copy. Online form delivery is available when configured.</p></div>
     <div class="reader" style="max-width:640px"><form class="modal-body" id="serviceFeedbackForm">
       <div class="field"><label for="feedbackService">Service</label><select id="feedbackService" class="sel"><option>PDF to Word</option><option>Research formatting</option><option>Editing and proofreading</option><option>Design and study aids</option><option>Other service</option></select></div>
       <div class="field"><label for="feedbackName">Your name (optional)</label><input id="feedbackName" type="text" autocomplete="name" placeholder="Your name"></div>
       <div class="field"><label for="feedbackComment">Your feedback</label><textarea id="feedbackComment" required minlength="3" placeholder="What went well, or what could we improve?"></textarea></div>
       <div style="display:flex;gap:10px;flex-wrap:wrap">
         <button type="submit" class="btn btn-primary" id="feedbackSubmitButton" style="flex:1"><svg aria-hidden="true"><use href="#i-send"/></svg> Prepare Feedback Email</button>
+        <button type="button" class="btn btn-ghost btn-sm" onclick="sendServiceFeedbackWhatsApp()">Review in WhatsApp</button>
         <button type="button" class="btn btn-ghost" id="feedbackEmailFallback" onclick="sendServiceFeedbackEmailDraft()" hidden>Prepare Email Draft</button>
         <button type="button" class="btn btn-ghost" onclick="copyServiceFeedbackDraft()">Copy Feedback</button>
       </div>
@@ -1041,6 +1042,7 @@ footer{border-top:1px solid var(--border);padding:56px 22px 40px;background:var(
         <div class="field"><label for="ct-msg">Message</label><textarea id="ct-msg" placeholder="How can we help you?" required minlength="3"></textarea></div>
         <div style="display:flex;gap:10px;flex-wrap:wrap">
           <button type="submit" class="btn btn-primary" id="contactSubmitButton" style="flex:1"><svg aria-hidden="true"><use href="#i-send"/></svg> Prepare Email Draft</button>
+          <button type="button" class="btn btn-ghost" onclick="sendContactWhatsApp()">Review in WhatsApp</button>
           <button type="button" class="btn btn-ghost" id="contactEmailFallback" onclick="sendContactEmailDraft()" hidden>Prepare Email Draft</button>
           <button type="button" class="btn btn-ghost" onclick="copyContactDraft()">Copy Message</button>
         </div>
@@ -1842,6 +1844,14 @@ function getFormspreeEndpoint(){
   const formId=String(window.ACADEMY_FORMSPREE_FORM_ID||'').trim();
   return /^[A-Za-z0-9]+$/.test(formId)?'https://formspree.io/f/'+formId:'';
 }
+window.openAcademyWhatsApp=function(message){
+  const link=document.createElement('a');
+  link.href='https://wa.me/201285968529?text='+encodeURIComponent(message);
+  link.target='_blank';
+  link.rel='noopener noreferrer';
+  link.click();
+  if(window.__toast)window.__toast('WhatsApp opened with a draft. Review it there and tap Send; nothing has been sent yet.','info',6000);
+};
 async function submitAcademyForm(payload){
   const endpoint=getFormspreeEndpoint();
   if(!endpoint)throw new Error('Online submissions are not configured. Use the email draft or copy option instead.');
@@ -2510,6 +2520,7 @@ function openEnroll(track){
     '<div class="field track-experience" data-track-experience="computer"><label for="in-clevel">Computer experience (optional)</label><select id="in-clevel"><option value="">Select…</option><option>Complete beginner</option><option>Basic typing</option><option>Comfortable with Office</option><option>Advanced user</option></select></div></div>'+
     '<div class="field"><label for="in-msg">Message (optional)</label><textarea id="in-msg" maxlength="1500" placeholder="Goals, preferred times, or a question about pricing…"></textarea></div>'+
     '<button type="submit" class="btn btn-primary" id="enrollSubmitButton" style="width:100%;margin-top:8px"><svg aria-hidden="true"><use href="#i-mail"/></svg> Prepare Email Draft</button>'+
+    '<button type="button" class="btn btn-ghost" onclick="window.sendEnrollWhatsApp()" style="width:100%;margin-top:8px">Review in WhatsApp</button>'+
     '<button type="button" class="btn btn-ghost" id="enrollEmailFallback" onclick="window.prepareEnrollEmailDraft()" style="width:100%;margin-top:8px" hidden>Prepare Email Draft</button>'+
     '<button type="button" class="btn btn-ghost" id="enrollCopyFallback" onclick="window.copyEnrollRequest()" style="width:100%;margin-top:8px">Copy Request</button>'+
     '<label id="enrollOnlineConsentWrap" class="sub" hidden><input type="checkbox" id="enrollOnlineConsent"> I agree to send my enrollment details to the academy via Formspree.</label>'+
@@ -2566,6 +2577,12 @@ window.copyEnrollRequest=function(){
     'Enrollment request copied. Paste it into an email or message.'
   );
 };
+window.sendEnrollWhatsApp=function(){
+  const form=document.getElementById('enrollForm');
+  if(!form||!form.reportValidity())return;
+  const request=getEnrollmentRequest();
+  window.openAcademyWhatsApp(request.bodyLines);
+};
 window.prepareEnrollEmailDraft=function(){
   submitEnroll({preventDefault(){}},true);
 };
@@ -2612,11 +2629,13 @@ async function submitEnroll(e,forceEmail=false){
     '<p>Thank you, <strong>'+esc(name)+'</strong>. Your request for <strong>'+trackLabel+'</strong> is only a draft; the academy has not received it. Open your email app, review the details and press Send. No course pricing is published here, so please ask for a quote.</p>'+
     '<div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:28px">'+
     '<a class="btn btn-primary" id="enrollEmailLink"><svg><use href="#i-send"/></svg> Open Email Draft</a>'+
+    '<button type="button" class="btn btn-ghost" id="enrollWhatsAppButton">Review in WhatsApp</button>'+
     '<button type="button" class="btn btn-ghost" id="copyEnrollDraft">Copy Request</button>'+
     '<button class="btn btn-ghost" onclick="openEnroll(\''+state.enrollTrack+'\')">Edit details</button></div></div>';
   document.getElementById('enrollEmailLink').href = 'mailto:Muhammadbasiru125g@gmail.com?subject='+
     encodeURIComponent(subject)+'&body='+encodeURIComponent(bodyLines);
   document.getElementById('enrollEmailLink').addEventListener('click',()=>toast('Your email app should open. The request is not received until you press Send.','info',5000));
+  document.getElementById('enrollWhatsAppButton').addEventListener('click',()=>window.openAcademyWhatsApp(bodyLines));
   document.getElementById('copyEnrollDraft').addEventListener('click',()=>copyDraftText(
     'To: Muhammadbasiru125g@gmail.com\nSubject: '+subject+'\n\n'+bodyLines,
     'Enrollment request copied. Paste it into an email or message.'
@@ -3658,6 +3677,23 @@ window.copyContactDraft=function(){
   copyDraftText(
     'To: Muhammadbasiru125g@gmail.com\nSubject: Message from '+name+' — Al-Ma’rifah website\n\n'+message+'\n\n— '+name,
     'Message copied. Paste it into an email or message.'
+  );
+};
+window.sendContactWhatsApp=function(){
+  const form=document.getElementById('contactForm');
+  if(!form.reportValidity())return;
+  const name=document.getElementById('ct-name').value.trim();
+  const message=document.getElementById('ct-msg').value.trim();
+  window.openAcademyWhatsApp('WEBSITE CONTACT — Al-Ma’rifah Academy (المعرفة)\n\nName: '+name+'\nMessage:\n'+message);
+};
+window.sendServiceFeedbackWhatsApp=function(){
+  const form=document.getElementById('serviceFeedbackForm');
+  if(!form.reportValidity())return;
+  const service=document.getElementById('feedbackService').value;
+  const name=document.getElementById('feedbackName').value.trim();
+  const comment=document.getElementById('feedbackComment').value.trim();
+  window.openAcademyWhatsApp(
+    ['SERVICE FEEDBACK — Al-Ma’rifah Academy (المعرفة)','Service: '+service,name?'Name: '+name:'','Feedback:',comment].filter(Boolean).join('\n')
   );
 };
 window.copyServiceFeedbackDraft=function(){
